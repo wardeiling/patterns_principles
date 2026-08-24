@@ -42,10 +42,11 @@ book:
   chapters:
   - index.qmd
   - theory_crisis.qmd
-  - what_makes_a_good_theory.qmd
+  - good_theory.qmd
   - strategic_ambiguity.qmd
   - latent_theory.qmd
   - formal_theory.qmd
+  - ml_informed.qmd
   - references.qmd
   appendices:
   - setup.qmd

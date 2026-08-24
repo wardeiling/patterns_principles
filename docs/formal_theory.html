@@ -84,7 +84,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./ml_informed.html" rel="next">
 <link href="./latent_theory.html" rel="prev">
 <link href="./images/logos/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -341,7 +341,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./what_makes_a_good_theory.html" class="sidebar-item-text sidebar-link">
+  <a href="./good_theory.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What Makes a Good Theory?</span></span></a>
   </div>
 </li>
@@ -361,6 +361,12 @@ div.csl-indent {
   <div class="sidebar-item-container"> 
   <a href="./formal_theory.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Formal Theory Specification</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ml_informed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine Learning-Informed Theory Construction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -425,8 +431,17 @@ div.csl-indent {
 
 </header><section id="weekly-readings" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="weekly-readings">
 <span class="header-section-number">5.1</span> Weekly Readings</h2>
+<pre><code>New names:
+• `` -&gt; `...15`
+• `` -&gt; `...16`
+• `` -&gt; `...17`
+• `` -&gt; `...18`
+• `` -&gt; `...19`
+• `` -&gt; `...20`
+• `` -&gt; `...21`</code></pre>
 <ul>
-<li>NA</li>
+<li><a href="https://eprints.lse.ac.uk/100335/1/Dual_Inheritance_Theory_Perspective_final.pdf">Muthukrishna, M., &amp; Henrich, J. (2019). A problem in theory. Nature Human Behaviour, 3(3), 221–229. https://doi.org/10.1038/s41562-018-0522-1</a></li>
+<li><a href="https://journals.sagepub.com/doi/full/10.1177/1745691620970586">Eronen, M. I., &amp; Bringmann, L. F. (2021). The Theory Crisis in Psychology: How to Move Forward. Perspectives on Psychological Science, 16(4), 779–788. https://doi.org/10.1177/1745691620970586</a></li>
 </ul></section><section id="tutorial" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="tutorial">
 <span class="header-section-number">5.2</span> Tutorial</h2>
 <p>In this tutorial, you will go through some of the steps of theory formalization, following the Abductive Formal Theory Construction (AFTC) framework. We will use Self-Determination Theory (SDT) as a guiding example.</p>
@@ -445,7 +460,7 @@ div.csl-indent {
 <span class="header-section-number">5.2.1.2</span> Generate an Initial Verbal Theory</h4>
 <p>You have previously worked with a DAG representing SDT. The vignette <a href="https://cjvanlissa.github.io/theorytools/articles/formalizing_sdt.html">Formalizing Self-Determination Theory</a> describes how this FAIR theory was created based on the original Self-Determination Theory <span class="citation" data-cites="deciSelfDeterminationTheory2012">(<a href="references.html#ref-deciSelfDeterminationTheory2012" role="doc-biblioref"><strong>deciSelfDeterminationTheory2012?</strong></a>)</span>. It was specified as a Directed Acyclic Graph, or DAG: a diagram that specifies the causal relations proposed by a theory. Such diagrams can be used to derive hypotheses, select control variables for causal inference, and conduct simulation studies (as we will do in this tutorial).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(theorytools)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(theorytools)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'theorytools'</code></pre>
@@ -455,29 +470,29 @@ Attaching package: 'theorytools'</code></pre>
 
     add_to_pkgdown, use_webex_vignette</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(dagitty)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>sdt <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">"</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="st">dag {</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="st">external_event</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="st">healthy_development</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="st">integration</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="st">intrinsic_motivation</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="st">locus_of_causality</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="st">needs</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="st">wellbeing</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a><span class="st">external_event -&gt; intrinsic_motivation</span></span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="st">external_event -&gt; locus_of_causality</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a><span class="st">external_event -&gt; needs</span></span>
-<span id="cb4-14"><a href="#cb4-14"></a><span class="st">integration -&gt; healthy_development</span></span>
-<span id="cb4-15"><a href="#cb4-15"></a><span class="st">integration -&gt; wellbeing</span></span>
-<span id="cb4-16"><a href="#cb4-16"></a><span class="st">intrinsic_motivation -&gt; healthy_development</span></span>
-<span id="cb4-17"><a href="#cb4-17"></a><span class="st">intrinsic_motivation -&gt; wellbeing</span></span>
-<span id="cb4-18"><a href="#cb4-18"></a><span class="st">locus_of_causality -&gt; intrinsic_motivation</span></span>
-<span id="cb4-19"><a href="#cb4-19"></a><span class="st">needs -&gt; integration</span></span>
-<span id="cb4-20"><a href="#cb4-20"></a><span class="st">needs -&gt; intrinsic_motivation</span></span>
-<span id="cb4-21"><a href="#cb4-21"></a><span class="st">needs -&gt; wellbeing</span></span>
-<span id="cb4-22"><a href="#cb4-22"></a><span class="st">}"</span>)</span>
-<span id="cb4-23"><a href="#cb4-23"></a>sdt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>sdt <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">"</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="st">dag {</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="st">external_event</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="st">healthy_development</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="st">integration</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="st">intrinsic_motivation</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="st">locus_of_causality</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="st">needs</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="st">wellbeing</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="st">external_event -&gt; intrinsic_motivation</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="st">external_event -&gt; locus_of_causality</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="st">external_event -&gt; needs</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="st">integration -&gt; healthy_development</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="st">integration -&gt; wellbeing</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="st">intrinsic_motivation -&gt; healthy_development</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="st">intrinsic_motivation -&gt; wellbeing</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="st">locus_of_causality -&gt; intrinsic_motivation</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="st">needs -&gt; integration</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a><span class="st">needs -&gt; intrinsic_motivation</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a><span class="st">needs -&gt; wellbeing</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a><span class="st">}"</span>)</span>
+<span id="cb5-23"><a href="#cb5-23"></a>sdt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>dag {
 external_event
@@ -503,7 +518,7 @@ needs -&gt; wellbeing
 </div>
 <p>We can also plot this DAG:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">plot</span>(sdt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">plot</span>(sdt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="formal_theory_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
@@ -528,14 +543,14 @@ needs -&gt; wellbeing
 <p>We will construct a very basic formalization for the section of SDT that you have selected.</p>
 <p>First, we will simplify the DAG. You can do this by hand; suppose we are interested in studying the effect of intrinsic motivation on well-being. We do not need the entire theory to hypothesize about this specific relationship. We can simplify the DAG to derive a restricted version of the theory that includes all variables that might confound the relationship of interest between intrinsic motivation and well-being:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>sdt_pruned <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">"</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="st">dag {</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="st">intrinsic_motivation -&gt; wellbeing</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="st">external_event -&gt; intrinsic_motivation</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="st">needs -&gt; intrinsic_motivation</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="st">needs -&gt; wellbeing</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="st">}"</span>)</span>
-<span id="cb7-8"><a href="#cb7-8"></a>sdt_pruned</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>sdt_pruned <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">"</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="st">dag {</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="st">intrinsic_motivation -&gt; wellbeing</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="st">external_event -&gt; intrinsic_motivation</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="st">needs -&gt; intrinsic_motivation</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="st">needs -&gt; wellbeing</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="st">}"</span>)</span>
+<span id="cb8-8"><a href="#cb8-8"></a>sdt_pruned</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>dag {
 external_event
@@ -552,28 +567,28 @@ needs -&gt; wellbeing
 <p>Do the same for the phenomenon you identified. When you have done so, we can now create some code to generate a synthetic dataset based on this simplified DAG, using the <code>simulate_data()</code> function. This function samples random values for exogenous variables and computes endogenous variables as functions of their predictors (linear functions, by default). By default, regression coefficients are randomly sampled in the range <code>[-0.6, +0.6]</code> unless specific values are provided by the user. You might improve the model by choosing more realistic parameter values, for example, using the conventional values for null (0), small (.2), or medium (.4) effect sizes. By default, normal distributions are assumed for exogenous variables and residual error, unless other distributions are specified.</p>
 <p>Here, we first generate the code, then examine it in the console, then write it to a file, and finally, run that file to create the simulated data.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>sim_code <span class="ot">&lt;-</span> <span class="fu">simulate_data</span>(sdt_pruned, <span class="at">n =</span> <span class="dv">100</span>, <span class="at">run =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb9-2"><a href="#cb9-2"></a>sim_code</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>sim_code <span class="ot">&lt;-</span> <span class="fu">simulate_data</span>(sdt_pruned, <span class="at">n =</span> <span class="dv">100</span>, <span class="at">run =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>sim_code</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "# Set random seed"                                                          
- [2] "set.seed(164638415)"                                                        
- [3] "# Set simulation parameters"                                                
- [4] "n &lt;- 100"                                                                   
- [5] "# Simulate exogenous nodes"                                                 
- [6] "external_event &lt;- rnorm(n = n)"                                             
- [7] "needs &lt;- rnorm(n = n)"                                                      
- [8] "# Simulate endogenous nodes"                                                
- [9] "intrinsic_motivation &lt;- 0.04 * needs - 0.45 * external_event + rnorm(n = n)"
-[10] "wellbeing &lt;- 0.05 * needs + 0.5 * intrinsic_motivation + rnorm(n = n)"      
-[11] "df &lt;- data.frame("                                                          
-[12] "external_event = external_event,"                                           
-[13] "intrinsic_motivation = intrinsic_motivation,"                               
-[14] "needs = needs,"                                                             
-[15] "wellbeing = wellbeing"                                                      
-[16] ")"                                                                          </code></pre>
+<pre><code> [1] "# Set random seed"                                                         
+ [2] "set.seed(552322084)"                                                       
+ [3] "# Set simulation parameters"                                               
+ [4] "n &lt;- 100"                                                                  
+ [5] "# Simulate exogenous nodes"                                                
+ [6] "external_event &lt;- rnorm(n = n)"                                            
+ [7] "needs &lt;- rnorm(n = n)"                                                     
+ [8] "# Simulate endogenous nodes"                                               
+ [9] "intrinsic_motivation &lt;- 0.3 * external_event - 0.23 * needs + rnorm(n = n)"
+[10] "wellbeing &lt;- 0.29 * needs + 0.5 * intrinsic_motivation + rnorm(n = n)"     
+[11] "df &lt;- data.frame("                                                         
+[12] "external_event = external_event,"                                          
+[13] "intrinsic_motivation = intrinsic_motivation,"                              
+[14] "needs = needs,"                                                            
+[15] "wellbeing = wellbeing"                                                     
+[16] ")"                                                                         </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">writeLines</span>(sim_code, <span class="st">"formal_model.R"</span>)</span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">source</span>(<span class="st">"formal_model.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">writeLines</span>(sim_code, <span class="st">"formal_model.R"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">source</span>(<span class="st">"formal_model.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Put this code into a separate R-file. When you run it all, it will create an object called <code>df</code>, which is a table with 100 observations for all variables. Each exogenous variable (causes) is generated by drawing random samples from a normal distribution. Each endogenous variable (effects) is generated by multiplying those exogenous variables with a regression coefficient; larger values mean that the exogenous variable has a larger effect. Then, random noise is added, which represents variability due to other causes not part of your model. If you want this random variability to be smaller, change the <code>sd</code> argument of the <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> function.</p>
 </section><section id="evaluating-the-initial-theory" class="level4" data-number="5.2.1.4"><h4 data-number="5.2.1.4" class="anchored" data-anchor-id="evaluating-the-initial-theory">
@@ -591,7 +606,7 @@ needs -&gt; wellbeing
 <span class="header-section-number">5.2.1.4.2</span> Univariate Distribution</h5>
 <p>For example, to obtain a summary of all variables in the dataset:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>worcs<span class="sc">::</span><span class="fu">descriptives</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>worcs<span class="sc">::</span><span class="fu">descriptives</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -642,19 +657,19 @@ needs -&gt; wellbeing
 <td style="text-align: right;">100</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">-0.0469549</td>
-<td style="text-align: right;">-0.0560046</td>
-<td style="text-align: right;">-0.0560046</td>
+<td style="text-align: right;">-0.1530358</td>
+<td style="text-align: right;">-0.0584194</td>
+<td style="text-align: right;">-0.0584194</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: right;">0.9583098</td>
+<td style="text-align: right;">1.029896</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: right;">-3.050593</td>
-<td style="text-align: right;">2.658790</td>
-<td style="text-align: right;">5.709383</td>
-<td style="text-align: right;">-0.1104113</td>
-<td style="text-align: right;">-0.2287088</td>
-<td style="text-align: right;">0.2061550</td>
-<td style="text-align: right;">0.2154940</td>
+<td style="text-align: right;">-3.661339</td>
+<td style="text-align: right;">1.739140</td>
+<td style="text-align: right;">5.400480</td>
+<td style="text-align: right;">-0.4054784</td>
+<td style="text-align: right;">-0.8399180</td>
+<td style="text-align: right;">-0.0006888</td>
+<td style="text-align: right;">-0.0007200</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">intrinsic_motivation</td>
@@ -662,19 +677,19 @@ needs -&gt; wellbeing
 <td style="text-align: right;">100</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">0.0519493</td>
-<td style="text-align: right;">0.0090830</td>
-<td style="text-align: right;">0.0090830</td>
+<td style="text-align: right;">0.0240237</td>
+<td style="text-align: right;">0.0552445</td>
+<td style="text-align: right;">0.0552445</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: right;">1.0031868</td>
+<td style="text-align: right;">1.143582</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: right;">-2.465219</td>
-<td style="text-align: right;">2.847882</td>
-<td style="text-align: right;">5.313101</td>
-<td style="text-align: right;">0.0486498</td>
-<td style="text-align: right;">0.1007743</td>
-<td style="text-align: right;">-0.0809218</td>
-<td style="text-align: right;">-0.0845876</td>
+<td style="text-align: right;">-2.308486</td>
+<td style="text-align: right;">2.631994</td>
+<td style="text-align: right;">4.940480</td>
+<td style="text-align: right;">0.1361174</td>
+<td style="text-align: right;">0.2819569</td>
+<td style="text-align: right;">-0.6300825</td>
+<td style="text-align: right;">-0.6586258</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">needs</td>
@@ -682,19 +697,19 @@ needs -&gt; wellbeing
 <td style="text-align: right;">100</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">-0.1244317</td>
-<td style="text-align: right;">-0.1591586</td>
-<td style="text-align: right;">-0.1591586</td>
+<td style="text-align: right;">-0.0971966</td>
+<td style="text-align: right;">-0.1159150</td>
+<td style="text-align: right;">-0.1159150</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: right;">0.9382946</td>
+<td style="text-align: right;">1.030014</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: right;">-2.287151</td>
-<td style="text-align: right;">2.443043</td>
-<td style="text-align: right;">4.730194</td>
-<td style="text-align: right;">0.2842318</td>
-<td style="text-align: right;">0.5887648</td>
-<td style="text-align: right;">-0.1224489</td>
-<td style="text-align: right;">-0.1279960</td>
+<td style="text-align: right;">-2.441780</td>
+<td style="text-align: right;">2.567130</td>
+<td style="text-align: right;">5.008910</td>
+<td style="text-align: right;">0.1193692</td>
+<td style="text-align: right;">0.2472643</td>
+<td style="text-align: right;">-0.1394263</td>
+<td style="text-align: right;">-0.1457425</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">wellbeing</td>
@@ -702,19 +717,19 @@ needs -&gt; wellbeing
 <td style="text-align: right;">100</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">-0.1061917</td>
-<td style="text-align: right;">-0.0883575</td>
-<td style="text-align: right;">-0.0883575</td>
+<td style="text-align: right;">0.0555597</td>
+<td style="text-align: right;">0.1022734</td>
+<td style="text-align: right;">0.1022734</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: right;">1.1797920</td>
+<td style="text-align: right;">1.188429</td>
 <td style="text-align: left;">NA</td>
-<td style="text-align: right;">-3.018665</td>
-<td style="text-align: right;">3.156940</td>
-<td style="text-align: right;">6.175605</td>
-<td style="text-align: right;">0.1252555</td>
-<td style="text-align: right;">0.2594574</td>
-<td style="text-align: right;">0.0396021</td>
-<td style="text-align: right;">0.0413962</td>
+<td style="text-align: right;">-2.736170</td>
+<td style="text-align: right;">2.602346</td>
+<td style="text-align: right;">5.338515</td>
+<td style="text-align: right;">-0.1790136</td>
+<td style="text-align: right;">-0.3708131</td>
+<td style="text-align: right;">-0.3434843</td>
+<td style="text-align: right;">-0.3590445</td>
 </tr>
 </tbody>
 </table>
@@ -725,7 +740,7 @@ needs -&gt; wellbeing
 <p>Use these statistics to look for interesting properties of the data. For example: Does a variable have a particularly high or low mean? Is there a lot of variation between observations? Are some categories much more common than others?</p>
 <p>You can also use <strong>base R plots</strong> to visually examine the univariate distribution of an individual variable. For a continuous variable, you can examine its distribution with a density plot:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(df<span class="sc">$</span>intrinsic_motivation))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(df<span class="sc">$</span>intrinsic_motivation))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="formal_theory_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
@@ -738,7 +753,7 @@ needs -&gt; wellbeing
 <span class="header-section-number">5.2.1.4.3</span> Relationship between Two Variables</h5>
 <p>You can test the effect of one variable on another by running a bivariate regression, e.g.:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(intrinsic_motivation<span class="sc">~</span>external_event, df))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(intrinsic_motivation<span class="sc">~</span>external_event, df))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -746,24 +761,24 @@ lm(formula = intrinsic_motivation ~ external_event, data = df)
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--2.21520 -0.60150  0.02431  0.54822  2.48490 
+-2.60497 -0.69428 -0.05782  0.53881  2.55520 
 
 Coefficients:
-               Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)     0.03455    0.09442   0.366 0.715189    
-external_event -0.37051    0.09890  -3.746 0.000303 ***
+               Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)     0.06543    0.11271   0.580   0.5629  
+external_event  0.27055    0.10879   2.487   0.0146 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.943 on 98 degrees of freedom
-Multiple R-squared:  0.1253,    Adjusted R-squared:  0.1163 
-F-statistic: 14.03 on 1 and 98 DF,  p-value: 0.0003033</code></pre>
+Residual standard error: 1.115 on 98 degrees of freedom
+Multiple R-squared:  0.05937,   Adjusted R-squared:  0.04977 
+F-statistic: 6.185 on 1 and 98 DF,  p-value: 0.01457</code></pre>
 </div>
 </div>
 <p>If the value of <code>Pr(&gt;|t|)</code> for <code>external_event</code> is smaller than .05, the effect is significant. If the value of <code>Estimate</code> is positive, then the effect is positive - if it is negative, then the effect is negative.</p>
 <p>To plot the relationship between two continuous variables, you can use a scatterplot:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>needs, df<span class="sc">$</span>intrinsic_motivation)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>needs, df<span class="sc">$</span>intrinsic_motivation)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="formal_theory_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
@@ -773,8 +788,8 @@ F-statistic: 14.03 on 1 and 98 DF,  p-value: 0.0003033</code></pre>
 </div>
 <p>You can add the regression line into this plot to make the direction of the relationship easier to see:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>needs, df<span class="sc">$</span>intrinsic_motivation)</span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">abline</span>(<span class="fu">lm</span>(intrinsic_motivation <span class="sc">~</span> needs, df))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>needs, df<span class="sc">$</span>intrinsic_motivation)</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">abline</span>(<span class="fu">lm</span>(intrinsic_motivation <span class="sc">~</span> needs, df))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="formal_theory_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
@@ -786,7 +801,7 @@ F-statistic: 14.03 on 1 and 98 DF,  p-value: 0.0003033</code></pre>
 <span class="header-section-number">5.2.1.4.4</span> Interaction Effects</h5>
 <p>You can test whether the effect of one variable on another is contingent on the value of a third variable by running multiple regression regression with an interaction effect, e.g.:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(intrinsic_motivation<span class="sc">~</span>external_event<span class="sc">*</span>needs, df))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(intrinsic_motivation<span class="sc">~</span>external_event<span class="sc">*</span>needs, df))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -794,20 +809,20 @@ lm(formula = intrinsic_motivation ~ external_event * needs, data = df)
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--2.23390 -0.59339 -0.01353  0.58527  2.43086 
+-2.67301 -0.61966 -0.04325  0.76247  2.72296 
 
 Coefficients:
-                     Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)           0.03853    0.09597   0.401 0.688988    
-external_event       -0.35815    0.10140  -3.532 0.000636 ***
-needs                 0.02685    0.10442   0.257 0.797642    
-external_event:needs -0.06972    0.10869  -0.641 0.522762    
+                     Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)           0.04021    0.10998   0.366  0.71546   
+external_event        0.28464    0.10571   2.693  0.00837 **
+needs                -0.30024    0.10593  -2.834  0.00560 **
+external_event:needs -0.02904    0.10454  -0.278  0.78174   
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.9499 on 96 degrees of freedom
-Multiple R-squared:  0.1305,    Adjusted R-squared:  0.1034 
-F-statistic: 4.804 on 3 and 96 DF,  p-value: 0.003677</code></pre>
+Residual standard error: 1.082 on 96 degrees of freedom
+Multiple R-squared:  0.1321,    Adjusted R-squared:  0.1049 
+F-statistic: 4.869 on 3 and 96 DF,  p-value: 0.003396</code></pre>
 </div>
 </div>
 <p>If the value of <code>Pr(&gt;|t|)</code> for <code>external_event:needs</code> is smaller than .05, the interaction effect is significant. That means that the effect of <code>external_event</code> on <code>intrinsic_motivation</code> depends on the value of <code>needs</code>.</p>
@@ -820,17 +835,17 @@ F-statistic: 4.804 on 3 and 96 DF,  p-value: 0.003677</code></pre>
 <span class="header-section-number">5.2.2.1</span> Generating a binary variable</h4>
 <p>You can generate a binary variable using <code><a href="https://rdrr.io/r/stats/Binomial.html">rbinom()</a></code>. For example, if you want to conceptualize <code>external_event</code> as the presence or absence of a reward, you could simulate a variable where approximately 50% of observations have a value of 0 and 50% have a value of 1:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>external_event <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>external_event <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="generating-an-interaction-effect" class="level4" data-number="5.2.2.2"><h4 data-number="5.2.2.2" class="anchored" data-anchor-id="generating-an-interaction-effect">
 <span class="header-section-number">5.2.2.2</span> Generating an interaction effect</h4>
 <p>To make the effect of <code>external_event</code> on <code>intrinsic_motivation</code> depend on <code>needs</code> (e.g., does this external event satisfy needs?), add an interaction term to the equation that predicts <code>intrinsic_motivation</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>intrinsic_motivation <span class="ot">&lt;-</span> </span>
-<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fl">0.56</span> <span class="sc">*</span> external_event <span class="sc">+</span> </span>
-<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fl">0.59</span> <span class="sc">*</span> needs <span class="sc">+</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fl">0.80</span> <span class="sc">*</span> external_event <span class="sc">*</span> needs <span class="sc">+</span></span>
-<span id="cb21-5"><a href="#cb21-5"></a>  <span class="fu">rnorm</span>(<span class="at">n =</span> n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>intrinsic_motivation <span class="ot">&lt;-</span> </span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fl">0.56</span> <span class="sc">*</span> external_event <span class="sc">+</span> </span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fl">0.59</span> <span class="sc">*</span> needs <span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fl">0.80</span> <span class="sc">*</span> external_event <span class="sc">*</span> needs <span class="sc">+</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a>  <span class="fu">rnorm</span>(<span class="at">n =</span> n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The 0.80 specifies the strength of the interaction.</p>
 <p>In this example, the effect of external_event on intrinsic_motivation becomes stronger as needs increases.</p>
@@ -838,18 +853,18 @@ F-statistic: 4.804 on 3 and 96 DF,  p-value: 0.003677</code></pre>
 <span class="header-section-number">5.2.2.3</span> Generating a quadratic effect</h4>
 <p>To create a nonlinear relationship, include a squared version of a variable:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>intrinsic_motivation <span class="ot">&lt;-</span> </span>
-<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fl">0.56</span> <span class="sc">*</span> external_event <span class="sc">+</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fl">0.59</span> <span class="sc">*</span> needs <span class="sc">-</span></span>
-<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fl">0.70</span> <span class="sc">*</span> needs<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a>  <span class="fu">rnorm</span>(<span class="at">n =</span> n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>intrinsic_motivation <span class="ot">&lt;-</span> </span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fl">0.56</span> <span class="sc">*</span> external_event <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fl">0.59</span> <span class="sc">*</span> needs <span class="sc">-</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fl">0.70</span> <span class="sc">*</span> needs<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a>  <span class="fu">rnorm</span>(<span class="at">n =</span> n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The negative coefficient on needs^2 creates an inverted n-shaped relationship: intrinsic motivation initially increases with needs, but at sufficiently high levels of needs it begins to decrease.</p>
 <p>A positive quadratic coefficient instead produces a u-shaped relationship.</p>
 </section></section></section><section id="homework" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="homework">
 <span class="header-section-number">5.3</span> Homework</h2>
-<p>Apply the steps from the tutorial to the DAG you created for your own theory in <a href="strategic_ambiguity.html#sec-makedag" class="quarto-xref"><span>Section 3.3.2</span></a>.</p>
-<p>Note that you do not have to apply <em>all</em> steps. Think of this week’s tutorial as a palette from which you can pick the techniques you need for your specific theory.</p>
+<p>Apply the steps from the tutorial to the DAG you created for your own theory in <span class="quarto-unresolved-ref">?sec-makedag</span>.</p>
+<p>Note that you do not have to apply <em>all</em> steps. Think of this week’s tutorial as a palette from which you can pick the techniques you need for your specific theory. See how far you can get, and critically reflect on the process.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
@@ -1507,8 +1522,8 @@ window.onload = function() {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ml_informed.html" class="pagination-link" aria-label="Machine Learning-Informed Theory Construction">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine Learning-Informed Theory Construction</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

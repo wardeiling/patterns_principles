@@ -85,7 +85,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./latent_theory.html" rel="next">
-<link href="./what_makes_a_good_theory.html" rel="prev">
+<link href="./good_theory.html" rel="prev">
 <link href="./images/logos/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -371,7 +371,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./what_makes_a_good_theory.html" class="sidebar-item-text sidebar-link">
+  <a href="./good_theory.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What Makes a Good Theory?</span></span></a>
   </div>
 </li>
@@ -391,6 +391,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./formal_theory.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Formal Theory Specification</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ml_informed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine Learning-Informed Theory Construction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -437,7 +443,7 @@ window.Quarto = {
 <a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework"><span class="header-section-number">3.3</span> Homework</a>
   <ul class="collapse">
 <li><a href="#example-self-determination-theory" id="toc-example-self-determination-theory" class="nav-link" data-scroll-target="#example-self-determination-theory"><span class="header-section-number">3.3.1</span> Example: Self-Determination Theory</a></li>
-  <li><a href="#sec-makedag" id="toc-sec-makedag" class="nav-link" data-scroll-target="#sec-makedag"><span class="header-section-number">3.3.2</span> Do It Yourself</a></li>
+  <li><a href="#do-it-yourself" id="toc-do-it-yourself" class="nav-link" data-scroll-target="#do-it-yourself"><span class="header-section-number">3.3.2</span> Do It Yourself</a></li>
   </ul>
 </li>
   </ul></nav>
@@ -573,8 +579,8 @@ Attaching package: 'theorytools'</code></pre>
     add_to_pkgdown, use_webex_vignette</code></pre>
 </div>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-4d49a2c2b9b744a16517" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-4d49a2c2b9b744a16517">{"x":{"filter":"none","vertical":false,"autoHideNavigation":true,"data":[[1,2,3,4,5,6,7,8],["nutriments are absent","[intrinsic motivation OR integration] is present","needs are satisfied or thwarted","rewards given","external event is expected to thwart the basic needs","external perceived locus of causality","external event is expected to support the basic needs","internal perceived locus of causality"],["intrinsic motivation AND integration are impaired","healthy development AND psychological well-being take place","psychological well-being of all people is affected","intrinsic motivation can decrease","external perceived locus of causality","undermined intrinsic motivation","internal perceived locus of causality","enhanced intrinsic motivation"],["“For these natural, active processes of intrinsic motivation and integration to operate effectively toward healthy development and psychological well-being, human beings need particular nutriments – both biological and psychological (Ryan, 1995). In the relative absence of such nutriments, these natural processes will be impaired, resulting in experiences, development, and behaviors that are less than optimal. (Deci &amp; Ryan, 2012, p. 417)","“For these natural, active processes of intrinsic motivation and integration to operate effectively toward healthy development and psychological well-being, human beings need particular nutriments – both biological and psychological (Ryan, 1995). In the relative absence of such nutriments, these natural processes will be impaired, resulting in experiences, development, and behaviors that are less than optimal. (Deci &amp; Ryan, 2012, p. 417)","“The three basic psychological needs are universal such that their satisfaction versus thwarting affects the psychological well-being of all people.” (Deci &amp; Ryan, 2012, p. 425)","“rewards do not always motivate subsequent persistence; indeed they can undermine intrinsic motivation” (Deci &amp; Ryan, 2012, p. 417)","“[Intrinsic motivation] could be either undermined or enhanced depending on whether the social environment supported or thwarted the needs for competence and self-determination. If a reward or other external event such as threat of punishment (Deci and Cascio, 1972), positive feedback (Deci, 1971), competition (Deci and Betley et al., 1981), or choice (Zuckerman et al., 1978) were expected to thwart these basic needs, it was predicted to prompt an external perceived locus of causality and undermine intrinsic motivation; but if the event were expected to support these basic needs, it was predicted to prompt an internal perceived locus of causality and enhance intrinsic motivation.” (Deci &amp; Ryan, 2012, p. 418)","“[Intrinsic motivation] could be either undermined or enhanced depending on whether the social environment supported or thwarted the needs for competence and self-determination. If a reward or other external event such as threat of punishment (Deci and Cascio, 1972), positive feedback (Deci, 1971), competition (Deci and Betley et al., 1981), or choice (Zuckerman et al., 1978) were expected to thwart these basic needs, it was predicted to prompt an external perceived locus of causality and undermine intrinsic motivation; but if the event were expected to support these basic needs, it was predicted to prompt an internal perceived locus of causality and enhance intrinsic motivation.” (Deci &amp; Ryan, 2012, p. 418)","“[Intrinsic motivation] could be either undermined or enhanced depending on whether the social environment supported or thwarted the needs for competence and self-determination. If a reward or other external event such as threat of punishment (Deci and Cascio, 1972), positive feedback (Deci, 1971), competition (Deci and Betley et al., 1981), or choice (Zuckerman et al., 1978) were expected to thwart these basic needs, it was predicted to prompt an external perceived locus of causality and undermine intrinsic motivation; but if the event were expected to support these basic needs, it was predicted to prompt an internal perceived locus of causality and enhance intrinsic motivation.” (Deci &amp; Ryan, 2012, p. 418)","“[Intrinsic motivation] could be either undermined or enhanced depending on whether the social environment supported or thwarted the needs for competence and self-determination. If a reward or other external event such as threat of punishment (Deci and Cascio, 1972), positive feedback (Deci, 1971), competition (Deci and Betley et al., 1981), or choice (Zuckerman et al., 1978) were expected to thwart these basic needs, it was predicted to prompt an external perceived locus of causality and undermine intrinsic motivation; but if the event were expected to support these basic needs, it was predicted to prompt an internal perceived locus of causality and enhance intrinsic motivation.” (Deci &amp; Ryan, 2012, p. 418)"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>N<\/th>\n      <th>IF<\/th>\n      <th>THEN<\/th>\n      <th>Original<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"columnDefs":[{"className":"dt-right","targets":0},{"name":"N","targets":0},{"name":"IF","targets":1},{"name":"THEN","targets":2},{"name":"Original","targets":3}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-a121aa533a734793f736" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-a121aa533a734793f736">{"x":{"filter":"none","vertical":false,"autoHideNavigation":true,"data":[[1,2,3,4,5,6,7,8],["nutriments are absent","[intrinsic motivation OR integration] is present","needs are satisfied or thwarted","rewards given","external event is expected to thwart the basic needs","external perceived locus of causality","external event is expected to support the basic needs","internal perceived locus of causality"],["intrinsic motivation AND integration are impaired","healthy development AND psychological well-being take place","psychological well-being of all people is affected","intrinsic motivation can decrease","external perceived locus of causality","undermined intrinsic motivation","internal perceived locus of causality","enhanced intrinsic motivation"],["“For these natural, active processes of intrinsic motivation and integration to operate effectively toward healthy development and psychological well-being, human beings need particular nutriments – both biological and psychological (Ryan, 1995). In the relative absence of such nutriments, these natural processes will be impaired, resulting in experiences, development, and behaviors that are less than optimal. (Deci &amp; Ryan, 2012, p. 417)","“For these natural, active processes of intrinsic motivation and integration to operate effectively toward healthy development and psychological well-being, human beings need particular nutriments – both biological and psychological (Ryan, 1995). In the relative absence of such nutriments, these natural processes will be impaired, resulting in experiences, development, and behaviors that are less than optimal. (Deci &amp; Ryan, 2012, p. 417)","“The three basic psychological needs are universal such that their satisfaction versus thwarting affects the psychological well-being of all people.” (Deci &amp; Ryan, 2012, p. 425)","“rewards do not always motivate subsequent persistence; indeed they can undermine intrinsic motivation” (Deci &amp; Ryan, 2012, p. 417)","“[Intrinsic motivation] could be either undermined or enhanced depending on whether the social environment supported or thwarted the needs for competence and self-determination. If a reward or other external event such as threat of punishment (Deci and Cascio, 1972), positive feedback (Deci, 1971), competition (Deci and Betley et al., 1981), or choice (Zuckerman et al., 1978) were expected to thwart these basic needs, it was predicted to prompt an external perceived locus of causality and undermine intrinsic motivation; but if the event were expected to support these basic needs, it was predicted to prompt an internal perceived locus of causality and enhance intrinsic motivation.” (Deci &amp; Ryan, 2012, p. 418)","“[Intrinsic motivation] could be either undermined or enhanced depending on whether the social environment supported or thwarted the needs for competence and self-determination. If a reward or other external event such as threat of punishment (Deci and Cascio, 1972), positive feedback (Deci, 1971), competition (Deci and Betley et al., 1981), or choice (Zuckerman et al., 1978) were expected to thwart these basic needs, it was predicted to prompt an external perceived locus of causality and undermine intrinsic motivation; but if the event were expected to support these basic needs, it was predicted to prompt an internal perceived locus of causality and enhance intrinsic motivation.” (Deci &amp; Ryan, 2012, p. 418)","“[Intrinsic motivation] could be either undermined or enhanced depending on whether the social environment supported or thwarted the needs for competence and self-determination. If a reward or other external event such as threat of punishment (Deci and Cascio, 1972), positive feedback (Deci, 1971), competition (Deci and Betley et al., 1981), or choice (Zuckerman et al., 1978) were expected to thwart these basic needs, it was predicted to prompt an external perceived locus of causality and undermine intrinsic motivation; but if the event were expected to support these basic needs, it was predicted to prompt an internal perceived locus of causality and enhance intrinsic motivation.” (Deci &amp; Ryan, 2012, p. 418)","“[Intrinsic motivation] could be either undermined or enhanced depending on whether the social environment supported or thwarted the needs for competence and self-determination. If a reward or other external event such as threat of punishment (Deci and Cascio, 1972), positive feedback (Deci, 1971), competition (Deci and Betley et al., 1981), or choice (Zuckerman et al., 1978) were expected to thwart these basic needs, it was predicted to prompt an external perceived locus of causality and undermine intrinsic motivation; but if the event were expected to support these basic needs, it was predicted to prompt an internal perceived locus of causality and enhance intrinsic motivation.” (Deci &amp; Ryan, 2012, p. 418)"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>N<\/th>\n      <th>IF<\/th>\n      <th>THEN<\/th>\n      <th>Original<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"columnDefs":[{"className":"dt-right","targets":0},{"name":"N","targets":0},{"name":"IF","targets":1},{"name":"THEN","targets":2},{"name":"Original","targets":3}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>We can translate these IF-THEN statements into causal links between specific constructs.</p>
@@ -657,7 +663,7 @@ Attaching package: 'theorytools'</code></pre>
 </div>
 </div>
 </div>
-</section><section id="sec-makedag" class="level3" data-number="3.3.2"><h3 data-number="3.3.2" class="anchored" data-anchor-id="sec-makedag">
+</section><section id="do-it-yourself" class="level3" data-number="3.3.2"><h3 data-number="3.3.2" class="anchored" data-anchor-id="do-it-yourself">
 <span class="header-section-number">3.3.2</span> Do It Yourself</h3>
 <p>Following the example above, you will perform three tasks:</p>
 <ul class="task-list">
@@ -682,12 +688,26 @@ Attaching package: 'theorytools'</code></pre>
 </section><section id="make-dag-in-r" class="level4" data-number="3.3.2.3"><h4 data-number="3.3.2.3" class="anchored" data-anchor-id="make-dag-in-r">
 <span class="header-section-number">3.3.2.3</span> Make DAG in R</h4>
 <ul class="task-list">
-<li><label><input type="checkbox">Open the folder <code>patterns_principles_exercises</code> you created when following the setup tutorial, <span class="quarto-unresolved-ref">?sec-setup</span>.</label></li>
+<li><label><input type="checkbox">Open the folder <code>patterns_tutorials</code> you created when following the setup tutorial, <span class="quarto-unresolved-ref">?sec-setup</span>.</label></li>
 <li><label><input type="checkbox">Copy your file <code>DAG.csv</code> into this folder.</label></li>
-<li><label><input type="checkbox">Load the RStudio project file, <code>patterns_principles_exercises.Rproj</code>.</label></li>
+<li><label><input type="checkbox">Load the RStudio project file, <code>patterns_tutorials.Rproj</code>.</label></li>
 <li><label><input type="checkbox">In the bottom right panel of RStudio, click the <code>Files</code> tab, and open the file <code>make_dag.R</code>.</label></li>
 </ul>
-<p>Run the code in that file line by line.</p>
+<p>Run the following code line by line:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(theorytools)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>my_theory <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"DAG.csv"</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)[, <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>)]</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">names</span>(my_theory) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"from"</span>, <span class="st">"to"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co"># Remove redundant statements</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>my_theory <span class="ot">&lt;-</span> my_theory[<span class="sc">!</span><span class="fu">duplicated</span>(my_theory), ]</span>
+<span id="cb5-7"><a href="#cb5-7"></a>my_theory <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(</span>
+<span id="cb5-8"><a href="#cb5-8"></a>  <span class="fu">paste0</span>(<span class="st">"dag {"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9"></a>  <span class="fu">paste0</span>(my_theory<span class="sc">$</span>from, <span class="st">" -&gt; "</span>, my_theory<span class="sc">$</span>to, <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>),</span>
+<span id="cb5-10"><a href="#cb5-10"></a>  <span class="st">"}"</span>)</span>
+<span id="cb5-11"><a href="#cb5-11"></a>)</span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="fu">plot</span>(my_theory)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
@@ -1340,7 +1360,7 @@ window.onload = function() {
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./what_makes_a_good_theory.html" class="pagination-link" aria-label="What Makes a Good Theory?">
+      <a href="./good_theory.html" class="pagination-link" aria-label="What Makes a Good Theory?">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What Makes a Good Theory?</span></span>
       </a>          
   </div>

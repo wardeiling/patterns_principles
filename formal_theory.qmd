@@ -238,3 +238,4 @@ A positive quadratic coefficient instead produces a u-shaped relationship.
 Apply the steps from the tutorial to the DAG you created for your own theory in @sec-makedag.
 
 Note that you do not have to apply *all* steps. Think of this week's tutorial as a palette from which you can pick the techniques you need for your specific theory.
+See how far you can get, and critically reflect on the process.

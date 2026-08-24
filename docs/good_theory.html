@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="Book Description">
-<title>Setup your Computer – Patterns to Principles</title>
+<title>2&nbsp; What Makes a Good Theory? – Patterns to Principles</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -29,7 +49,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="prev">
+<link href="./strategic_ambiguity.html" rel="next">
+<link href="./theory_crisis.html" rel="prev">
 <link href="./images/logos/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -245,7 +266,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setup.html">Appendices</a></li><li class="breadcrumb-item"><a href="./setup.html">Setup your Computer</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./good_theory.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What Makes a Good Theory?</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -285,7 +306,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./good_theory.html" class="sidebar-item-text sidebar-link">
+  <a href="./good_theory.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What Makes a Good Theory?</span></span></a>
   </div>
 </li>
@@ -330,7 +351,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./setup.html" class="sidebar-item-text sidebar-link active">
+  <a href="./setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup your Computer</span></a>
   </div>
 </li>
@@ -340,12 +361,32 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#weekly-readings" id="toc-weekly-readings" class="nav-link active" data-scroll-target="#weekly-readings"><span class="header-section-number">2.1</span> Weekly Readings</a></li>
+  <li>
+<a href="#tutorial" id="toc-tutorial" class="nav-link" data-scroll-target="#tutorial"><span class="header-section-number">2.2</span> Tutorial</a>
+  <ul class="collapse">
+<li><a href="#analyze-theory-using-meehls-taxonomy" id="toc-analyze-theory-using-meehls-taxonomy" class="nav-link" data-scroll-target="#analyze-theory-using-meehls-taxonomy"><span class="header-section-number">2.2.1</span> Analyze Theory Using Meehl’s Taxonomy</a></li>
+  <li><a href="#is-this-theory-good" id="toc-is-this-theory-good" class="nav-link" data-scroll-target="#is-this-theory-good"><span class="header-section-number">2.2.2</span> Is This Theory “Good”?</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework"><span class="header-section-number">2.3</span> Homework</a>
+  <ul class="collapse">
+<li><a href="#pbts-step-2" id="toc-pbts-step-2" class="nav-link" data-scroll-target="#pbts-step-2"><span class="header-section-number">2.3.1</span> PBTS Step 2</a></li>
+  <li><a href="#combining-specifications-bingo" id="toc-combining-specifications-bingo" class="nav-link" data-scroll-target="#combining-specifications-bingo"><span class="header-section-number">2.3.2</span> Combining Specifications-BINGO</a></li>
+  </ul>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setup.html">Appendices</a></li><li class="breadcrumb-item"><a href="./setup.html">Setup your Computer</a></li></ol></nav><div class="quarto-title">
-<h1 class="title">Setup your Computer</h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What Makes a Good Theory?</span>
+</h1>
 </div>
 
 
@@ -359,21 +400,111 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header><p>This is a tutorial on how to set up your personal computer for the course. It guides you through the installation of several software packages. This vignette does not assume a prior installation of <code>R</code>, so it is suitable for novice users. You only have to perform these steps once for every computer you intend to use, and the entire process should take approximately 30 minutes if you start from scratch. In case some of the software is already installed on your system, you can skip those related steps.</p>
-<p>Follow these steps in order:</p>
-<ol type="1">
-<li>Install <a href="https://CRAN.R-project.org">R (free)</a>
-</li>
-<li>Install <a href="https://posit.co/download/rstudio-desktop/">‘RStudio’ Desktop (Free)</a>
-</li>
-<li>Download the <a href="https://github.com/cjvanlissa/patterns_principles_exercises/archive/refs/heads/master.zip">RStudio project</a> for this course into a folder where you’d like to keep your working files for assignments.</li>
-<li>Unzip the compressed folder, open it, and open <code>patterns_principles_exercises.Rproj</code> in RStudio.</li>
-<li>Once RStudio has loaded, you’ ll see a panel in the bottom right labeled “Files”. Click the file named <code>setup.R</code>. It will load. Select all code in this file, then either press [CONTROL+ENTER], or click the <code>Run</code> button.</li>
+</header><section id="weekly-readings" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="weekly-readings">
+<span class="header-section-number">2.1</span> Weekly Readings</h2>
+<ul>
+<li>Meehl, P. E. (1990). Appraising and Amending Theories: The Strategy of Lakatosian Defense and Two Principles that Warrant It. Psychological Inquiry, 1(2), 108–141. https://doi.org/10.1207/s15327965pli0102_1</li>
+<li>Guest, O. (2024). What Makes a Good Theory, and How Do We Make a Theory Good? Computational Brain &amp; Behavior. https://doi.org/10.1007/s42113-023-00193-2</li>
+</ul></section><section id="tutorial" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="tutorial">
+<span class="header-section-number">2.2</span> Tutorial</h2>
+<section id="analyze-theory-using-meehls-taxonomy" class="level3" data-number="2.2.1"><h3 data-number="2.2.1" class="anchored" data-anchor-id="analyze-theory-using-meehls-taxonomy">
+<span class="header-section-number">2.2.1</span> Analyze Theory Using Meehl’s Taxonomy</h3>
+<p>In this exercise, you will evaluate the sentences you selected from a published theory using Meehl’s hierarchy of progressively stronger theory specifications. The goal is to further your understanding of the function and level of specificity of each sentence. Meehl’s orginal taxonomy is:</p>
+<ol type="I">
+<li>Type of entity postulated</li>
+<li>Compositional, developmental, or efficient-causal connections among entities</li>
+<li>Signs of first and second derivatives of functional dynamic laws</li>
+<li>Ordering relationships among the derivatives</li>
+<li>Signs of mixed second-order partial derivatives (interactions)</li>
+<li>Functional forms (e.g., linear, logarithmic, exponential)</li>
+<li>Trans-situationality of parameters</li>
+<li>Quantitative relations among parameters</li>
+<li>Numerical values of parameters</li>
 </ol>
+<p>To simplify the assignment, we simplify Meehl’s taxonomy as <span class="citation" data-cites="vanlissaBeFAIRTheory2026">Van Lissa et al. (<a href="references.html#ref-vanlissaBeFAIRTheory2026" role="doc-biblioref">2026</a>)</span> did:</p>
+<p>I. statements about the types of entities postulated (i.e., ontology) II. statements about causal connections between those entities III. statements about the functional form of those connections (Levels 3–8) IV. statements about their specific numerical values (Level 9)</p>
+<section id="part-1.-classify-the-theory-statements-15-minutes" class="level4" data-number="2.2.1.1"><h4 data-number="2.2.1.1" class="anchored" data-anchor-id="part-1.-classify-the-theory-statements-15-minutes">
+<span class="header-section-number">2.2.1.1</span> Part 1. Classify the theory statements (15 minutes)</h4>
+<p>First individually, for each selected sentence:</p>
+<ul>
+<li>Read the sentence carefully.</li>
+<li>Decide which of the levels it best represents.</li>
+</ul></section><section id="part-2.-evaluate-the-theory-10-minutes" class="level4" data-number="2.2.1.2"><h4 data-number="2.2.1.2" class="anchored" data-anchor-id="part-2.-evaluate-the-theory-10-minutes">
+<span class="header-section-number">2.2.1.2</span> Part 2. Evaluate the theory (10 minutes)</h4>
+<p>As a group:</p>
+<ul>
+<li>Compare your classifications</li>
+<li>Which levels of Meehl’s hierarchy are well represented?</li>
+<li>Which levels are missing?</li>
+<li>How strong do you think the theory is according to Meehl’s framework?</li>
+</ul></section><section id="part-3.-compare-theories-15-minutes" class="level4" data-number="2.2.1.3"><h4 data-number="2.2.1.3" class="anchored" data-anchor-id="part-3.-compare-theories-15-minutes">
+<span class="header-section-number">2.2.1.3</span> Part 3. Compare theories (15 minutes)</h4>
+<p>Each group gives one example of every level they identified in their source material, as well as an example of a sentence you were not able to classify (if applicable). Discuss with the class.</p>
+</section></section><section id="is-this-theory-good" class="level3" data-number="2.2.2"><h3 data-number="2.2.2" class="anchored" data-anchor-id="is-this-theory-good">
+<span class="header-section-number">2.2.2</span> Is This Theory “Good”?</h3>
+<p>Apply Olivia Guest’s four-category ontology to critically evaluate a published psychological or social science theory.</p>
+<section id="part-1.-evaluate-theory-along-each-category-10-minutes" class="level4" data-number="2.2.2.1"><h4 data-number="2.2.2.1" class="anchored" data-anchor-id="part-1.-evaluate-theory-along-each-category-10-minutes">
+<span class="header-section-number">2.2.2.1</span> Part 1. Evaluate Theory along Each Category (10 minutes)</h4>
+<p>Each group member picks one unique category, and independently answers the guiding questions for that category in Table 1.</p>
+<p>Decide whether the theory is “good”, adequate, or “bad” in your category.</p>
+</section><section id="part-2.-discuss-and-prioritize-15-minutes" class="level4" data-number="2.2.2.2"><h4 data-number="2.2.2.2" class="anchored" data-anchor-id="part-2.-discuss-and-prioritize-15-minutes">
+<span class="header-section-number">2.2.2.2</span> Part 2. Discuss and Prioritize (15 minutes)</h4>
+<p>Discuss your findings with your groupmates. Make a score card for the theory, rating it as good, adequate, or bad on the four categories.</p>
+<p>Then, prioritize the four categories. How important do you think it is that the theory be “good” on each of the four categories? Use this to guide your further work on the theory during coming weeks.</p>
+</section><section id="part-3.-class-discussion-15-minutes" class="level4" data-number="2.2.2.3"><h4 data-number="2.2.2.3" class="anchored" data-anchor-id="part-3.-class-discussion-15-minutes">
+<span class="header-section-number">2.2.2.3</span> Part 3. Class discussion (15 minutes)</h4>
+<p>As a class, discuss:</p>
+<ul>
+<li>If you had to choose between a theory that scores highly on Meehl’s hierarchy but poorly on Guest’s ontology, and one that does the opposite, which would you consider the better scientific theory? Why?</li>
+<li>You can pick one criterion out of Meehl’s hierarchy and Guest’s ontology. Which one do you pick, and why?</li>
+</ul></section></section></section><section id="homework" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="homework">
+<span class="header-section-number">2.3</span> Homework</h2>
+<p>This week, you will extract IF-THEN statements from the sources you selected last week.</p>
+<p><em><strong>Credit:</strong> This assignment is based on the Proposition Based Theory Specification instructions <span class="citation" data-cites="glocknerPBTSGuidelinesTemplates2025">(<a href="references.html#ref-glocknerPBTSGuidelinesTemplates2025" role="doc-biblioref">Glöckner et al., 2025</a>)</span>.</em></p>
+<section id="pbts-step-2" class="level3" data-number="2.3.1"><h3 data-number="2.3.1" class="anchored" data-anchor-id="pbts-step-2">
+<span class="header-section-number">2.3.1</span> PBTS Step 2</h3>
+<p>Individually, fill out <a href="Step_2.csv">Table 2</a>. Translate each source sentence into a set of implications (i.e., IF- THEN statements) and all included propositions that together fully describe the theory.</p>
+<ol type="a">
+<li>Propositions are statements concerning measurable and non-measurable concepts that can be true or false, and represent an implication’s antecedence and consequence. E.g., “A person’s needs are satisfied” is a proposition.</li>
+<li>Propositions can be combined by any logical or mathematical operators, qualifiers, or, if necessary, user-defined uncommon operators (that have to be defined and operationalized).</li>
+<li>It is often possible to make certain conditions of a theory either part of the propositions or the definition/operationalizations. To keep the propositions simple, these conditions should be part of the definition/operationalizations if they do not belong to the core causal relations of the theory.</li>
+<li>In this step, remain as close as possible to the original verbal narrative while interpreting the text in accordance with the authors’ intended meaning.</li>
+</ol>
+<ol start="6" type="a">
+<li>In the “Reference” column, reference the label of the text snippet from last week’s Table, e.g.&nbsp;S1, S2 … Sn.</li>
+</ol>
+<ol start="7" type="a">
+<li>If the original specification mentions the functional form of a relationship, put this information in the Comment column.</li>
+</ol></section><section id="combining-specifications-bingo" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="combining-specifications-bingo">
+<span class="header-section-number">2.3.2</span> Combining Specifications-BINGO</h3>
+<p>As a group, read each other’s specifications. Select one student’s work to be the “starting point” for the definitive version. The author of this version reads each of their implications aloud. Other students put a check mark in front of their implications if these match the implication read by the first student. If they are clearly similar but there are important differences - discuss these and find agreement on which version of the implication to keep in the definitive version.</p>
+<p>When the first student is done reading all of their implications, the other students may have some remaining un-checked implications. That is to say: Implications that they coded, but the first student did not. Discuss these to check whether they should be included in the definitive version or not.</p>
+<p>The end product should be a complete table of all unique implications that all students (more or less) agree upon.</p>
+<p>If there are important disagreements - keep notes, because this is good material for the Discussion section of your final report.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Roll Your Own Theory">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Roll Your Own Theory
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are making your own theory, do the assignment as described above - but instead of coding selected sentences, each student lists all implications that <em>they think should be part of the theory</em>. The group activity then constitutes of discussing these and finding agreement about a set of implications.</p>
+</div>
+</div>
 
 
-
-</main><!-- /main --><script>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-glocknerPBTSGuidelinesTemplates2025" class="csl-entry" role="listitem">
+Glöckner, A., Betsch, T., Lisovoj, D., Biehl, J., Siol, J., tho Pesch, F., &amp; Fiedler, S. (2025). <em><span>PBTS Guidelines</span>, <span>Templates</span> and <span>Video</span></em>. <a href="https://osf.io/qbs29/overview">https://osf.io/qbs29/overview</a>
+</div>
+<div id="ref-vanlissaBeFAIRTheory2026" class="csl-entry" role="listitem">
+Van Lissa, C. J., Peikert, A., Ernst, M. S., van Dongen, N. N. N., Schönbrodt, F. D., &amp; Brandmaier, A. M. (2026). To <span>Be FAIR</span>: <span>Theory Specification Needs</span> an <span>Update</span>. <em>Perspectives on Psychological Science</em>, 17456916251401850. <a href="https://doi.org/10.1177/17456916251401850">https://doi.org/10.1177/17456916251401850</a>
+</div>
+</div>
+</section></section></main><!-- /main --><script>
 // open rdrr links externally ----
 
 var exlinks = document.querySelectorAll("a[href^='https://rdrr.io']");
@@ -1018,11 +1149,14 @@ window.onload = function() {
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">References</span>
+      <a href="./theory_crisis.html" class="pagination-link" aria-label="The Theory Crisis">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Theory Crisis</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./strategic_ambiguity.html" class="pagination-link" aria-label="Strategic Ambiguity">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Strategic Ambiguity</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

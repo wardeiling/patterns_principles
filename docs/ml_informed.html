@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="Book Description">
-<title>2&nbsp; What Makes a Good Theory? – Patterns to Principles</title>
+<title>6&nbsp; Machine Learning-Informed Theory Construction – Patterns to Principles</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -21,27 +21,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -49,8 +29,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./strategic_ambiguity.html" rel="next">
-<link href="./theory_crisis.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./formal_theory.html" rel="prev">
 <link href="./images/logos/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -91,7 +71,33 @@ div.csl-indent {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+}</script><script src="site_libs/kePrint-0.0.1/kePrint.js"></script><link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 <link rel="stylesheet" href="include/booktem.css">
 <link rel="stylesheet" href="include/webex.css">
 <link rel="stylesheet" href="include/glossary.css">
@@ -266,7 +272,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./what_makes_a_good_theory.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What Makes a Good Theory?</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ml_informed.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine Learning-Informed Theory Construction</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -306,7 +312,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./what_makes_a_good_theory.html" class="sidebar-item-text sidebar-link active">
+  <a href="./good_theory.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What Makes a Good Theory?</span></span></a>
   </div>
 </li>
@@ -326,6 +332,12 @@ div.csl-indent {
   <div class="sidebar-item-container"> 
   <a href="./formal_theory.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Formal Theory Specification</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ml_informed.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine Learning-Informed Theory Construction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -359,27 +371,23 @@ div.csl-indent {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#weekly-readings" id="toc-weekly-readings" class="nav-link active" data-scroll-target="#weekly-readings"><span class="header-section-number">2.1</span> Weekly Readings</a></li>
+<li><a href="#weekly-readings" id="toc-weekly-readings" class="nav-link active" data-scroll-target="#weekly-readings"><span class="header-section-number">6.1</span> Weekly Readings</a></li>
   <li>
-<a href="#tutorial" id="toc-tutorial" class="nav-link" data-scroll-target="#tutorial"><span class="header-section-number">2.2</span> Tutorial</a>
+<a href="#tutorial" id="toc-tutorial" class="nav-link" data-scroll-target="#tutorial"><span class="header-section-number">6.2</span> Tutorial</a>
   <ul class="collapse">
-<li><a href="#analyze-theory-using-meehls-taxonomy" id="toc-analyze-theory-using-meehls-taxonomy" class="nav-link" data-scroll-target="#analyze-theory-using-meehls-taxonomy"><span class="header-section-number">2.2.1</span> Analyze Theory Using Meehl’s Taxonomy</a></li>
-  <li><a href="#is-this-theory-good" id="toc-is-this-theory-good" class="nav-link" data-scroll-target="#is-this-theory-good"><span class="header-section-number">2.2.2</span> Is This Theory “Good”?</a></li>
+<li><a href="#step-1-find-a-dataset-30-minutes" id="toc-step-1-find-a-dataset-30-minutes" class="nav-link" data-scroll-target="#step-1-find-a-dataset-30-minutes"><span class="header-section-number">6.2.1</span> Step 1: Find a Dataset (30 minutes)</a></li>
+  <li><a href="#step-2-preprocess-the-data-30-minutes" id="toc-step-2-preprocess-the-data-30-minutes" class="nav-link" data-scroll-target="#step-2-preprocess-the-data-30-minutes"><span class="header-section-number">6.2.2</span> Step 2: Preprocess the Data (30 minutes)</a></li>
+  <li><a href="#step-3-run-the-analysis-20-minutes" id="toc-step-3-run-the-analysis-20-minutes" class="nav-link" data-scroll-target="#step-3-run-the-analysis-20-minutes"><span class="header-section-number">6.2.3</span> Step 3: Run the Analysis (20 minutes)</a></li>
+  <li><a href="#step-4-interpreting-the-results-10-minutes" id="toc-step-4-interpreting-the-results-10-minutes" class="nav-link" data-scroll-target="#step-4-interpreting-the-results-10-minutes"><span class="header-section-number">6.2.4</span> Step 4: Interpreting the Results (10 minutes)</a></li>
   </ul>
 </li>
-  <li>
-<a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework"><span class="header-section-number">2.3</span> Homework</a>
-  <ul class="collapse">
-<li><a href="#pbts-step-2" id="toc-pbts-step-2" class="nav-link" data-scroll-target="#pbts-step-2"><span class="header-section-number">2.3.1</span> PBTS Step 2</a></li>
-  <li><a href="#combining-specifications-bingo" id="toc-combining-specifications-bingo" class="nav-link" data-scroll-target="#combining-specifications-bingo"><span class="header-section-number">2.3.2</span> Combining Specifications-BINGO</a></li>
-  </ul>
-</li>
+  <li><a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework"><span class="header-section-number">6.3</span> Homework</a></li>
   </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">
-<span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What Makes a Good Theory?</span>
+<span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine Learning-Informed Theory Construction</span>
 </h1>
 </div>
 
@@ -394,111 +402,284 @@ div.csl-indent {
   
 
 
-</header><section id="weekly-readings" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="weekly-readings">
-<span class="header-section-number">2.1</span> Weekly Readings</h2>
+</header><section id="weekly-readings" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="weekly-readings">
+<span class="header-section-number">6.1</span> Weekly Readings</h2>
 <ul>
-<li>Meehl, P. E. (1990). Appraising and Amending Theories: The Strategy of Lakatosian Defense and Two Principles that Warrant It. Psychological Inquiry, 1(2), 108–141. https://doi.org/10.1207/s15327965pli0102_1</li>
-<li>Guest, O. (2024). What Makes a Good Theory, and How Do We Make a Theory Good? Computational Brain &amp; Behavior. https://doi.org/10.1007/s42113-023-00193-2</li>
-</ul></section><section id="tutorial" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="tutorial">
-<span class="header-section-number">2.2</span> Tutorial</h2>
-<section id="analyze-theory-using-meehls-taxonomy" class="level3" data-number="2.2.1"><h3 data-number="2.2.1" class="anchored" data-anchor-id="analyze-theory-using-meehls-taxonomy">
-<span class="header-section-number">2.2.1</span> Analyze Theory Using Meehl’s Taxonomy</h3>
-<p>In this exercise, you will evaluate the sentences you selected from a published theory using Meehl’s hierarchy of progressively stronger theory specifications. The goal is to further your understanding of the function and level of specificity of each sentence. Meehl’s orginal taxonomy is:</p>
-<ol type="I">
-<li>Type of entity postulated</li>
-<li>Compositional, developmental, or efficient-causal connections among entities</li>
-<li>Signs of first and second derivatives of functional dynamic laws</li>
-<li>Ordering relationships among the derivatives</li>
-<li>Signs of mixed second-order partial derivatives (interactions)</li>
-<li>Functional forms (e.g., linear, logarithmic, exponential)</li>
-<li>Trans-situationality of parameters</li>
-<li>Quantitative relations among parameters</li>
-<li>Numerical values of parameters</li>
-</ol>
-<p>To simplify the assignment, we simplify Meehl’s taxonomy as <span class="citation" data-cites="vanlissaBeFAIRTheory2026">Van Lissa et al. (<a href="references.html#ref-vanlissaBeFAIRTheory2026" role="doc-biblioref">2026</a>)</span> did:</p>
-<p>I. statements about the types of entities postulated (i.e., ontology) II. statements about causal connections between those entities III. statements about the functional form of those connections (Levels 3–8) IV. statements about their specific numerical values (Level 9)</p>
-<section id="part-1.-classify-the-theory-statements-15-minutes" class="level4" data-number="2.2.1.1"><h4 data-number="2.2.1.1" class="anchored" data-anchor-id="part-1.-classify-the-theory-statements-15-minutes">
-<span class="header-section-number">2.2.1.1</span> Part 1. Classify the theory statements (15 minutes)</h4>
-<p>First individually, for each selected sentence:</p>
+<li>Van Lissa, C. J. (2022). Developmental data science: How machine learning can advance theory formation in Developmental Psychology. Infant and Child Development, 32(6), 1–12. https://doi.org/10.1002/icd.2370</li>
+<li>Rudin, C. (2019). Stop explaining black box machine learning models for high stakes decisions and use interpretable models instead. Nature Machine Intelligence, 1(5), Article 5. https://doi.org/10.1038/s42256-019-0048-x</li>
+</ul></section><section id="tutorial" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="tutorial">
+<span class="header-section-number">6.2</span> Tutorial</h2>
+<p>The topic of this week is to use machine learning to detect patterns in a dataset pertaining to your theory of interest. I have prepared a reproducible example for you based on Self-Determination Theory in the <code>patterns_principles_exercises</code> project. The purpose of this tutorial is <strong>not</strong> to give you a foundation in machine learning; that is too complex a topic. However, you should be able to run the code, you are allowed to play around with it and try making some changes, and you might be able to adapt and reuse it for future research projects.</p>
+<p>It will probably surprise you that preparing the data for analysis is the most difficult part of this tutorial. Expect to spend most of your time on this step - and <strong>make sure to get the tutorial teacher’s approval for your cleaned dataset before you go home</strong>.</p>
+<!-- We will walk you through all the steps you might take for a machine learning analysis in the simplest possible form; you can choose to either just reproduce them without making changes, or you may experiment with your own data, or a different outcome variable from the same dataset. -->
+<section id="step-1-find-a-dataset-30-minutes" class="level3" data-number="6.2.1"><h3 data-number="6.2.1" class="anchored" data-anchor-id="step-1-find-a-dataset-30-minutes">
+<span class="header-section-number">6.2.1</span> Step 1: Find a Dataset (30 minutes)</h3>
+<p>Search through <a href="https://datasetsearch.research.google.com/">Google Database Search</a> for a dataset that covers some variables that can be considered operationalizations of the concepts in your theory. One approach is to search the database for the name of your theory. Another approach is to choose one, two, or three construct names from your theory, and search for those.</p>
+<section id="sdt-example-codebook" class="level4" data-number="6.2.1.1"><h4 data-number="6.2.1.1" class="anchored" data-anchor-id="sdt-example-codebook">
+<span class="header-section-number">6.2.1.1</span> SDT Example: Codebook</h4>
+<p>I used the search term <code>"self determination theory"</code>, and read the descriptions of the datasets until I found the one by Nguyen and Xiem (2026) on “mental health, academic motivation, and perceived academic performance among Vietnamese students in online learning”. It contains operationalizations of a few SDT constructs in the specific context of online learning (thus, we can debate how well this generalizes to SDT in general settings). That’s about as good an example as you can expect to find on short notice. My dataset contains the following variables:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 21%">
+<col style="width: 7%">
+<col style="width: 66%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Coding…Range</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Online</td>
+<td style="text-align: left;">Questionnaire completed online</td>
+<td style="text-align: left;">Categorical</td>
+<td style="text-align: left;">0 = No; 1 = Yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">gender</td>
+<td style="text-align: left;">Respondent gender</td>
+<td style="text-align: left;">Categorical</td>
+<td style="text-align: left;">1 = Male; 2 = Female; 3 = Other</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Current academic year</td>
+<td style="text-align: left;">Ordinal categorical</td>
+<td style="text-align: left;">1 = Year 1; 2 = Year 2; 3 = Year 3; 4 = Year 4; 5 = Other</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">field</td>
+<td style="text-align: left;">Respondent’s field of study</td>
+<td style="text-align: left;">Nominal categorical</td>
+<td style="text-align: left;">1 = Economics and Business; 2 = Engineering and Technology; 3 = Languages and Linguistics; 4 = Health Sciences; 5 = Education; 6 = Culture and Arts; 7 = Information Technology; 8 = Other</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">class_per_week</td>
+<td style="text-align: left;">Average number of online learning class periods per week</td>
+<td style="text-align: left;">Ordinal categorical</td>
+<td style="text-align: left;">1 = 1–3 periods; 2 = 4–6 periods; 3 = 7–9 periods; 4 = 10 or more periods</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">COM</td>
+<td style="text-align: left;">Personal competence in using the Internet; mean of COM1–COM6</td>
+<td style="text-align: left;">Continuous</td>
+<td style="text-align: left;">1–5; higher = greater Internet competence</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">REL</td>
+<td style="text-align: left;">Online relatedness; mean of REL1–REL8</td>
+<td style="text-align: left;">Continuous</td>
+<td style="text-align: left;">1–5; higher = greater relatedness</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AUT</td>
+<td style="text-align: left;">Autonomy in Internet use; mean of AUT1–AUT7</td>
+<td style="text-align: left;">Continuous</td>
+<td style="text-align: left;">1–5; higher = greater autonomy</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MEH</td>
+<td style="text-align: left;">Mental health/well-being; mean of MEH1–MEH5</td>
+<td style="text-align: left;">Continuous</td>
+<td style="text-align: left;">1–5; higher = better mental health</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ACM</td>
+<td style="text-align: left;">Academic motivation for online learning; mean of ACM1–ACM7</td>
+<td style="text-align: left;">Continuous</td>
+<td style="text-align: left;">1–5; higher = greater academic motivation</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ACP</td>
+<td style="text-align: left;">Perceived academic performance; mean of ACP1–ACP5</td>
+<td style="text-align: left;">Continuous</td>
+<td style="text-align: left;">1–5; higher = better perceived academic performance</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section></section><section id="step-2-preprocess-the-data-30-minutes" class="level3" data-number="6.2.2"><h3 data-number="6.2.2" class="anchored" data-anchor-id="step-2-preprocess-the-data-30-minutes">
+<span class="header-section-number">6.2.2</span> Step 2: Preprocess the Data (30 minutes)</h3>
+<p>You will find a file called <code>prepare_nguyen_2026.R</code> in the <code>patterns_principles_exercises</code> project. Open that file. Each section of code performs a specific data preprocessing step, as explained in the comments. Work through the file one step at a time to prepare your own dataset for analysis. Note that, for real research projects, you would probably do a lot more data cleaning than this - including solving problems specific to your dataset. For the present tutorial, forget about any non-standard problems. Just remove any variables that are not well-behaved.</p>
+</section><section id="step-3-run-the-analysis-20-minutes" class="level3" data-number="6.2.3"><h3 data-number="6.2.3" class="anchored" data-anchor-id="step-3-run-the-analysis-20-minutes">
+<span class="header-section-number">6.2.3</span> Step 3: Run the Analysis (20 minutes)</h3>
+<p>You will find a file called <code>analysis_nguyen_2026.R</code> in the <code>patterns_principles_exercises</code> project. Open that file, and skim the comments to get a sense of the analysis steps. If you have performed the data cleaning correctly, you should be able to run that file in its entirety without errors, and get machine learning results for your own theory.</p>
+</section><section id="step-4-interpreting-the-results-10-minutes" class="level3" data-number="6.2.4"><h3 data-number="6.2.4" class="anchored" data-anchor-id="step-4-interpreting-the-results-10-minutes">
+<span class="header-section-number">6.2.4</span> Step 4: Interpreting the Results (10 minutes)</h3>
+<p>We used four machine learning models that capture patterns in the data in different ways. Many other machine learning techniques exist, but most of these are common (except symbolic regression, but it’s very interesting nonetheless). In this case, we used:</p>
 <ul>
-<li>Read the sentence carefully.</li>
-<li>Decide which of the levels it best represents.</li>
-</ul></section><section id="part-2.-evaluate-the-theory-10-minutes" class="level4" data-number="2.2.1.2"><h4 data-number="2.2.1.2" class="anchored" data-anchor-id="part-2.-evaluate-the-theory-10-minutes">
-<span class="header-section-number">2.2.1.2</span> Part 2. Evaluate the theory (10 minutes)</h4>
-<p>As a group:</p>
+<li>
+<strong>LASSO regression</strong>, which models the outcome as a linear funciton of the predictors (just like normal regression) - but it shrinks the coefficients of less important predictors toward zero. It is easy to interpret because you can read the table of coefficients to evaluate the size and sign of the effect of included predictors, just like a table of regression coefficients. Irrelevant predictors are eliminated from the model.</li>
+<li>A <strong>regression tree</strong>, which captures patterns by repeatedly splitting the data into groups based on predictor values, producing a set of decision rules that can be interpreted directly. Note that, in this tree structure, an interaction effect like <span class="math inline">\(X_1*X_2\)</span> can be represented by first splitting on one interacting variable <span class="math inline">\(X_1\)</span>, and then on the other, <span class="math inline">\(X_2\)</span>. A nonlinear effect can be represented by splitting on the same variable at different values.</li>
+<li>
+<strong>Random forests</strong> combine predictions from many regression trees grown on slight permutations of the sample. They also capture potential interactions and nonlinear effects, and often capture much more detail of the patterns in data than a single tree, at the cost of a loss of interpretability. You can explain a forest’s predictions using variable importance and partial dependence plots, which describe which predictors matter most for accurate predictions, and how each predictor affects the predictions while averaging across all other predictors, respectively.</li>
+<li>
+<strong>Symbolic regression</strong> constructs a mathematical expression, given a set of variables and mathematical operators, that reproduces patterns in the data. You can allow it to construct any kind of function, including nonlinear and interacting functions. The final model is an explicit equation, which can be interpreted at face value.</li>
+</ul>
+<section id="model-fits" class="level4" data-number="6.2.4.1"><h4 data-number="6.2.4.1" class="anchored" data-anchor-id="model-fits">
+<span class="header-section-number">6.2.4.1</span> Model Fits</h4>
+<p>The first thing we do is interpret the table with model fits. Here, we use <span class="math inline">\(R^2\)</span> - which is a bit similar to the <span class="math inline">\(R^2\)</span> you might know as “explained variance” from linear regression. One key difference is that we have <span class="math inline">\(R^2_{train}\)</span> and <span class="math inline">\(R^2_{test}\)</span>. The <span class="math inline">\(R^2_{train}\)</span> can be straightforwardly interpreted as the percentage of variance explained in the data the model already saw during training. The <span class="math inline">\(R^2_{test}\)</span> is a bit different: it looks at the variance explained by a specific model <em>in new data</em> (the test data), relative to just using the mean of the training data to predict new observations.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Model</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">$R^2_{train}$</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">$R^2_{test}$</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">LASSO</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">0.69</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Random Forest</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">0.70</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Regression Tree</td>
+<td style="text-align: right;">0.63</td>
+<td style="text-align: right;">0.66</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Symbolic regression</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">0.57</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>To pick the best model, it’s most useful to look at <span class="math inline">\(R^2_{test}\)</span>, because <span class="math inline">\(R^2_{train}\)</span> can be overly optimistic - a sufficiently complex model can literally memorize the correct value for all the training data, achieving an <span class="math inline">\(R^2_{train} = 1.00\)</span> but an abysmal <span class="math inline">\(R^2_{test}\)</span>. The <span class="math inline">\(R^2_{test}\)</span> does not suffer from this bias, and it gives you an impression of how well your model generalizes to new data.</p>
+<p>Note that according to this metric, the random forest model is best. However, a random forest model is not interpretable - although you can analyze its predictions using measures like variable importance and partial dependence plots. Note that the LASSO model is almost equally good - and it is very straightforwardly interpretable. From a theory construction perspective, you might thus choose the LASSO model because it combines near-peak performance with high interpretability. Also note that the differences between models are not that big. Even a symbolic regression model - which is just a linear function of one predictor (see below) - performs quite well.</p>
+</section><section id="interpret-lasso" class="level4" data-number="6.2.4.2"><h4 data-number="6.2.4.2" class="anchored" data-anchor-id="interpret-lasso">
+<span class="header-section-number">6.2.4.2</span> Interpret LASSO</h4>
+<p>To interpret the LASSO model, we look at its regression coefficients. These are interpreted the same as other regression coefficients, except that these are all biased towards zero:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Predictor</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">$b_{\lambda 1se}$</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">3.60</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ACP</td>
+<td style="text-align: right;">0.43</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MEH</td>
+<td style="text-align: right;">0.12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AUT</td>
+<td style="text-align: right;">0.08</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">REL</td>
+<td style="text-align: right;">0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">COM</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Online</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">genderM</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">genderF</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">genderO</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">year</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">fieldEngineering.and.Technology</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">fieldLanguages.and.Linguistics</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">fieldHealth.Sciences</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">fieldEducation</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">fieldCulture.and.Arts</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">fieldInformation.Technology</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">fieldOther</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">class.per.week</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>We see that ACP, MEH, AUT, and REL are retained as relevant predictors, of which ACP is by far the most important one.</p>
+</section><section id="interpret-a-tree" class="level4" data-number="6.2.4.3"><h4 data-number="6.2.4.3" class="anchored" data-anchor-id="interpret-a-tree">
+<span class="header-section-number">6.2.4.3</span> Interpret a Tree</h4>
+<p>You can interpret a regression tree by plotting it:</p>
+<p><img src="prp_tree.png" class="img-fluid"></p>
+<p>The plot tells us:</p>
 <ul>
-<li>Compare your classifications</li>
-<li>Which levels of Meehl’s hierarchy are well represented?</li>
-<li>Which levels are missing?</li>
-<li>How strong do you think the theory is according to Meehl’s framework?</li>
-</ul></section><section id="part-3.-compare-theories-15-minutes" class="level4" data-number="2.2.1.3"><h4 data-number="2.2.1.3" class="anchored" data-anchor-id="part-3.-compare-theories-15-minutes">
-<span class="header-section-number">2.2.1.3</span> Part 3. Compare theories (15 minutes)</h4>
-<p>Each group gives one example of every level they identified in their source material, as well as an example of a sentence you were not able to classify (if applicable). Discuss with the class.</p>
-</section></section><section id="is-this-theory-good" class="level3" data-number="2.2.2"><h3 data-number="2.2.2" class="anchored" data-anchor-id="is-this-theory-good">
-<span class="header-section-number">2.2.2</span> Is This Theory “Good”?</h3>
-<p>Apply Olivia Guest’s four-category ontology to critically evaluate a published psychological or social science theory.</p>
-<section id="part-1.-evaluate-theory-along-each-category-10-minutes" class="level4" data-number="2.2.2.1"><h4 data-number="2.2.2.1" class="anchored" data-anchor-id="part-1.-evaluate-theory-along-each-category-10-minutes">
-<span class="header-section-number">2.2.2.1</span> Part 1. Evaluate Theory along Each Category (10 minutes)</h4>
-<p>Each group member picks one unique category, and independently answers the guiding questions for that category in Table 1.</p>
-<p>Decide whether the theory is “good”, adequate, or “bad” in your category.</p>
-</section><section id="part-2.-discuss-and-prioritize-15-minutes" class="level4" data-number="2.2.2.2"><h4 data-number="2.2.2.2" class="anchored" data-anchor-id="part-2.-discuss-and-prioritize-15-minutes">
-<span class="header-section-number">2.2.2.2</span> Part 2. Discuss and Prioritize (15 minutes)</h4>
-<p>Discuss your findings with your groupmates. Make a score card for the theory, rating it as good, adequate, or bad on the four categories.</p>
-<p>Then, prioritize the four categories. How important do you think it is that the theory be “good” on each of the four categories? Use this to guide your further work on the theory during coming weeks.</p>
-</section><section id="part-3.-class-discussion-15-minutes" class="level4" data-number="2.2.2.3"><h4 data-number="2.2.2.3" class="anchored" data-anchor-id="part-3.-class-discussion-15-minutes">
-<span class="header-section-number">2.2.2.3</span> Part 3. Class discussion (15 minutes)</h4>
-<p>As a class, discuss:</p>
-<ul>
-<li>If you had to choose between a theory that scores highly on Meehl’s hierarchy but poorly on Guest’s ontology, and one that does the opposite, which would you consider the better scientific theory? Why?</li>
-<li>You can pick one criterion out of Meehl’s hierarchy and Guest’s ontology. Which one do you pick, and why?</li>
-</ul></section></section></section><section id="homework" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="homework">
-<span class="header-section-number">2.3</span> Homework</h2>
-<p>This week, you will extract IF-THEN statements from the sources you selected last week.</p>
-<p><em><strong>Credit:</strong> This assignment is based on the Proposition Based Theory Specification instructions <span class="citation" data-cites="glocknerPBTSGuidelinesTemplates2025">(<a href="references.html#ref-glocknerPBTSGuidelinesTemplates2025" role="doc-biblioref">Glöckner et al., 2025</a>)</span>.</em></p>
-<section id="pbts-step-2" class="level3" data-number="2.3.1"><h3 data-number="2.3.1" class="anchored" data-anchor-id="pbts-step-2">
-<span class="header-section-number">2.3.1</span> PBTS Step 2</h3>
-<p>Individually, fill out <a href="Step_2.csv">Table 2</a>. Translate each source sentence into a set of implications (i.e., IF- THEN statements) and all included propositions that together fully describe the theory.</p>
-<ol type="a">
-<li>Propositions are statements concerning measurable and non-measurable concepts that can be true or false, and represent an implication’s antecedence and consequence. E.g., “A person’s needs are satisfied” is a proposition.</li>
-<li>Propositions can be combined by any logical or mathematical operators, qualifiers, or, if necessary, user-defined uncommon operators (that have to be defined and operationalized).</li>
-<li>It is often possible to make certain conditions of a theory either part of the propositions or the definition/operationalizations. To keep the propositions simple, these conditions should be part of the definition/operationalizations if they do not belong to the core causal relations of the theory.</li>
-<li>In this step, remain as close as possible to the original verbal narrative while interpreting the text in accordance with the authors’ intended meaning.</li>
-</ol>
-<ol start="6" type="a">
-<li>In the “Reference” column, reference the label of the text snippet from last week’s Table, e.g.&nbsp;S1, S2 … Sn.</li>
-</ol>
-<ol start="7" type="a">
-<li>If the original specification mentions the functional form of a relationship, put this information in the Comment column.</li>
-</ol></section><section id="combining-specifications-bingo" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="combining-specifications-bingo">
-<span class="header-section-number">2.3.2</span> Combining Specifications-BINGO</h3>
-<p>As a group, read each other’s specifications. Select one student’s work to be the “starting point” for the definitive version. The author of this version reads each of their implications aloud. Other students put a check mark in front of their implications if these match the implication read by the first student. If they are clearly similar but there are important differences - discuss these and find agreement on which version of the implication to keep in the definitive version.</p>
-<p>When the first student is done reading all of their implications, the other students may have some remaining un-checked implications. That is to say: Implications that they coded, but the first student did not. Discuss these to check whether they should be included in the definitive version or not.</p>
-<p>The end product should be a complete table of all unique implications that all students (more or less) agree upon.</p>
-<p>If there are important disagreements - keep notes, because this is good material for the Discussion section of your final report.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Roll Your Own Theory">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Roll Your Own Theory
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you are making your own theory, do the assignment as described above - but instead of coding selected sentences, each student lists all implications that <em>they think should be part of the theory</em>. The group activity then constitutes of discussing these and finding agreement about a set of implications.</p>
-</div>
-</div>
+<li>which variables are selected at all; these are relevant predictors (ACP, AUT, REL, and MEH)</li>
+<li>how the model comes to a prediction; for example, if you have a score of 0.50 on ACP, and a score of 1.00 on MEH, then you end up in the right-most leaf of the tree, with a predicted value of 4.8 on ACM.</li>
+<li>Note that the previous example also illustrates a potential interaction between ACP and MEH because you first split on the one, and then on the other.</li>
+</ul></section><section id="explain-a-random-forest" class="level4" data-number="6.2.4.4"><h4 data-number="6.2.4.4" class="anchored" data-anchor-id="explain-a-random-forest">
+<span class="header-section-number">6.2.4.4</span> Explain a Random Forest</h4>
+<p>Unlike a single tree, a random forest is not interpretable, but you can analyze/explain its predictions to some extent.</p>
+<p>First, you can randomly shuffle each predictor, and see how much <em>worse</em> the model predicts when that happens. If shuffling one predictor really diminishes predictive performance, it must have been an important predictor. Looking at the plot below, we see that the order of predictor importances is about the same as for the LASSO coefficients, with ACP being the most important:</p>
+<p><img src="plot_vi.png" class="img-fluid"></p>
+<p>The above plot tells us which predictors matter; to get a sense of the shape of the relationship between each predictor and the outcome (averaging over all other predictors), we can use “partial dependence plots”:</p>
+<p><img src="plot_pdp.png" class="img-fluid"></p>
+<p>We see a near-perfect linear relationship of ACP, and (approximately linear) monotonous positive relationships for all other predictors as well.</p>
+</section><section id="interpret-symbolic-regression" class="level4" data-number="6.2.4.5"><h4 data-number="6.2.4.5" class="anchored" data-anchor-id="interpret-symbolic-regression">
+<span class="header-section-number">6.2.4.5</span> Interpret Symbolic Regression</h4>
+<p>Finally, interpreting the symbolic regression model is very straightforward; just examine the equation constructed by the algorithm:</p>
+<p><span class="math inline">\(3.6 + ACP\)</span></p>
+</section></section></section><section id="homework" class="level2" data-number="6.3"><h2 data-number="6.3" class="anchored" data-anchor-id="homework">
+<span class="header-section-number">6.3</span> Homework</h2>
+<p>If you managed to run the analysis, then you should now have machine learning results that tell you something about the predictors of one variable that (loosely) corresponds to a specific concept in your DAG.</p>
+<p>Interpret the results you’ve obtained, and reflect on your previous theory (the DAG). Do you see any predictors that are not in your DAG but should be? Did you learn anything new about the direction of effects, about interaction effects, about the shape of association between concepts in your DAG? Do any of the analyses have weird results that might have an explanation totally unrelated to your theory? Write your reflections down to become part of your final report.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
-<div id="ref-glocknerPBTSGuidelinesTemplates2025" class="csl-entry" role="listitem">
-Glöckner, A., Betsch, T., Lisovoj, D., Biehl, J., Siol, J., tho Pesch, F., &amp; Fiedler, S. (2025). <em><span>PBTS Guidelines</span>, <span>Templates</span> and <span>Video</span></em>. <a href="https://osf.io/qbs29/overview">https://osf.io/qbs29/overview</a>
-</div>
-<div id="ref-vanlissaBeFAIRTheory2026" class="csl-entry" role="listitem">
-Van Lissa, C. J., Peikert, A., Ernst, M. S., van Dongen, N. N. N., Schönbrodt, F. D., &amp; Brandmaier, A. M. (2026). To <span>Be FAIR</span>: <span>Theory Specification Needs</span> an <span>Update</span>. <em>Perspectives on Psychological Science</em>, 17456916251401850. <a href="https://doi.org/10.1177/17456916251401850">https://doi.org/10.1177/17456916251401850</a>
-</div>
-</div>
-</section></section></main><!-- /main --><script>
+</section></main><!-- /main --><script>
 // open rdrr links externally ----
 
 var exlinks = document.querySelectorAll("a[href^='https://rdrr.io']");
@@ -1143,13 +1324,13 @@ window.onload = function() {
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./theory_crisis.html" class="pagination-link" aria-label="The Theory Crisis">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Theory Crisis</span></span>
+      <a href="./formal_theory.html" class="pagination-link" aria-label="Formal Theory Specification">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Formal Theory Specification</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./strategic_ambiguity.html" class="pagination-link" aria-label="Strategic Ambiguity">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Strategic Ambiguity</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

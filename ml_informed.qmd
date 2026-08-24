@@ -1,0 +1,139 @@
+# Machine Learning-Informed Theory Construction
+
+## Weekly Readings
+
+```{r echo = FALSE, results = "asis"}
+schedule <- readODS::read_ods("schedule.ods")
+cat(paste0("* ", strsplit(schedule$Reading[which(schedule$file == "ml_informed.qmd")], split = "\n")[[1]]), sep = "\n")
+```
+
+## Tutorial
+
+The topic of this week is to use machine learning to detect patterns in a dataset pertaining to your theory of interest.
+I have prepared a reproducible example for you based on Self-Determination Theory in the `patterns_principles_exercises` project.
+The purpose of this tutorial is **not** to give you a foundation in machine learning; that is too complex a topic. However, you should be able to run the code, you are allowed to play around with it and try making some changes, and you might be able to adapt and reuse it for future research projects.
+
+It will probably surprise you that preparing the data for analysis is the most difficult part of this tutorial.
+Expect to spend most of your time on this step - and **make sure to get the tutorial teacher's approval for your cleaned dataset before you go home**.
+
+
+<!-- We will walk you through all the steps you might take for a machine learning analysis in the simplest possible form; you can choose to either just reproduce them without making changes, or you may experiment with your own data, or a different outcome variable from the same dataset. -->
+
+### Step 1: Find a Dataset (30 minutes)
+
+Search through [Google Database Search](https://datasetsearch.research.google.com/) for a dataset that covers some variables that can be considered operationalizations of the concepts in your theory.
+One approach is to search the database for the name of your theory.
+Another approach is to choose one, two, or three construct names from your theory, and search for those.
+
+
+#### SDT Example: Codebook
+
+I used the search term `"self determination theory"`, and read the descriptions of the datasets until I found the one by Nguyen and Xiem (2026) on "mental health, academic motivation, and perceived academic performance among Vietnamese students in online learning". It contains operationalizations of a few SDT constructs in the specific context of online learning (thus, we can debate how well this generalizes to SDT in general settings).
+That's about as good an example as you can expect to find on short notice.
+My dataset contains the following variables:
+
+```{r}
+tab_codebook <- read.csv("codebook_nguyen_2026.csv")
+knitr::kable(tab_codebook)
+```
+
+
+### Step 2: Preprocess the Data (30 minutes)
+
+You will find a file called `prepare_nguyen_2026.R` in the `patterns_principles_exercises` project.
+Open that file.
+Each section of code performs a specific data preprocessing step, as explained in the comments.
+Work through the file one step at a time to prepare your own dataset for analysis.
+Note that, for real research projects, you would probably do a lot more data cleaning than this - including solving problems specific to your dataset.
+For the present tutorial, forget about any non-standard problems.
+Just remove any variables that are not well-behaved.
+
+### Step 3: Run the Analysis (20 minutes)
+
+You will find a file called `analysis_nguyen_2026.R` in the `patterns_principles_exercises` project. Open that file, and skim the comments to get a sense of the analysis steps.
+If you have performed the data cleaning correctly, you should be able to run that file in its entirety without errors, and get machine learning results for your own theory.
+
+
+
+### Step 4: Interpreting the Results (10 minutes)
+
+
+We used four machine learning models that capture patterns in the data in different ways. Many other machine learning techniques exist, but most of these are common (except symbolic regression, but it's very interesting nonetheless). In this case, we used:
+
+- **LASSO regression**, which models the outcome as a linear funciton of the predictors (just like normal regression) - but it shrinks the coefficients of less important predictors toward zero. It is easy to interpret because you can read the table of coefficients to evaluate the size and sign of the effect of included predictors, just like a table of regression coefficients. Irrelevant predictors are eliminated from the model.
+- A **regression tree**, which captures patterns by repeatedly splitting the data into groups based on predictor values, producing a set of decision rules that can be interpreted directly. Note that, in this tree structure, an interaction effect like $X_1*X_2$ can be represented by first splitting on one interacting variable $X_1$, and then on the other, $X_2$. A nonlinear effect can be represented by splitting on the same variable at different values.
+- **Random forests** combine predictions from many regression trees grown on slight permutations of the sample. They also capture potential interactions and nonlinear effects, and often capture much more detail of the patterns in data than a single tree, at the cost of a loss of interpretability. You can explain a forest's predictions using variable importance and partial dependence plots, which describe which predictors matter most for accurate predictions, and how each predictor affects the predictions while averaging across all other predictors, respectively.
+- **Symbolic regression** constructs a mathematical expression, given a set of variables and mathematical operators, that reproduces patterns in the data. You can allow it to construct any kind of function, including nonlinear and interacting functions. The final model is an explicit equation, which can be interpreted at face value.
+
+#### Model Fits
+
+The first thing we do is interpret the table with model fits. Here, we use $R^2$ - which is a bit similar to the $R^2$ you might know as "explained variance" from linear regression. One key difference is that we have $R^2_{train}$ and $R^2_{test}$. The $R^2_{train}$ can be straightforwardly interpreted as the percentage of variance explained in the data the model already saw during training. The $R^2_{test}$ is a bit different: it looks at the variance explained by a specific model *in new data* (the test data), relative to just using the mean of the training data to predict new observations.
+
+```{r results='markdown'}
+table_fits <- read.csv("table_fits.csv")
+names(table_fits) <- c("Model", "$R^2_{train}$", "$R^2_{test}$")
+kableExtra::kbl(table_fits, digits = 2, escape = FALSE)
+```
+
+To pick the best model, it's most useful to look at $R^2_{test}$, because $R^2_{train}$ can be overly optimistic - a sufficiently complex model can literally memorize the correct value for all the training data, achieving an $R^2_{train} = 1.00$ but an abysmal $R^2_{test}$. The $R^2_{test}$ does not suffer from this bias, and it gives you an impression of how well your model generalizes to new data.
+
+Note that according to this metric, the random forest model is best. However, a random forest model is not interpretable - although you can analyze its predictions using measures like variable importance and partial dependence plots. Note that the LASSO model is almost equally good - and it is very straightforwardly interpretable. From a theory construction perspective, you might thus choose the LASSO model because it combines near-peak performance with high interpretability. Also note that the differences between models are not that big. Even a symbolic regression model - which is just a linear function of one predictor (see below) - performs quite well.
+
+#### Interpret LASSO
+
+To interpret the LASSO model, we look at its regression coefficients. These are interpreted the same as other regression coefficients, except that these are all biased towards zero:
+
+```{r}
+tab_lasso <- read.csv("table_lasso_coef.csv")
+tab_lasso$X <- gsub("_", ".", tab_lasso$X, fixed=TRUE)
+tab_lasso <- tab_lasso[order(tab_lasso[[2]], decreasing = TRUE), ]
+names(tab_lasso) <- c("Predictor", "$b_{\\lambda 1se}$")
+kableExtra::kbl(tab_lasso, digits = 2, escape = F, row.names = FALSE)
+```
+
+We see that ACP, MEH, AUT, and REL are retained as relevant predictors, of which ACP is by far the most important one.
+
+#### Interpret a Tree
+
+You can interpret a regression tree by plotting it:
+
+![](prp_tree.png)
+
+The plot tells us:
+
+- which variables are selected at all; these are relevant predictors (ACP, AUT, REL, and MEH)
+- how the model comes to a prediction; for example, if you have a score of 0.50 on ACP, and a score of 1.00 on MEH, then you end up in the right-most leaf of the tree, with a predicted value of 4.8 on ACM.
+- Note that the previous example also illustrates a potential interaction between ACP and MEH because you first split on the one, and then on the other.
+
+#### Explain a Random Forest
+
+Unlike a single tree, a random forest is not interpretable, but you can analyze/explain its predictions to some extent.
+
+First, you can randomly shuffle each predictor, and see how much *worse* the model predicts when that happens. If shuffling one predictor really diminishes predictive performance, it must have been an important predictor. Looking at the plot below, we see that the order of predictor importances is about the same as for the LASSO coefficients, with ACP being the most important:
+
+![](plot_vi.png)
+
+The above plot tells us which predictors matter; to get a sense of the shape of the relationship between each predictor and the outcome (averaging over all other predictors), we can use "partial dependence plots":
+
+![](plot_pdp.png)
+
+We see a near-perfect linear relationship of ACP, and (approximately linear) monotonous positive relationships for all other predictors as well.
+
+#### Interpret Symbolic Regression
+
+Finally, interpreting the symbolic regression model is very straightforward; just examine the equation constructed by the algorithm:
+
+```{r results = "asis"}
+knitr::asis_output(paste0("$", readLines("sr_expression.txt", warn = FALSE), "$"))
+```
+
+## Homework
+
+If you managed to run the analysis, then you should now have machine learning results that tell you something about the predictors of one variable that (loosely) corresponds to a specific concept in your DAG.
+
+Interpret the results you've obtained, 
+and reflect on your previous theory (the DAG).
+Do you see any predictors that are not in your DAG but should be?
+Did you learn anything new about the direction of effects, about interaction effects, about the shape of association between concepts in your DAG?
+Do any of the analyses have weird results that might have an explanation totally unrelated to your theory?
+Write your reflections down to become part of your final report.
