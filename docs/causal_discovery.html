@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="description" content="Book Description">
+<title>7&nbsp; Causal Discovery – Patterns to Principles</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./fair_theory.html" rel="next">
+<link href="./ml_informed.html" rel="prev">
+<link href="./favicon.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-5a2acb6f4ed5aeb23a104ba421924b87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-33269adcf1721b81efc5ea7fcfe7f0ee.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-1bb825c67a2efe62597e07348eb8bcba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-cc91bfdb7c5dfa564528353fdb34f86f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-1bb825c67a2efe62597e07348eb8bcba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+<link rel="stylesheet" href="include/booktem.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/glossary.css">
+<link rel="stylesheet" href="include/style.css">
+</head>
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./causal_discovery.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causal Discovery</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Patterns to Principles</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/cjvanlissa/patterns_principles" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Patterns-to-Principles.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">General Information</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./theory_crisis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">The Theory Crisis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./good_theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What Makes a Good Theory?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./strategic_ambiguity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Strategic Ambiguity</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./latent_theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Latent Theory in Published Papers</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./formal_theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Formal Theory Specification</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ml_informed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine Learning-Informed Theory Construction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./causal_discovery.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causal Discovery</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fair_theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">FAIR Theory</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Setup your Computer</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#weekly-readings" id="toc-weekly-readings" class="nav-link active" data-scroll-target="#weekly-readings"><span class="header-section-number">7.1</span> Weekly Readings</a></li>
+  <li>
+<a href="#tutorial" id="toc-tutorial" class="nav-link" data-scroll-target="#tutorial"><span class="header-section-number">7.2</span> Tutorial</a>
+  <ul class="collapse">
+<li><a href="#causal-discovery" id="toc-causal-discovery" class="nav-link" data-scroll-target="#causal-discovery"><span class="header-section-number">7.2.1</span> Causal Discovery</a></li>
+  <li><a href="#intro-to-the-pc-algorithm" id="toc-intro-to-the-pc-algorithm" class="nav-link" data-scroll-target="#intro-to-the-pc-algorithm"><span class="header-section-number">7.2.2</span> Intro to the PC algorithm</a></li>
+  <li><a href="#causal-inference-with-the-pc-algorithm" id="toc-causal-inference-with-the-pc-algorithm" class="nav-link" data-scroll-target="#causal-inference-with-the-pc-algorithm"><span class="header-section-number">7.2.3</span> Causal Inference with the PC Algorithm</a></li>
+  <li><a href="#your-own-theory" id="toc-your-own-theory" class="nav-link" data-scroll-target="#your-own-theory"><span class="header-section-number">7.2.4</span> Your Own Theory</a></li>
+  <li><a href="#concluding-thoughts" id="toc-concluding-thoughts" class="nav-link" data-scroll-target="#concluding-thoughts"><span class="header-section-number">7.2.5</span> Concluding Thoughts</a></li>
+  </ul>
+</li>
+  <li><a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework"><span class="header-section-number">7.3</span> Homework</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causal Discovery</span>
+</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="weekly-readings" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="weekly-readings">
+<span class="header-section-number">7.1</span> Weekly Readings</h2>
+<ul>
+<li><a href="https://doi.org/10.1145/3241036">Pearl, J. (2019). The seven tools of causal inference, with reflections on machine learning. Communications of the ACM, 62(3), 54–60. https://doi.org/10.1145/3241036</a></li>
+<li><a href="https://arxiv.org/abs/2206.05175v2">Vowels, M. J. (2022). A Causal Research Pipeline and Tutorial for Psychologists and Social Scientists (Sections 1-4 and 9). arXiv. https://doi.org/10.48550/arXiv.2206.05175</a></li>
+</ul></section><section id="tutorial" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="tutorial">
+<span class="header-section-number">7.2</span> Tutorial</h2>
+<p>In these exercises we will explore causal discovery methods based on conditional independence testing. This tutorial is also available in the file <code>causal_discovery_zhao_2025.R</code> in the <code>patterns_principles_exercises</code> project. We will use four constructs from the Zhao (2025) dataset throughout:</p>
+<ul>
+<li>
+<strong>AM</strong>: Autonomous motivation, as an operationlization of one of the fundamental needs.</li>
+<li>
+<strong>TS</strong> Teacher pressure (teacher stress), as an operationalization of “external events”</li>
+<li>
+<strong>BI</strong>: Behavioral intention, which we will interpret as an operationalization of integration.</li>
+<li>
+<strong>BH</strong>: Sports behavior, as a context-specific operationalization of healthy development.</li>
+</ul>
+<p>Note that these variables are not perfect matches for the theoretical concepts, but for the purpose of a tutorial - that is fine.</p>
+<p>All four variables are mean scores aggregated from their questionnaire items, with higher values indicating higher levels of the corresponding construct.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># echo: true</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidySEM)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(ppcor)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(qgraph)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">library</span>(pcalg)</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(Rgraphviz)</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">library</span>(webexercises)</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a>data_raw <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"zhao_2025.rds"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"AM"</span>, <span class="st">"TS"</span>, <span class="st">"BI"</span>, <span class="st">"BH"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># Select four variables for this tutorial</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>df <span class="ot">&lt;-</span> data_raw[, vars]</span>
+<span id="cb1-13"><a href="#cb1-13"></a>alpha <span class="ot">&lt;-</span> .<span class="dv">10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># echo: true</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">print</span>(<span class="fu">descriptives</span>(df), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  name    type   n missing unique mean median mode mode_value  sd  v min max
+1   AM numeric 290       0     31  4.6    4.6  4.6         NA 1.4 NA   1   7
+2   TS numeric 290       0     21  2.9    2.8  2.8         NA 1.1 NA   1   7
+3   BI numeric 290       0     16  4.9    5.0  5.0         NA 1.3 NA   1   7
+4   BH numeric 290       0     13  4.2    4.5  4.5         NA 1.4 NA   1   7
+  range  skew skew_2se kurt kurt_2se
+1     6 -0.43    -1.49  3.2      5.6
+2     6  0.41     1.43  2.8      4.8
+3     6 -0.48    -1.68  3.5      6.2
+4     6 -0.22    -0.76  2.8      5.0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">print</span>(<span class="fu">cor</span>(df), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      AM    TS    BI   BH
+AM  1.00 -0.25  0.51  0.3
+TS -0.25  1.00 -0.31 -0.1
+BI  0.51 -0.31  1.00  0.4
+BH  0.30 -0.10  0.40  1.0</code></pre>
+</div>
+</div>
+<p>Conditional-independence tests based on correlations and partial correlations, which assume that all relationships are linear with normally distributed noise. These assumptions are likely often violated with psychological data, so keep that in mind when interpreting the results.</p>
+<section id="causal-discovery" class="level3" data-number="7.2.1"><h3 data-number="7.2.1" class="anchored" data-anchor-id="causal-discovery">
+<span class="header-section-number">7.2.1</span> Causal Discovery</h3>
+<p>In this exercise you will learn the basics of causal discovery, using the conditional independence method. You will apply the steps manually to understand the process, and then automate it using the `pcalg` package.</p>
+<section id="enumerate-all-possible-independence-tests" class="level4" data-number="7.2.1.1"><h4 data-number="7.2.1.1" class="anchored" data-anchor-id="enumerate-all-possible-independence-tests">
+<span class="header-section-number">7.2.1.1</span> Enumerate all Possible Independence Tests</h4>
+<p>The first thing we’ll do is to test all possible marginal and conditional independence relations present in the data. Later, we use this information to constrain the possible DAGs.</p>
+<p>With four variables, we need to test:</p>
+<ol type="1">
+<li>all marginal associations;</li>
+<li>all conditional associations where we condition on one other variable; and</li>
+<li>all conditional associations where we condition on the two remaining variables.</li>
+</ol>
+<p>We can construct these sets as follows:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># echo: true</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co"># All unique combinations of four variables</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>marginal <span class="ot">&lt;-</span> <span class="fu">combn</span>(vars, <span class="dv">2</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co"># For each of those combinations, condition on both of the two remaining variables separately</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>cond1 <span class="ot">&lt;-</span> <span class="fu">do.call</span>(cbind, <span class="fu">apply</span>(marginal, <span class="dv">2</span>, <span class="cf">function</span>(pair){</span>
+<span id="cb6-6"><a href="#cb6-6"></a>  <span class="fu">rbind</span>(<span class="fu">matrix</span>(pair, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">2</span>), <span class="fu">setdiff</span>(vars, pair))</span>
+<span id="cb6-7"><a href="#cb6-7"></a>  }, <span class="at">simplify =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb6-8"><a href="#cb6-8"></a></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co"># For each combination, condition on both remaining variables together</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>cond2 <span class="ot">&lt;-</span> <span class="fu">apply</span>(marginal, <span class="dv">2</span>, <span class="cf">function</span>(pair){</span>
+<span id="cb6-11"><a href="#cb6-11"></a>  <span class="fu">c</span>(pair, <span class="fu">setdiff</span>(vars, pair))})</span>
+<span id="cb6-12"><a href="#cb6-12"></a>marginal</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4] [,5] [,6]
+[1,] "AM" "AM" "AM" "TS" "TS" "BI"
+[2,] "TS" "BI" "BH" "BI" "BH" "BH"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>cond1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12]
+[1,] "AM" "AM" "AM" "AM" "AM" "AM" "TS" "TS" "TS" "TS"  "BI"  "BI" 
+[2,] "TS" "TS" "BI" "BI" "BH" "BH" "BI" "BI" "BH" "BH"  "BH"  "BH" 
+[3,] "BI" "BH" "TS" "BH" "TS" "BI" "AM" "BH" "AM" "BI"  "AM"  "TS" </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>cond2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4] [,5] [,6]
+[1,] "AM" "AM" "AM" "TS" "TS" "BI"
+[2,] "TS" "BI" "BH" "BI" "BH" "BH"
+[3,] "BI" "TS" "TS" "AM" "AM" "AM"
+[4,] "BH" "BH" "BI" "BH" "BI" "TS"</code></pre>
+</div>
+</div>
+<p>Each table captures unique relations in the columns.</p>
+<div class="webex-check webex-box">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>Quiz</b></p>
+<p style="margin-left:1em;">
+The first column of marginal gives us the bivariate independence relation
+between: <select class="webex-select"><option value="blank"></option>
+<option value="answer">AM and TS</option>
+<option value="">BI and BH</option>
+<option value="">AM and BH</option>
+<option value="">BH and TS</option></select><br>The first column of cond1 conditions on: <select class="webex-select"><option value="blank"></option>
+<option value="">BH</option>
+<option value="">AM</option>
+<option value="">TS</option>
+<option value="answer">BI</option></select><br>The first column of cond2 conditions on: <select class="webex-select"><option value="blank"></option>
+<option value="">BI and BH</option>
+<option value="">BH and TS</option>
+<option value="answer">AM and TS</option>
+<option value="">AM and BH</option></select><br>How many unique independence relations does this give? <input class="webex-solveme nospaces" data-tol="0" size="2" data-answer="[&quot;24&quot;]"></p>
+</span>
+</div>
+</section><section id="test-marginal-and-conditional-independence" class="level4" data-number="7.2.1.2"><h4 data-number="7.2.1.2" class="anchored" data-anchor-id="test-marginal-and-conditional-independence">
+<span class="header-section-number">7.2.1.2</span> Test marginal and conditional independence</h4>
+<p>If we assume that all associations are linear and errors are normally distributed, then we can use correlations to test marginal independence and partial correlations to test conditional independence between these variables.</p>
+<p>Remember that the null hypothesis for each test is that the two variables are independent. We use an alpha level of <code>.10</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># echo: true</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="co"># Example of one marginal-independence test</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>martest1 <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(</span>
+<span id="cb12-4"><a href="#cb12-4"></a>  df<span class="sc">$</span>AM,</span>
+<span id="cb12-5"><a href="#cb12-5"></a>  df<span class="sc">$</span>TS</span>
+<span id="cb12-6"><a href="#cb12-6"></a>  )</span>
+<span id="cb12-7"><a href="#cb12-7"></a>martest1<span class="sc">$</span>p.value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.280825e-05</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Example conditional-independence test:</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="co"># AM and TS conditional on BH</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>ctest1 <span class="ot">&lt;-</span> <span class="fu">pcor.test</span>(</span>
+<span id="cb14-4"><a href="#cb14-4"></a>  df<span class="sc">$</span>AM,</span>
+<span id="cb14-5"><a href="#cb14-5"></a>  df<span class="sc">$</span>TS,</span>
+<span id="cb14-6"><a href="#cb14-6"></a>  df<span class="sc">$</span>BI</span>
+<span id="cb14-7"><a href="#cb14-7"></a>  )</span>
+<span id="cb14-8"><a href="#cb14-8"></a>ctest1<span class="sc">$</span>p.value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.07096407</code></pre>
+</div>
+</div>
+<div class="webex-check webex-box">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>Quiz</b></p>
+<p style="margin-left:1em;">
+AM is independent from TS <select class="webex-select"><option value="blank"></option>
+<option value="NA">TRUE</option>
+<option value="answer">FALSE</option></select><br>AM is independent from TS when conditioning on BI. <select class="webex-select"><option value="blank"></option>
+<option value="answer">TRUE</option>
+<option value="NA">FALSE</option></select></p>
+</span>
+</div>
+<p>We can use the previously constructed tables to automate all tests:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># echo: true</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="co"># Marginal correlations</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>marg_p <span class="ot">&lt;-</span> <span class="fu">apply</span>(marginal, <span class="dv">2</span>, <span class="cf">function</span>(r) {</span>
+<span id="cb16-4"><a href="#cb16-4"></a>  <span class="fu">cor.test</span>(df[, r[<span class="dv">1</span>]], df[, r[<span class="dv">2</span>]])<span class="sc">$</span>p.value })</span>
+<span id="cb16-5"><a href="#cb16-5"></a></span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="co"># Conditional on one variable</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a>c1_p <span class="ot">&lt;-</span> <span class="fu">apply</span>(cond1, <span class="dv">2</span>, <span class="cf">function</span>(r) { </span>
+<span id="cb16-8"><a href="#cb16-8"></a>  <span class="fu">pcor.test</span>(df[, r[<span class="dv">1</span>]], df[, r[<span class="dv">2</span>]], df[, r[<span class="dv">3</span>]])<span class="sc">$</span>p.value })</span>
+<span id="cb16-9"><a href="#cb16-9"></a></span>
+<span id="cb16-10"><a href="#cb16-10"></a><span class="co"># Conditional on both remaining variables</span></span>
+<span id="cb16-11"><a href="#cb16-11"></a>c2_p <span class="ot">&lt;-</span> <span class="fu">apply</span>(cond2, <span class="dv">2</span>, <span class="cf">function</span>(r) {</span>
+<span id="cb16-12"><a href="#cb16-12"></a>  <span class="fu">pcor.test</span>( df[, r[<span class="dv">1</span>]], df[, r[<span class="dv">2</span>]], df[, r[<span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>]] )<span class="sc">$</span>p.value })</span>
+<span id="cb16-13"><a href="#cb16-13"></a></span>
+<span id="cb16-14"><a href="#cb16-14"></a>marg <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">t</span>(marginal), <span class="at">p_value =</span> marg_p, <span class="at">result =</span> <span class="fu">c</span>(<span class="st">"Dependent"</span>, <span class="st">"Independent"</span>)[(marg_p <span class="sc">&gt;</span> alpha)<span class="sc">+</span><span class="dv">1</span>L])</span>
+<span id="cb16-15"><a href="#cb16-15"></a>c1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">t</span>(cond1), <span class="at">p_value =</span> c1_p, <span class="at">result =</span> <span class="fu">c</span>(<span class="st">"Dependent"</span>, <span class="st">"Independent"</span>)[(c1_p <span class="sc">&gt;</span> alpha)<span class="sc">+</span><span class="dv">1</span>L])</span>
+<span id="cb16-16"><a href="#cb16-16"></a>c2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">t</span>(cond2), <span class="at">p_value =</span> c2_p, <span class="at">result =</span> <span class="fu">c</span>(<span class="st">"Dependent"</span>, <span class="st">"Independent"</span>)[(c2_p <span class="sc">&gt;</span> alpha)<span class="sc">+</span><span class="dv">1</span>L])</span>
+<span id="cb16-17"><a href="#cb16-17"></a>marg</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;">X1</th>
+<th style="text-align: left;">X2</th>
+<th style="text-align: right;">p_value</th>
+<th style="text-align: left;">result</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">TS</td>
+<td style="text-align: right;">0.0000228</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">BI</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: right;">0.0000001</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TS</td>
+<td style="text-align: left;">BI</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TS</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: right;">0.0795984</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BI</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>c1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;">X1</th>
+<th style="text-align: left;">X2</th>
+<th style="text-align: left;">X3</th>
+<th style="text-align: right;">p_value</th>
+<th style="text-align: left;">result</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">TS</td>
+<td style="text-align: left;">BI</td>
+<td style="text-align: right;">0.0709641</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">TS</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: right;">0.0001029</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">BI</td>
+<td style="text-align: left;">TS</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">BI</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: left;">TS</td>
+<td style="text-align: right;">0.0000006</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: left;">BI</td>
+<td style="text-align: right;">0.0284249</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TS</td>
+<td style="text-align: left;">BI</td>
+<td style="text-align: left;">AM</td>
+<td style="text-align: right;">0.0000968</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TS</td>
+<td style="text-align: left;">BI</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: right;">0.0000002</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TS</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: left;">AM</td>
+<td style="text-align: right;">0.6037941</td>
+<td style="text-align: left;">Independent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TS</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: left;">BI</td>
+<td style="text-align: right;">0.6581687</td>
+<td style="text-align: left;">Independent</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BI</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: left;">AM</td>
+<td style="text-align: right;">0.0000002</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BI</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: left;">TS</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>c2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;">X1</th>
+<th style="text-align: left;">X2</th>
+<th style="text-align: left;">X3</th>
+<th style="text-align: left;">X4</th>
+<th style="text-align: right;">p_value</th>
+<th style="text-align: left;">result</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">TS</td>
+<td style="text-align: left;">BI</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: right;">0.0606025</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">BI</td>
+<td style="text-align: left;">TS</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: left;">TS</td>
+<td style="text-align: left;">BI</td>
+<td style="text-align: right;">0.0245271</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TS</td>
+<td style="text-align: left;">BI</td>
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: right;">0.0000897</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TS</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">BI</td>
+<td style="text-align: right;">0.4945129</td>
+<td style="text-align: left;">Independent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BI</td>
+<td style="text-align: left;">BH</td>
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">TS</td>
+<td style="text-align: right;">0.0000002</td>
+<td style="text-align: left;">Dependent</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Which conditional independencies were detected?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># echo: true</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>marg[marg<span class="sc">$</span>result <span class="sc">==</span> <span class="st">"Independent"</span>, ]</span>
+<span id="cb19-3"><a href="#cb19-3"></a>c1[c1<span class="sc">$</span>result <span class="sc">==</span> <span class="st">"Independent"</span>, ]</span>
+<span id="cb19-4"><a href="#cb19-4"></a>c2[c2<span class="sc">$</span>result <span class="sc">==</span> <span class="st">"Independent"</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="infer-the-skeleton" class="level4" data-number="7.2.1.3"><h4 data-number="7.2.1.3" class="anchored" data-anchor-id="infer-the-skeleton">
+<span class="header-section-number">7.2.1.3</span> Infer the skeleton</h4>
+<p>We now use the independence relations to infer the underlying graph structure, assuming causal sufficiency and faithfulness (see Pearl).</p>
+<p><strong>Principle 1:</strong> Two variables <em>A</em> and <em>B</em> are directly connected in the DAG (either <em>A</em> -&gt; <em>B</em> or <em>B</em> -&gt; <em>A</em>) if and only if they are still dependent after conditioning on every possible subset of the other variables.</p>
+<p>Use this principle to draw the skeleton of the DAG. Start with a complete undirected graph and remove an edge whenever a pair is independent in at least one of the tests above.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># echo: true</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>adj_full <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span>,</span>
+<span id="cb20-3"><a href="#cb20-3"></a>                   <span class="at">nrow =</span> <span class="fu">length</span>(vars),</span>
+<span id="cb20-4"><a href="#cb20-4"></a>                   <span class="at">ncol =</span> <span class="fu">length</span>(vars),</span>
+<span id="cb20-5"><a href="#cb20-5"></a>                   <span class="at">dimnames =</span> <span class="fu">list</span>(vars, vars))</span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="fu">diag</span>(adj_full) <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a></span>
+<span id="cb20-8"><a href="#cb20-8"></a><span class="fu">qgraph</span>(adj_full, <span class="at">directed =</span> <span class="cn">FALSE</span>, <span class="at">title =</span> <span class="st">"Full Undirected Graph"</span>, <span class="at">title.cex =</span> <span class="fl">1.25</span>, <span class="at">vsize =</span> <span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="causal_discovery_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The following code removes any edge for which at least one marginal or conditional independence was detected.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># echo: true</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a></span>
+<span id="cb21-3"><a href="#cb21-3"></a>adj <span class="ot">&lt;-</span> adj_full</span>
+<span id="cb21-4"><a href="#cb21-4"></a></span>
+<span id="cb21-5"><a href="#cb21-5"></a>independent_pairs <span class="ot">&lt;-</span> <span class="fu">unique</span>(<span class="fu">rbind</span>(</span>
+<span id="cb21-6"><a href="#cb21-6"></a>  marg[marg<span class="sc">$</span>result <span class="sc">==</span> <span class="st">"Independent"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb21-7"><a href="#cb21-7"></a>  c1[c1<span class="sc">$</span>result <span class="sc">==</span> <span class="st">"Independent"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],</span>
+<span id="cb21-8"><a href="#cb21-8"></a>  c2[c2<span class="sc">$</span>result <span class="sc">==</span> <span class="st">"Independent"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
+<span id="cb21-9"><a href="#cb21-9"></a>))</span>
+<span id="cb21-10"><a href="#cb21-10"></a></span>
+<span id="cb21-11"><a href="#cb21-11"></a><span class="cf">if</span> (<span class="fu">nrow</span>(independent_pairs) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb21-12"><a href="#cb21-12"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(<span class="fu">nrow</span>(independent_pairs))) {</span>
+<span id="cb21-13"><a href="#cb21-13"></a>    a <span class="ot">&lt;-</span> independent_pairs[i, <span class="dv">1</span>]</span>
+<span id="cb21-14"><a href="#cb21-14"></a>    b <span class="ot">&lt;-</span> independent_pairs[i, <span class="dv">2</span>]</span>
+<span id="cb21-15"><a href="#cb21-15"></a>    adj[a, b] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb21-16"><a href="#cb21-16"></a>    adj[b, a] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb21-17"><a href="#cb21-17"></a>  }</span>
+<span id="cb21-18"><a href="#cb21-18"></a>}</span>
+<span id="cb21-19"><a href="#cb21-19"></a></span>
+<span id="cb21-20"><a href="#cb21-20"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb21-21"><a href="#cb21-21"></a></span>
+<span id="cb21-22"><a href="#cb21-22"></a><span class="fu">qgraph</span>(</span>
+<span id="cb21-23"><a href="#cb21-23"></a>  adj_full,</span>
+<span id="cb21-24"><a href="#cb21-24"></a>  <span class="at">directed =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb21-25"><a href="#cb21-25"></a>  <span class="at">title =</span> <span class="st">"Full Undirected Graph"</span>,</span>
+<span id="cb21-26"><a href="#cb21-26"></a>  <span class="at">title.cex =</span> <span class="fl">1.25</span>,</span>
+<span id="cb21-27"><a href="#cb21-27"></a>  <span class="at">vsize =</span> <span class="dv">15</span></span>
+<span id="cb21-28"><a href="#cb21-28"></a>  )</span>
+<span id="cb21-29"><a href="#cb21-29"></a></span>
+<span id="cb21-30"><a href="#cb21-30"></a><span class="fu">qgraph</span>(</span>
+<span id="cb21-31"><a href="#cb21-31"></a>  adj,</span>
+<span id="cb21-32"><a href="#cb21-32"></a>  <span class="at">directed =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb21-33"><a href="#cb21-33"></a>  <span class="at">title =</span> <span class="st">"Estimated Skeleton"</span>,</span>
+<span id="cb21-34"><a href="#cb21-34"></a>  <span class="at">title.cex =</span> <span class="fl">1.25</span>,</span>
+<span id="cb21-35"><a href="#cb21-35"></a>  <span class="at">vsize =</span> <span class="dv">15</span></span>
+<span id="cb21-36"><a href="#cb21-36"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="causal_discovery_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="interpret-the-skeleton." class="level4" data-number="7.2.1.4"><h4 data-number="7.2.1.4" class="anchored" data-anchor-id="interpret-the-skeleton.">
+<span class="header-section-number">7.2.1.4</span> Interpret the skeleton.</h4>
+<p><code>quiz( "Which of these pairs is not directly connected?" = c(answer = "BH and TS", "BH and BI", "AM and TS", "TS and BH"), "What is the p-value of the conditional independence test with the fewest covariates justifying the removal of that link?" = c(0.658, .01)) )</code></p>
+</section><section id="orient-collider-structures" class="level4" data-number="7.2.1.5"><h4 data-number="7.2.1.5" class="anchored" data-anchor-id="orient-collider-structures">
+<span class="header-section-number">7.2.1.5</span> Orient collider structures</h4>
+<p>Having obtained the skeleton, we can try to orient as many edges as possible. Our ability to orient arrows using conditional-independence information depends especially on collider structures.</p>
+<p><strong>Principle 2:</strong> If the skeleton contains a triplet <em>A</em> − <em>B</em> − <em>C</em>, with no edge between <em>A</em> and <em>C</em>, we can orient it as <em>A</em> -&gt; <em>B</em> &lt;- <em>C</em> when <em>B</em> is not in a separating set that renders <em>A</em> and <em>C</em> independent.</p>
+<p>This is a restatement of the d-separation behavior of colliders.</p>
+<p>Inspect the unshielded triplets in your estimated skeleton. Which, if any, can be oriented as colliders? What CPDAG do the observed independence relations imply?</p>
+<p>At this stage, doing the exercise by hand is useful. In the next section, we will use the PC algorithm to perform these steps systematically.</p>
+</section><section id="markov-equivalence-and-causal-effects" class="level4" data-number="7.2.1.6"><h4 data-number="7.2.1.6" class="anchored" data-anchor-id="markov-equivalence-and-causal-effects">
+<span class="header-section-number">7.2.1.6</span> Markov equivalence and causal effects</h4>
+<p>Suppose we are interested in the causal effect of AM on ACP. Depending on the DAG in the equivalence class, different adjustment sets may be required. Why can different DAGs that fit the same observational independence structure imply different causal-effect estimates?</p>
+<p>The next section uses <code>pcalg</code> to estimate the CPDAG and <code>ida()</code> to quantify this ambiguity directly.</p>
+</section></section><section id="intro-to-the-pc-algorithm" class="level3" data-number="7.2.2"><h3 data-number="7.2.2" class="anchored" data-anchor-id="intro-to-the-pc-algorithm">
+<span class="header-section-number">7.2.2</span> Intro to the PC algorithm</h3>
+<p>The approach above is instructive but inefficient. Once we learn that two variables are independent under some conditioning set, we already know that their edge should be removed from the skeleton. There is no need to continue testing every larger conditioning set merely to decide whether that edge exists. The <strong>PC algorithm</strong> uses this logic to estimate the skeleton efficiently.</p>
+<p>We can use <code>gaussCItest</code> to get an independence test based on partial correlations, just as we did in the manual approach. Setting the alpha level of <code>.10</code> again ensures that we match the manual exercise.</p>
+<p>The algorithm uses sufficient statistics rather than the raw data. Here, we put the correlation matrix and sample size into an object:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># echo: true</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>suffStat <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">C =</span> <span class="fu">cor</span>(df), <span class="at">n =</span> <span class="fu">nrow</span>(df))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="estimate-the-skeleton" class="level4" data-number="7.2.2.1"><h4 data-number="7.2.2.1" class="anchored" data-anchor-id="estimate-the-skeleton">
+<span class="header-section-number">7.2.2.1</span> Estimate the Skeleton</h4>
+<p>Use the <code>skeleton()</code>function to automatically estimate the skeleton:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># echo: true</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a></span>
+<span id="cb24-3"><a href="#cb24-3"></a>res_skel <span class="ot">&lt;-</span> <span class="fu">skeleton</span>(<span class="at">suffStat =</span> suffStat,</span>
+<span id="cb24-4"><a href="#cb24-4"></a>                     <span class="at">indepTest =</span> gaussCItest,</span>
+<span id="cb24-5"><a href="#cb24-5"></a>                     <span class="at">alpha =</span> alpha,</span>
+<span id="cb24-6"><a href="#cb24-6"></a>                     <span class="at">labels =</span> vars)</span>
+<span id="cb24-7"><a href="#cb24-7"></a></span>
+<span id="cb24-8"><a href="#cb24-8"></a><span class="fu">qgraph</span>(res_skel, <span class="at">directed =</span> <span class="cn">FALSE</span>, <span class="at">title =</span> <span class="st">"Estimated Skeleton"</span>, <span class="at">title.cex =</span> <span class="fl">1.25</span>, <span class="at">asize =</span> <span class="dv">8</span>, <span class="at">vsize =</span> <span class="dv">15</span> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="causal_discovery_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Compare this skeleton with your hand-derived one. Are there any discrepancies? If so, inspect the conditional-independence tests that produced it.</p>
+</section><section id="estimate-the-cpdag" class="level4" data-number="7.2.2.2"><h4 data-number="7.2.2.2" class="anchored" data-anchor-id="estimate-the-cpdag">
+<span class="header-section-number">7.2.2.2</span> Estimate the CPDAG</h4>
+<p>The <code><a href="https://rdrr.io/pkg/pcalg/man/pc.html">pcalg::pc()</a></code> function constructs the skeleton and then orients any collider structures and other compelled edges to construct a DAG. Because there are often multiple ways that edges could be oriented, the algorithm returns a completed partially directed acyclic graph (CPDAG). A CPDAG is consistent with <em>multiple candidate DAGs</em> (where all edges are oriented). These DAGs are statistically indistinguishable. We call this group of DAGs the <strong>Markov equivalence class</strong>.</p>
+<p>Use the PC algorithm with an alpha level of <code>.10</code>, matching the manual exercise:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># echo: true</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>pc_fit <span class="ot">&lt;-</span> <span class="fu">pc</span>(</span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="at">suffStat =</span> suffStat,</span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="at">indepTest =</span> gaussCItest,</span>
+<span id="cb25-5"><a href="#cb25-5"></a>  <span class="at">alpha =</span> alpha,</span>
+<span id="cb25-6"><a href="#cb25-6"></a>  <span class="at">labels =</span> vars,</span>
+<span id="cb25-7"><a href="#cb25-7"></a>  <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a>  )</span>
+<span id="cb25-9"><a href="#cb25-9"></a></span>
+<span id="cb25-10"><a href="#cb25-10"></a><span class="fu">plot</span>(pc_fit, <span class="at">main =</span> <span class="st">"Inferred CPDAG using pcalg"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="causal_discovery_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>What does the PC algorithm recover?</strong></p>
+<div class="webex-check webex-box">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>Quiz</b></p>
+<p style="margin-left:1em;">
+According to the graph, behavior causes behavioral intentions. <select class="webex-select"><option value="blank"></option>
+<option value="answer">TRUE</option>
+<option value="NA">FALSE</option></select><br>According to the graph, there is a connection between teacher stress and autonomous motivation, but it's not oriented. <select class="webex-select"><option value="blank"></option>
+<option value="answer">TRUE</option>
+<option value="NA">FALSE</option></select><br>According to the graph, teacher stress causes sports behavior. <select class="webex-select"><option value="blank"></option>
+<option value="NA">TRUE</option>
+<option value="answer">FALSE</option></select></p>
+</span>
+</div>
+</section><section id="enumerate-the-dags-in-the-equivalence-class" class="level4" data-number="7.2.2.3"><h4 data-number="7.2.2.3" class="anchored" data-anchor-id="enumerate-the-dags-in-the-equivalence-class">
+<span class="header-section-number">7.2.2.3</span> Enumerate the DAGs in the equivalence class</h4>
+<p>We can use <code>pdag2allDags()</code> to enumerate all DAGs in the equivalence class of the estimated CPDAG.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># echo: true</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>res <span class="ot">&lt;-</span> <span class="fu">pdag2allDags</span>(<span class="fu">as</span>(pc_fit, <span class="st">"matrix"</span>))</span>
+<span id="cb26-3"><a href="#cb26-3"></a>res_dags <span class="ot">&lt;-</span> <span class="fu">apply</span>(res<span class="sc">$</span>dags, <span class="dv">1</span>, <span class="cf">function</span>(r) {</span>
+<span id="cb26-4"><a href="#cb26-4"></a>  <span class="fu">matrix</span>(</span>
+<span id="cb26-5"><a href="#cb26-5"></a>    r,</span>
+<span id="cb26-6"><a href="#cb26-6"></a>    <span class="at">nrow =</span> <span class="fu">ncol</span>(df),</span>
+<span id="cb26-7"><a href="#cb26-7"></a>    <span class="at">ncol =</span> <span class="fu">ncol</span>(df),</span>
+<span id="cb26-8"><a href="#cb26-8"></a>    <span class="at">dimnames =</span> <span class="fu">list</span>(vars, vars)</span>
+<span id="cb26-9"><a href="#cb26-9"></a>  )</span>
+<span id="cb26-10"><a href="#cb26-10"></a>}, <span class="at">simplify =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb26-11"><a href="#cb26-11"></a></span>
+<span id="cb26-12"><a href="#cb26-12"></a><span class="fu">length</span>(res_dags)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<p>If the equivalence class is reasonably small, plot all of its DAGs:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># echo: true</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="co">#| eval: true</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a></span>
+<span id="cb28-4"><a href="#cb28-4"></a><span class="cf">if</span> (<span class="fu">length</span>(res_dags) <span class="sc">&lt;=</span> <span class="dv">12</span>) {</span>
+<span id="cb28-5"><a href="#cb28-5"></a>  old_par <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="fu">ceiling</span>(<span class="fu">length</span>(res_dags) <span class="sc">/</span> <span class="dv">3</span>), <span class="dv">3</span>))</span>
+<span id="cb28-6"><a href="#cb28-6"></a></span>
+<span id="cb28-7"><a href="#cb28-7"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(res_dags)) { </span>
+<span id="cb28-8"><a href="#cb28-8"></a>    <span class="fu">qgraph</span>( res_dags[[i]], <span class="at">directed =</span> <span class="cn">TRUE</span>, <span class="at">asize =</span> <span class="dv">8</span>, <span class="at">vsize =</span> <span class="dv">12</span>, <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"DAG"</span>, i) ) </span>
+<span id="cb28-9"><a href="#cb28-9"></a>  }</span>
+<span id="cb28-10"><a href="#cb28-10"></a>  <span class="fu">par</span>(old_par)</span>
+<span id="cb28-11"><a href="#cb28-11"></a>} <span class="cf">else</span> {</span>
+<span id="cb28-12"><a href="#cb28-12"></a>  <span class="fu">cat</span>( <span class="st">"The estimated equivalence class contains"</span>, <span class="fu">length</span>(res_dags), <span class="st">"DAGs, so they are not all plotted here."</span> )</span>
+<span id="cb28-13"><a href="#cb28-13"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="causal_discovery_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>quiz( "All DAGs agree about the effect of:" = c(answer = "TS on BI", "AM on BH", "AM on TS"), "There is ambiguity about the effect of:" = c(answer = "AM on BH", "TS on BI", "AM on BI"), "It is theoretically plausible that BH causes BI." = FALSE)</code></p>
+</section></section><section id="causal-inference-with-the-pc-algorithm" class="level3" data-number="7.2.3"><h3 data-number="7.2.3" class="anchored" data-anchor-id="causal-inference-with-the-pc-algorithm">
+<span class="header-section-number">7.2.3</span> Causal Inference with the PC Algorithm</h3>
+<p>We now apply the same PC result to theoretically meaningful questions involving all four constructs.</p>
+<p>Recall the substantive interpretation:</p>
+<ul>
+<li>
+<strong>AM</strong>: Autonomous motivation, as an operationalization of one of the fundamental needs.</li>
+<li>
+<strong>TS</strong> Social pressure (social stress), as an operationalization of “external events”</li>
+<li>
+<strong>BI</strong>: Behavioral intention, which we will interpret as an operationalization of integration.</li>
+<li>
+<strong>BH</strong>: Sports behavior, as a context-specific operationalization of healthy development.</li>
+</ul>
+<p>First, lets make a vector of the order of our variables, so we can later easily find their row/column positions:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>var_pos <span class="ot">&lt;-</span> <span class="fu">seq_along</span>(vars)</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="fu">names</span>(var_pos) <span class="ot">&lt;-</span> vars</span>
+<span id="cb29-3"><a href="#cb29-3"></a>var_pos</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>AM TS BI BH 
+ 1  2  3  4 </code></pre>
+</div>
+</div>
+<p>So AM is variable 1 and BH is variable 4.</p>
+<section id="estimate-the-effect-of-autonomous-motivation-on-sports-behavior" class="level4" data-number="7.2.3.1"><h4 data-number="7.2.3.1" class="anchored" data-anchor-id="estimate-the-effect-of-autonomous-motivation-on-sports-behavior">
+<span class="header-section-number">7.2.3.1</span> Estimate the effect of Autonomous Motivation on Sports Behavior</h4>
+<p>The <code>ida()</code> function estimates the possible total causal effects implied by the different DAGs in the Markov equivalence class.</p>
+<p>Let’s estimate the causal effects of AM on BH using the <code>ida()</code> function:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># echo: true</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a></span>
+<span id="cb31-3"><a href="#cb31-3"></a>effect_AM_BH <span class="ot">&lt;-</span> <span class="fu">ida</span>( <span class="at">x.pos =</span> var_pos[<span class="st">"AM"</span>], <span class="at">y.pos =</span> var_pos[<span class="st">"BH"</span>], <span class="at">mcov =</span> <span class="fu">cov</span>(df), <span class="at">graphEst =</span> pc_fit<span class="sc">@</span>graph, <span class="at">verbose =</span> <span class="cn">TRUE</span> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+x= 1 y= 4 
+pa1=  
+pa2= 2 4 
+Fit - y: 4 x: 1 |b.hat= 0.3114885 
+Fit - y: 4 x: 1 2 |b.hat= 0.3039009 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>effect_AM_BH</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3114885 0.3039009 0.0000000</code></pre>
+</div>
+</div>
+<p><code>quiz("How many causal estimates do you obtain?" = 3L, "This means there is uncertainty about this effect." = TRUE)</code></p>
+</section><section id="autonomous-motivation-and-sports-behavior" class="level4" data-number="7.2.3.2"><h4 data-number="7.2.3.2" class="anchored" data-anchor-id="autonomous-motivation-and-sports-behavior">
+<span class="header-section-number">7.2.3.2</span> Autonomous Motivation and Sports Behavior</h4>
+<p>Estimate the possible causal effects of AM on BH:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># echo: true</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a></span>
+<span id="cb35-3"><a href="#cb35-3"></a><span class="fu">ida</span>(</span>
+<span id="cb35-4"><a href="#cb35-4"></a>  <span class="at">x.pos =</span> <span class="fu">which</span>(vars <span class="sc">==</span> <span class="st">"AM"</span>),</span>
+<span id="cb35-5"><a href="#cb35-5"></a>  <span class="at">y.pos =</span> <span class="fu">which</span>(vars <span class="sc">==</span> <span class="st">"BH"</span>),</span>
+<span id="cb35-6"><a href="#cb35-6"></a>  <span class="at">mcov =</span> <span class="fu">cov</span>(df),</span>
+<span id="cb35-7"><a href="#cb35-7"></a>  <span class="at">graphEst =</span> pc_fit<span class="sc">@</span>graph,</span>
+<span id="cb35-8"><a href="#cb35-8"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span></span>
+<span id="cb35-9"><a href="#cb35-9"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+x= 1 y= 4 
+pa1=  
+pa2= 2 4 
+Fit - y: 4 x: 1 |b.hat= 0.3114885 
+Fit - y: 4 x: 1 2 |b.hat= 0.3039009 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3114885 0.3039009 0.0000000</code></pre>
+</div>
+</div>
+<p><strong>Interpret the result in substantive terms.</strong></p>
+<p>Does this result make sense? What does that say about the quality of the PC-constructed DAG?</p>
+</section><section id="the-effect-of-teacher-pressure-on-autonomous-motivation" class="level4" data-number="7.2.3.3"><h4 data-number="7.2.3.3" class="anchored" data-anchor-id="the-effect-of-teacher-pressure-on-autonomous-motivation">
+<span class="header-section-number">7.2.3.3</span> The Effect of Teacher Pressure on Autonomous Motivation</h4>
+<p>Estimate the possible causal effects of TS on AM.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># echo: true</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a></span>
+<span id="cb38-3"><a href="#cb38-3"></a><span class="fu">ida</span>( <span class="at">x.pos =</span> <span class="fu">which</span>(vars <span class="sc">==</span> <span class="st">"TS"</span>), <span class="at">y.pos =</span> <span class="fu">which</span>(vars <span class="sc">==</span></span>
+<span id="cb38-4"><a href="#cb38-4"></a><span class="st">"AM"</span>), <span class="at">mcov =</span> <span class="fu">cov</span>(df), <span class="at">graphEst =</span> pc_fit<span class="sc">@</span>graph,</span>
+<span id="cb38-5"><a href="#cb38-5"></a><span class="at">verbose =</span> <span class="cn">TRUE</span> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+x= 2 y= 1 
+pa1=  
+pa2= 1 
+Fit - y: 1 x: 2 |b.hat= -0.2907332 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.2907332  0.0000000</code></pre>
+</div>
+</div>
+<div class="webex-check webex-box">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>Quiz</b></p>
+<p style="margin-left:1em;">
+How many possible effect estimates are returned? <input class="webex-solveme nospaces" size="1" data-answer="[&quot;1&quot;]"><br>There is ambiguity about this causal effect. <select class="webex-select"><option value="blank"></option>
+<option value="NA">TRUE</option>
+<option value="answer">FALSE</option></select></p>
+</span>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># echo: true</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a></span>
+<span id="cb41-3"><a href="#cb41-3"></a><span class="fu">ida</span>(</span>
+<span id="cb41-4"><a href="#cb41-4"></a>  <span class="at">x.pos =</span> <span class="fu">which</span>(vars <span class="sc">==</span> <span class="st">"TS"</span>),</span>
+<span id="cb41-5"><a href="#cb41-5"></a>  <span class="at">y.pos =</span> <span class="fu">which</span>(vars <span class="sc">==</span> <span class="st">"AM"</span>),</span>
+<span id="cb41-6"><a href="#cb41-6"></a>  <span class="at">mcov =</span> <span class="fu">cov</span>(df),</span>
+<span id="cb41-7"><a href="#cb41-7"></a>  <span class="at">graphEst =</span> pc_fit<span class="sc">@</span>graph,</span>
+<span id="cb41-8"><a href="#cb41-8"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span></span>
+<span id="cb41-9"><a href="#cb41-9"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+
+x= 2 y= 1 
+pa1=  
+pa2= 1 
+Fit - y: 1 x: 2 |b.hat= -0.2907332 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.2907332  0.0000000</code></pre>
+</div>
+</div>
+</section></section><section id="your-own-theory" class="level3" data-number="7.2.4"><h3 data-number="7.2.4" class="anchored" data-anchor-id="your-own-theory">
+<span class="header-section-number">7.2.4</span> Your Own Theory</h3>
+<p>The PC algorithm uses statistical rules of thumb to construct DAGs; it does not know your underlying theory.</p>
+<p>At this point you may ask: Do the DAGs constructed by <code>pcalg()</code> make sense? If you used only expert knowledge, what DAG would you construct?</p>
+<p>While it’s possible to add background knowledge to a CPDAG, here we just construct a DAG by hand:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># Example DAG adjacency matrix</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a>theory_dag <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb44-3"><a href="#cb44-3"></a>  <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb44-4"><a href="#cb44-4"></a>  <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb44-5"><a href="#cb44-5"></a>  <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb44-6"><a href="#cb44-6"></a>  <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb44-7"><a href="#cb44-7"></a>  <span class="at">nrow =</span> <span class="dv">4</span>,</span>
+<span id="cb44-8"><a href="#cb44-8"></a>  <span class="at">dimnames =</span> <span class="fu">list</span>(vars, vars))</span>
+<span id="cb44-9"><a href="#cb44-9"></a><span class="fu">qgraph</span>(theory_dag, <span class="at">directed =</span> <span class="cn">TRUE</span>, <span class="at">title =</span> <span class="st">"Theoretical DAG"</span>, <span class="at">title.cex =</span> <span class="fl">1.25</span>, <span class="at">asize =</span> <span class="dv">8</span>, <span class="at">vsize =</span> <span class="dv">15</span> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="causal_discovery_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can use this DAG to conduct causal inference too; just pick your predictor and outcome (x and y), and control for the parents of x:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>x <span class="ot">&lt;-</span> <span class="st">"TS"</span></span>
+<span id="cb45-2"><a href="#cb45-2"></a>y <span class="ot">&lt;-</span> <span class="st">"AM"</span></span>
+<span id="cb45-3"><a href="#cb45-3"></a></span>
+<span id="cb45-4"><a href="#cb45-4"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<span id="cb45-5"><a href="#cb45-5"></a>  <span class="fu">as.formula</span>(<span class="fu">paste0</span>(y, <span class="st">" ~ "</span>, <span class="fu">paste0</span>(<span class="fu">c</span>(x, <span class="fu">rownames</span>(theory_dag)[<span class="fu">which</span>(theory_dag[, x] <span class="sc">==</span> <span class="dv">1</span>)]), <span class="at">collapse =</span> <span class="st">" + "</span>))),</span>
+<span id="cb45-6"><a href="#cb45-6"></a>  <span class="at">data =</span> df</span>
+<span id="cb45-7"><a href="#cb45-7"></a>)</span>
+<span id="cb45-8"><a href="#cb45-8"></a><span class="fu">summary</span>(fit)<span class="sc">$</span>coefficients[<span class="dv">2</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Estimate    Std. Error       t value      Pr(&gt;|t|) 
+-2.907332e-01  6.751635e-02 -4.306115e+00  2.280825e-05 </code></pre>
+</div>
+</div>
+</section><section id="concluding-thoughts" class="level3" data-number="7.2.5"><h3 data-number="7.2.5" class="anchored" data-anchor-id="concluding-thoughts">
+<span class="header-section-number">7.2.5</span> Concluding Thoughts</h3>
+<p>This illustrates that the graph estimated by the PC algorithm should not be treated as the “true” causal structure. There is still a place for expert knowledge. However, explicit assumptions regarding causality can be very useful. Think back on last week’s machine learning analyses, for example. Do you think that all of the important predictors of the outcome you chose are in fact causes of it? Or is it possible that some of the predictors are <em>caused by</em> your chosen outcome, or correlated with it for irrelevant reasons?</p>
+</section></section><section id="homework" class="level2" data-number="7.3"><h2 data-number="7.3" class="anchored" data-anchor-id="homework">
+<span class="header-section-number">7.3</span> Homework</h2>
+<p>Apply the causal discovery pipeline from the tutorial to the dataset you prepared for last week’s machine learning analysis.</p>
+<p>Interpret the results you’ve obtained, and reflect on your previous theory (the DAG). Do you see any causal links that are not in your DAG but should be? Did you learn anything new about the direction of effects? Are any of the links counterintuitive or wrong? Write your reflections down to become part of your final report.</p>
+
+
+</section></main><!-- /main --><script>
+// open rdrr links externally ----
+
+var exlinks = document.querySelectorAll("a[href^='https://rdrr.io']");
+var exlink_func = function(){
+  window.open(this.href);
+  return false;
+};
+for (var i = 0; i < exlinks.length; i++) {
+    exlinks[i].addEventListener('click', exlink_func, false);
+}
+
+// visible second sidebar in mobile ----
+
+function move_sidebar() {
+  var toc = document.getElementById("TOC");
+  var small_sidebar = document.querySelector("#quarto-sidebar .sidebar-menu-container");
+  var right_sidebar = document.getElementById("quarto-margin-sidebar");
+
+  if (window.innerWidth < 768) {
+    small_sidebar.append(toc);
+  } else {
+    right_sidebar.append(toc);
+  }
+}
+move_sidebar();
+window.onresize = move_sidebar;
+</script><script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  update_total_correct();
+}
+
+</script><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./ml_informed.html" class="pagination-link" aria-label="Machine Learning-Informed Theory Construction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine Learning-Informed Theory Construction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./fair_theory.html" class="pagination-link" aria-label="FAIR Theory">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">FAIR Theory</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>CC-BY (2026) Caspar J. Van Lissa</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+</body></html>

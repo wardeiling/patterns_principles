@@ -72,7 +72,7 @@ At minimum, it's useful to always have one Facilitator. If your group tends to b
 ### Course materials
 
 **You do not need a book for this course.** This GitBook provides all relevant course materials,
-along with primary literature.
+along with primary literature linked in the GitBook.
 
 ### Course schedule 
 
@@ -81,11 +81,13 @@ For an overview of the content, see below:
 
 ```{r, results = "asis", echo = FALSE}
 library(DT)
-schedule <- readODS::read_ods("schedule2.ods")
-schedule <- schedule[rowSums(is.na(schedule)) < 12, c("Dates", "Activities", "Topic", "Assessment", "Homework")]
-
-make_table(schedule)
-
+schedule <- readODS::read_ods("schedule.ods")
+schedule <- schedule[rowSums(is.na(schedule)) <12,]
+if(knitr::is_html_output()){
+  schedule$file <- gsub(".qmd", ".html", schedule$file, fixed = TRUE)
+  schedule$Topic <- paste0("[", schedule$Topic, "](", schedule$file, ")")
+}
+make_table(schedule[,  c("Dates", "Activities", "Topic", "Assessment")])
 ```
 
 
@@ -103,28 +105,18 @@ Communication about the course occurs through Canvas (Login with your student ID
 
 **Lab sessions**
 
-TBD
-<!-- [Danielle McCool](https://www.uu.nl/staff/DMMcCool) -->
-<!-- [Laura Hofstee](https://www.uu.nl/staff/LHofstee) -->
-
+[Ward Eiling](https://www.tilburguniversity.edu/staff/w-b-eiling)
 
 
 ## Contact hours
 
-This course consists of 14 lectures and 11 lab sessions (LA).
-<!-- Attendance is not mandatory (this applies to both the lectures and lab sessions), but experience shows that it is very unlikely that students who do not attend will pass the course. -->
+This course consists of 8 lectures (HC) and 8 lab sessions (WC).
 
-The course consists of a common part and a major specific part. The first 10 lectures are common lectures, which means they have to be followed by students from all majors (i.e., business and economics, cognitive neuroscience and social sciences). The last four lectures are major specific. 
+During the lectures, we mostly discuss the literature assigned for that week. Before each lecture, you will complete a small multiple choice exam (4 questions) about that week's reading which contributes to your grade.
 
-During the lab sessions you will work on applied exercises supervised by a teaching-assistant. These exercises are always related to topics discussed during the lectures.
-The assignments of the SPSS lab sessions are available via Canvas. You will be able to ask your lab teacher questions during the lab sessions. 
+During the lab sessions you will work on applied exercises supervised by a teaching assistant. These exercises are always related to topics discussed during the lectures, and most of them contribute to your final assignment - either directly, or by teaching you skills to apply to your own assignment as part of the homework.
 
 
 ## Software
 
-The official software for this course is SPSS, which is available on the university computers. However, there are many free alternatives to SPSS. If you want to use your own computer, you might consider trying one of these:
-
-*	PSPP, which is designed to be nearly identical to SPSS with all the same basic functionality: https://www.gnu.org/software/pspp/pspp.html
-* JASP, which is more modern, looks nicer and is very easy to use – but less similar to SPSS: 
-https://jasp-stats.org/
-
+The official software for this course is R, which you should install on your laptop as explained in @sec-setup.

@@ -3,8 +3,8 @@
 ## Weekly Readings
 
 ```{r echo = FALSE, results = "asis"}
-schedule <- readODS::read_ods("schedule3.ods")
-cat(paste0("* ", strsplit(schedule$Reading[5], split = "\n")[[1]]), sep = "\n")
+schedule <- readODS::read_ods("schedule.ods")
+cat(paste0("* ", strsplit(schedule$Reading[which(schedule$file == "formal_theory.qmd")], split = "\n")[[1]]), sep = "\n")
 ```
 
 ## Tutorial
@@ -133,7 +133,8 @@ Do not try all of these, instead, discuss which one should capture the pattern y
 For example, to obtain a summary of all variables in the dataset:
 
 ```{r echo = TRUE}
-worcs::descriptives(df)
+desc <- worcs::descriptives(df)
+print(desc, digits = 2)
 ```
 
 This gives you information such as the **minimum, maximum, median, mean**.

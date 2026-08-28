@@ -1,4 +1,4 @@
-# Setup your Computer {.unnumbered}
+# Setup your Computer {#sec-setup}
 
 
 ```{r, include = FALSE}

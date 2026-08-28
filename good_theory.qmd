@@ -3,8 +3,8 @@
 ## Weekly Readings
 
 ```{r, results = "asis"}
-schedule <- readODS::read_ods("schedule2.ods")
-cat(paste0("* ", strsplit(schedule$Reading[2], split = "\n")[[1]]), sep = "\n")
+schedule <- readODS::read_ods("schedule.ods")
+cat(paste0("* ", strsplit(schedule$Reading[which(schedule$file == "good_theory.qmd")], split = "\n")[[1]]), sep = "\n")
 ```
 
 ## Tutorial

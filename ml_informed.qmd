@@ -28,19 +28,19 @@ Another approach is to choose one, two, or three construct names from your theor
 
 #### SDT Example: Codebook
 
-I used the search term `"self determination theory"`, and read the descriptions of the datasets until I found the one by Nguyen and Xiem (2026) on "mental health, academic motivation, and perceived academic performance among Vietnamese students in online learning". It contains operationalizations of a few SDT constructs in the specific context of online learning (thus, we can debate how well this generalizes to SDT in general settings).
+I used the search term `"self determination theory"`, and read the descriptions of the datasets until I found the one by Zhao and Xu (2025) on "mental health, academic motivation, and perceived academic performance among Vietnamese students in online learning". It contains operationalizations of a few SDT constructs in the specific context of middle school students' academic stress and physical exercise behavior (we can debate how well this generalizes to SDT in general settings).
 That's about as good an example as you can expect to find on short notice.
 My dataset contains the following variables:
 
 ```{r}
-tab_codebook <- read.csv("codebook_nguyen_2026.csv")
+tab_codebook <- read.csv("zhao_2025.csv")
 knitr::kable(tab_codebook)
 ```
 
 
 ### Step 2: Preprocess the Data (30 minutes)
 
-You will find a file called `prepare_nguyen_2026.R` in the `patterns_principles_exercises` project.
+You will find a file called `prepare_zhao_2025.R` in the `patterns_principles_exercises` project.
 Open that file.
 Each section of code performs a specific data preprocessing step, as explained in the comments.
 Work through the file one step at a time to prepare your own dataset for analysis.
@@ -50,7 +50,7 @@ Just remove any variables that are not well-behaved.
 
 ### Step 3: Run the Analysis (20 minutes)
 
-You will find a file called `analysis_nguyen_2026.R` in the `patterns_principles_exercises` project. Open that file, and skim the comments to get a sense of the analysis steps.
+You will find a file called `analysis_zhao_2025.R` in the `patterns_principles_exercises` project. Open that file, and skim the comments to get a sense of the analysis steps.
 If you have performed the data cleaning correctly, you should be able to run that file in its entirety without errors, and get machine learning results for your own theory.
 
 
@@ -71,13 +71,22 @@ The first thing we do is interpret the table with model fits. Here, we use $R^2$
 
 ```{r results='markdown'}
 table_fits <- read.csv("table_fits.csv")
-names(table_fits) <- c("Model", "$R^2_{train}$", "$R^2_{test}$")
+if(knitr::is_latex_output()){
+  names(table_fits) <- c("Model", "$R^2_{train}$", "$R^2_{test}$")
+} else {
+  names(table_fits) <- c("Model", "R<sup>2</sup><sub>train</sub>", "R<sup>2</sup><sub>test</sub>")
+}
 kableExtra::kbl(table_fits, digits = 2, escape = FALSE)
 ```
 
-To pick the best model, it's most useful to look at $R^2_{test}$, because $R^2_{train}$ can be overly optimistic - a sufficiently complex model can literally memorize the correct value for all the training data, achieving an $R^2_{train} = 1.00$ but an abysmal $R^2_{test}$. The $R^2_{test}$ does not suffer from this bias, and it gives you an impression of how well your model generalizes to new data.
+To pick the best model, it's most useful to look at $R^2_{test}$, because $R^2_{train}$ can be overly optimistic - a sufficiently complex model can literally memorize the correct value for all the training data, achieving a very high $R^2_{train} = 1.00$ but an abysmal $R^2_{test}$. 
+This phenomenon is called "overfitting".
 
-Note that according to this metric, the random forest model is best. However, a random forest model is not interpretable - although you can analyze its predictions using measures like variable importance and partial dependence plots. Note that the LASSO model is almost equally good - and it is very straightforwardly interpretable. From a theory construction perspective, you might thus choose the LASSO model because it combines near-peak performance with high interpretability. Also note that the differences between models are not that big. Even a symbolic regression model - which is just a linear function of one predictor (see below) - performs quite well.
+`r quiz("Which model seems to be most overfit?" = c(answer = "Regression tree", "Random forest", "LASSO", "Symbolic regression"), "Which model is least overfit?" = c(answer = "LASSO", "Symbolic regression", "Regression tree", "Random forest"), "The $R^2_{train}$ is positively biased" = TRUE, "The $R^2_{test}$ tells you how well your model generalizes to new data." = TRUE)`
+
+Note that according to this metric, the random forest model is best. However, a random forest model is not interpretable - although you can analyze its predictions using measures like variable importance and partial dependence plots. Note that the LASSO model is almost equally good - and it is very straightforwardly interpretable. From a theory construction perspective, you might thus choose the LASSO model because it combines near-peak performance with high interpretability. 
+The regression tree performs unacceptably (making much worse predictors than just taking the mean of the training data as prediction).
+The symbolic regression model performs worse, but not completely unacceptably.
 
 #### Interpret LASSO
 
@@ -86,12 +95,18 @@ To interpret the LASSO model, we look at its regression coefficients. These are 
 ```{r}
 tab_lasso <- read.csv("table_lasso_coef.csv")
 tab_lasso$X <- gsub("_", ".", tab_lasso$X, fixed=TRUE)
-tab_lasso <- tab_lasso[order(tab_lasso[[2]], decreasing = TRUE), ]
-names(tab_lasso) <- c("Predictor", "$b_{\\lambda 1se}$")
+#tab_lasso <- tab_lasso[order(abs(tab_lasso[[2]]), decreasing = TRUE), ]
+if(knitr::is_latex_output()){
+  names(tab_lasso) <- c("Predictor", "$b_{\\lambda 1se}$")
+} else {
+ names(tab_lasso) <- c("Predictor", "b_lambda_1se") 
+}
 kableExtra::kbl(tab_lasso, digits = 2, escape = F, row.names = FALSE)
 ```
 
-We see that ACP, MEH, AUT, and REL are retained as relevant predictors, of which ACP is by far the most important one.
+
+`r quiz("BI is one of the most influential predictors" = TRUE, "CM is the least influential predictor" = FALSE, "PS was dropped from the model" = TRUE)`
+
 
 #### Interpret a Tree
 
@@ -101,23 +116,25 @@ You can interpret a regression tree by plotting it:
 
 The plot tells us:
 
-- which variables are selected at all; these are relevant predictors (ACP, AUT, REL, and MEH)
-- how the model comes to a prediction; for example, if you have a score of 0.50 on ACP, and a score of 1.00 on MEH, then you end up in the right-most leaf of the tree, with a predicted value of 4.8 on ACM.
-- Note that the previous example also illustrates a potential interaction between ACP and MEH because you first split on the one, and then on the other.
+- which variables are selected at all; these are the relevant predictors
+- how the model comes to a prediction: you navigate the decision tree based on your values on the predictor variables, until you reach the bottom of the tree. The predicted value is the label of the terminal node.
+<!-- - Note that the previous example also illustrates a potential interaction between BI and CM because you first split on the one, and then on the other. -->
+
+`r quiz("In this model, all variables are used." = TRUE, "To get a prediction, you start from the top: if your BI score is not lower than -.58, then go down the right branch" = TRUE, "The fact that the model first splits on BI and then on CM suggests a potential interaction between these two variables." = TRUE, "If the tree had been simpler (= less complex branching), it would be less overfit." = TRUE)`
+
 
 #### Explain a Random Forest
 
 Unlike a single tree, a random forest is not interpretable, but you can analyze/explain its predictions to some extent.
 
-First, you can randomly shuffle each predictor, and see how much *worse* the model predicts when that happens. If shuffling one predictor really diminishes predictive performance, it must have been an important predictor. Looking at the plot below, we see that the order of predictor importances is about the same as for the LASSO coefficients, with ACP being the most important:
+First, you can randomly shuffle each predictor, and see how much *worse* the model predicts when that happens. If shuffling one predictor really diminishes predictive performance, it must have been an important predictor.
 
 ![](plot_vi.png)
 
-The above plot tells us which predictors matter; to get a sense of the shape of the relationship between each predictor and the outcome (averaging over all other predictors), we can use "partial dependence plots":
+To get a sense of the shape of the relationship between each predictor and the outcome (averaging over all other predictors), we can use "partial dependence plots":
 
 ![](plot_pdp.png)
-
-We see a near-perfect linear relationship of ACP, and (approximately linear) monotonous positive relationships for all other predictors as well.
+`r quiz("Random forests gives a very different picture of what the most important predictors are than LASSO." = FALSE, "Whether you have low or medium levels of BI does not make a difference for your AM (the outcome)." = TRUE, "For increasing CM, we see an approximately linear decrease of AM" = TRUE, "The effect of GenderF could have any other shape than the step function we see here." = FALSE)`
 
 #### Interpret Symbolic Regression
 
@@ -126,6 +143,9 @@ Finally, interpreting the symbolic regression model is very straightforward; jus
 ```{r results = "asis"}
 knitr::asis_output(paste0("$", readLines("sr_expression.txt", warn = FALSE), "$"))
 ```
+
+
+`r quiz("In this case, symbolic regression gives us a linear function" = TRUE, "The intercept of this function is:" = c(4.61, .01), "The slope of BI is" = c(1, .01))`
 
 ## Homework
 

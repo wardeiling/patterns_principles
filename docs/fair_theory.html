@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="Book Description">
-<title>5&nbsp; Formal Theory Specification – Patterns to Principles</title>
+<title>8&nbsp; FAIR Theory – Patterns to Principles</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -56,27 +56,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -84,8 +64,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ml_informed.html" rel="next">
-<link href="./latent_theory.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./causal_discovery.html" rel="prev">
 <link href="./favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -301,7 +281,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./formal_theory.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Formal Theory Specification</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fair_theory.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">FAIR Theory</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -359,7 +339,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./formal_theory.html" class="sidebar-item-text sidebar-link active">
+  <a href="./formal_theory.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Formal Theory Specification</span></span></a>
   </div>
 </li>
@@ -377,7 +357,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fair_theory.html" class="sidebar-item-text sidebar-link">
+  <a href="./fair_theory.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">FAIR Theory</span></span></a>
   </div>
 </li>
@@ -412,21 +392,39 @@ div.csl-indent {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#weekly-readings" id="toc-weekly-readings" class="nav-link active" data-scroll-target="#weekly-readings"><span class="header-section-number">5.1</span> Weekly Readings</a></li>
+<li><a href="#weekly-readings" id="toc-weekly-readings" class="nav-link active" data-scroll-target="#weekly-readings"><span class="header-section-number">8.1</span> Weekly Readings</a></li>
   <li>
-<a href="#tutorial" id="toc-tutorial" class="nav-link" data-scroll-target="#tutorial"><span class="header-section-number">5.2</span> Tutorial</a>
+<a href="#tutorial" id="toc-tutorial" class="nav-link" data-scroll-target="#tutorial"><span class="header-section-number">8.2</span> Tutorial</a>
   <ul class="collapse">
-<li><a href="#stage-1-generating-theory" id="toc-stage-1-generating-theory" class="nav-link" data-scroll-target="#stage-1-generating-theory"><span class="header-section-number">5.2.1</span> Stage 1: Generating Theory</a></li>
-  <li><a href="#stage-2-developing-theory" id="toc-stage-2-developing-theory" class="nav-link" data-scroll-target="#stage-2-developing-theory"><span class="header-section-number">5.2.2</span> Stage 2: Developing Theory</a></li>
+<li><a href="#learning-goals" id="toc-learning-goals" class="nav-link" data-scroll-target="#learning-goals"><span class="header-section-number">8.2.1</span> Learning Goals</a></li>
   </ul>
 </li>
-  <li><a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework"><span class="header-section-number">5.3</span> Homework</a></li>
+  <li><a href="#running-example-sdt" id="toc-running-example-sdt" class="nav-link" data-scroll-target="#running-example-sdt"><span class="header-section-number">8.3</span> Running Example: SDT</a></li>
+  <li><a href="#creating-a-project-folder" id="toc-creating-a-project-folder" class="nav-link" data-scroll-target="#creating-a-project-folder"><span class="header-section-number">8.4</span> Creating a Project Folder</a></li>
+  <li><a href="#adding-a-shareable-theory-file-to-the-repository" id="toc-adding-a-shareable-theory-file-to-the-repository" class="nav-link" data-scroll-target="#adding-a-shareable-theory-file-to-the-repository"><span class="header-section-number">8.5</span> Adding a Shareable Theory File to the Repository</a></li>
+  <li><a href="#documenting-reusability-with-a-license" id="toc-documenting-reusability-with-a-license" class="nav-link" data-scroll-target="#documenting-reusability-with-a-license"><span class="header-section-number">8.6</span> Documenting Reusability with a LICENSE</a></li>
+  <li><a href="#documenting-interoperability-with-a-readme-file" id="toc-documenting-interoperability-with-a-readme-file" class="nav-link" data-scroll-target="#documenting-interoperability-with-a-readme-file"><span class="header-section-number">8.7</span> Documenting Interoperability with a README File</a></li>
+  <li><a href="#adding-zenodo-metadata-to-the-repository" id="toc-adding-zenodo-metadata-to-the-repository" class="nav-link" data-scroll-target="#adding-zenodo-metadata-to-the-repository"><span class="header-section-number">8.8</span> Adding ‘Zenodo’ Metadata to the Repository</a></li>
+  <li><a href="#version-controlling-the-project-folder" id="toc-version-controlling-the-project-folder" class="nav-link" data-scroll-target="#version-controlling-the-project-folder"><span class="header-section-number">8.9</span> Version Controlling The Project Folder</a></li>
+  <li><a href="#connecting-to-a-remote-github-repository" id="toc-connecting-to-a-remote-github-repository" class="nav-link" data-scroll-target="#connecting-to-a-remote-github-repository"><span class="header-section-number">8.10</span> Connecting to a Remote (‘GitHub’) Repository</a></li>
+  <li><a href="#pushing-these-changes-to-the-remote-repository" id="toc-pushing-these-changes-to-the-remote-repository" class="nav-link" data-scroll-target="#pushing-these-changes-to-the-remote-repository"><span class="header-section-number">8.11</span> Pushing These Changes to the Remote Repository</a></li>
+  <li><a href="#check-your-github-repository" id="toc-check-your-github-repository" class="nav-link" data-scroll-target="#check-your-github-repository"><span class="header-section-number">8.12</span> Check Your ‘GitHub’ Repository</a></li>
+  <li><a href="#login-to-zenodo" id="toc-login-to-zenodo" class="nav-link" data-scroll-target="#login-to-zenodo"><span class="header-section-number">8.13</span> Login to ‘Zenodo’</a></li>
+  <li><a href="#authorize-github-to-connect-with-zenodo" id="toc-authorize-github-to-connect-with-zenodo" class="nav-link" data-scroll-target="#authorize-github-to-connect-with-zenodo"><span class="header-section-number">8.14</span> Authorize ‘GitHub’ to connect with ‘Zenodo’</a></li>
+  <li><a href="#select-the-repository-to-archive" id="toc-select-the-repository-to-archive" class="nav-link" data-scroll-target="#select-the-repository-to-archive"><span class="header-section-number">8.15</span> Select the Repository to Archive</a></li>
+  <li><a href="#create-a-new-release" id="toc-create-a-new-release" class="nav-link" data-scroll-target="#create-a-new-release"><span class="header-section-number">8.16</span> Create a New Release</a></li>
+  <li><a href="#verify-on-zenodo" id="toc-verify-on-zenodo" class="nav-link" data-scroll-target="#verify-on-zenodo"><span class="header-section-number">8.17</span> Verify on ‘Zenodo’</a></li>
+  <li><a href="#updating-meta-data" id="toc-updating-meta-data" class="nav-link" data-scroll-target="#updating-meta-data"><span class="header-section-number">8.18</span> Updating Meta-Data</a></li>
+  <li><a href="#verifying-that-zenodo-mints-a-doi-for-your-theory" id="toc-verifying-that-zenodo-mints-a-doi-for-your-theory" class="nav-link" data-scroll-target="#verifying-that-zenodo-mints-a-doi-for-your-theory"><span class="header-section-number">8.19</span> Verifying That ‘Zenodo’ Mints a DOI for Your Theory</a></li>
+  <li><a href="#congratulations" id="toc-congratulations" class="nav-link" data-scroll-target="#congratulations"><span class="header-section-number">8.20</span> CONGRATULATIONS!</a></li>
+  <li><a href="#checklist-for-citing-your-project" id="toc-checklist-for-citing-your-project" class="nav-link" data-scroll-target="#checklist-for-citing-your-project"><span class="header-section-number">8.21</span> Checklist for citing your project</a></li>
+  <li><a href="#homework" id="toc-homework" class="nav-link" data-scroll-target="#homework"><span class="header-section-number">8.22</span> Homework</a></li>
   </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">
-<span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Formal Theory Specification</span>
+<span class="chapter-number">8</span>&nbsp; <span class="chapter-title">FAIR Theory</span>
 </h1>
 </div>
 
@@ -441,320 +439,275 @@ div.csl-indent {
   
 
 
-</header><section id="weekly-readings" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="weekly-readings">
-<span class="header-section-number">5.1</span> Weekly Readings</h2>
+</header><section id="weekly-readings" class="level2" data-number="8.1"><h2 data-number="8.1" class="anchored" data-anchor-id="weekly-readings">
+<span class="header-section-number">8.1</span> Weekly Readings</h2>
 <ul>
-<li><a href="https://smaldino.com/wp/wp-content/uploads/2021/11/Smaldino2020-HowToTranslateAVerbalTheoryToFormalModel.pdf">Smaldino, P. E. (2020). How to Translate a Verbal Theory Into a Formal Model. Social Psychology, 51(4), 207–218. https://doi.org/10.1027/1864-9335/a00042</a></li>
-<li><a href="https://doi.org/10.1037/met0000303">Haslbeck, J. M. B., Ryan, O., Robinaugh, D. J., Waldorp, L. J., &amp; Borsboom, D. (2021). Modeling psychopathology: From data models to formal theories. Psychological Methods. https://doi.org/10.1037/met0000303</a></li>
-</ul></section><section id="tutorial" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="tutorial">
-<span class="header-section-number">5.2</span> Tutorial</h2>
-<p>In this tutorial, you will go through some of the steps of theory formalization, following the Abductive Formal Theory Construction (AFTC) framework. We will use Self-Determination Theory (SDT) as a guiding example.</p>
-<p>The code chunks in this tutorial are also available in the <code>patterns_principles_exercises</code> project, in the file <code>tutorial_formal_theory.R</code>.</p>
-<section id="stage-1-generating-theory" class="level3" data-number="5.2.1"><h3 data-number="5.2.1" class="anchored" data-anchor-id="stage-1-generating-theory">
-<span class="header-section-number">5.2.1</span> Stage 1: Generating Theory</h3>
-<section id="establish-the-phenomena" class="level4" data-number="5.2.1.1"><h4 data-number="5.2.1.1" class="anchored" data-anchor-id="establish-the-phenomena">
-<span class="header-section-number">5.2.1.1</span> Establish the Phenomena</h4>
-<p>Below are two excerpts from <span class="citation" data-cites="ryanOxfordHandbookSelfDetermination2023">Ryan (<a href="references.html#ref-ryanOxfordHandbookSelfDetermination2023" role="doc-biblioref">2023</a>)</span>:</p>
+<li><a href="https://doi.org/10.1177/17456916251401850">Van Lissa, C. J., Peikert, A., Ernst, M. S., van Dongen, N. N. N., Schönbrodt, F. D., &amp; Brandmaier, A. M. (2026). T o Be FAIR: Theory Specification Needs an Update. Perspectives on Psychological Science, 17456916251401850. https://doi.org/10.1177/17456916251401850</a></li>
+</ul></section><section id="tutorial" class="level2" data-number="8.2"><h2 data-number="8.2" class="anchored" data-anchor-id="tutorial">
+<span class="header-section-number">8.2</span> Tutorial</h2>
+<p>This tutorial helps you make your theory FAIR. You will find an R-script for the steps described in this tutorial in the file <code>fair_theory.R</code>, in the <code>patterns_principles_exercises</code> folder. Use one computer to complete this tutorial together as a group. You will need to install some software in the process, so it’s easier to just do that on one system.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(theorytools)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="learning-goals" class="level3" data-number="8.2.1"><h3 data-number="8.2.1" class="anchored" data-anchor-id="learning-goals">
+<span class="header-section-number">8.2.1</span> Learning Goals</h3>
+<ul class="task-list">
+<li><label><input type="checkbox">Create a project folder for your theory</label></li>
+<li><label><input type="checkbox">Put this folder under version control with ‘Git’</label></li>
+<li><label><input type="checkbox">Connect the local repository to a remote (‘GitHub’) repository</label></li>
+<li><label><input type="checkbox">Add a shareable theory file to the repository</label></li>
+<li><label><input type="checkbox">Add a LICENSE file to the repository (we recommend CC0)</label></li>
+<li><label><input type="checkbox">Add a README file to the repository</label></li>
+<li><label><input type="checkbox">Add a ‘Zenodo’ metadata to the repository</label></li>
+<li><label><input type="checkbox">Push these changes to the remote repository</label></li>
+<li><label><input type="checkbox">Turn on ‘Zenodo’ archiving for the remote repository</label></li>
+<li><label><input type="checkbox">Publish a release of your theory</label></li>
+<li><label><input type="checkbox">Verify that ‘Zenodo’ mints a DOI for your theory and its latest release</label></li>
+</ul>
+<!-- fig.width=600, fig.height=861,  --><div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="https://github.com/OpenScienceMOOC/Module-5-Open-Research-Software-and-Open-Source/blob/master/content_development/images/Task2.png?raw=true" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Conceptual workflow for this task.</figcaption></figure>
+</div>
+</div>
+</div>
+</section></section><section id="running-example-sdt" class="level2" data-number="8.3"><h2 data-number="8.3" class="anchored" data-anchor-id="running-example-sdt">
+<span class="header-section-number">8.3</span> Running Example: SDT</h2>
+<p>As an example, we will use a specification of Self-Determination Theory (SDT). Here, we use a DAG - but you can archive anything you like, although it is recommended to use plain text files, which are machine- and human-readable without special software. Note that I’ve added an example of specifying a functional form for one of the links in the DAG; you can see <a href="https://cjvanlissa.github.io/theorytools/articles/augmented_dags.html">more examples of this kind of annotation here</a>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>theory <span class="ot">&lt;-</span> <span class="st">'</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="st">dag {</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="st">external_event</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="st">healthy_development</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="st">integration</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="st">intrinsic_motivation</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="st">locus_of_causality</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="st">needs</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="st">wellbeing</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="st">external_event -&gt; intrinsic_motivation [form="external_event:needs"]</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="st">external_event -&gt; locus_of_causality</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="st">external_event -&gt; needs</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="st">integration -&gt; healthy_development</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="st">integration -&gt; wellbeing</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="st">intrinsic_motivation -&gt; healthy_development</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="st">intrinsic_motivation -&gt; wellbeing</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="st">locus_of_causality -&gt; intrinsic_motivation</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="st">needs -&gt; integration</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="st">needs -&gt; intrinsic_motivation  [form="external_event:needs"]</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="st">needs -&gt; wellbeing</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="st">}'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="creating-a-project-folder" class="level2" data-number="8.4"><h2 data-number="8.4" class="anchored" data-anchor-id="creating-a-project-folder">
+<span class="header-section-number">8.4</span> Creating a Project Folder</h2>
+<p>Create an empty project folder, which will become the theory archive. If we want to create a new folder called <code>sdt</code> in the existing folder <code>~/theories/</code>, we can call:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>project_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"~/theories"</span>, <span class="st">"sdt"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">dir.create</span>(project_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="adding-a-shareable-theory-file-to-the-repository" class="level2" data-number="8.5"><h2 data-number="8.5" class="anchored" data-anchor-id="adding-a-shareable-theory-file-to-the-repository">
+<span class="header-section-number">8.5</span> Adding a Shareable Theory File to the Repository</h2>
+<p>Your theory should be represented as a digital artifact, such as a structured plain-text document or a machine-readable file (e.g., ‘DOT’, ‘JSON’, ‘YAML’, ‘R’ code). You can simply write the text vector above to a plain text file, like so:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">writeLines</span>(theory, <span class="fu">file.path</span>(project_path, <span class="st">"theory.txt"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="documenting-reusability-with-a-license" class="level2" data-number="8.6"><h2 data-number="8.6" class="anchored" data-anchor-id="documenting-reusability-with-a-license">
+<span class="header-section-number">8.6</span> Documenting Reusability with a LICENSE</h2>
+<p>A license ensures that others know how they can legally reuse your work. We recommend a CC0 (Creative Commons Zero) license for FAIR theory, which waives all copyright protection and places your work in the public domain. This recommendation is based on the fact that copyright protection does not cover ideas, and the assumption that FAIR theory is created to maximize reuse. Other licenses are available, see <a href="https://choosealicense.com/non-software/">https://choosealicense.com</a>. You can add a license file to your repository like so:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>worcs<span class="sc">::</span><span class="fu">add_license_file</span>(<span class="at">path =</span> project_path, <span class="at">license =</span> <span class="st">"cc0"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="documenting-interoperability-with-a-readme-file" class="level2" data-number="8.7"><h2 data-number="8.7" class="anchored" data-anchor-id="documenting-interoperability-with-a-readme-file">
+<span class="header-section-number">8.7</span> Documenting Interoperability with a README File</h2>
+<p>A README file describes the repository’s contents and purpose, making it easier for others to understand your theory’s potential for interoperability and reuse. The <code>theorytools</code> package contains a function to generate a README file with appropriate sections for FAIR theory, which can be used like so:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>theorytools<span class="sc">::</span><span class="fu">add_readme_fair_theory</span>(<span class="at">title =</span> <span class="st">"Self-Determination Theory"</span>,</span>
+<span id="cb6-2"><a href="#cb6-2"></a>                                    <span class="at">path =</span> project_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>We encourage users to edit the resulting <code>README.md</code> file, in particular, to add relevant information about X-interoperability. For guidance on writing a README file for theory, see <a href="https://cjvanlissa.github.io/theorytools/articles/readme.html">this vignette</a>.</p>
+</section><section id="adding-zenodo-metadata-to-the-repository" class="level2" data-number="8.8"><h2 data-number="8.8" class="anchored" data-anchor-id="adding-zenodo-metadata-to-the-repository">
+<span class="header-section-number">8.8</span> Adding ‘Zenodo’ Metadata to the Repository</h2>
+<p>In a later step, we will archive the theory on ‘Zenodo’. Creating a <code>.zenodo.json</code> file with metadata about your theory allows the project to be indexed automatically. This can be done by running:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">add_zenodo_json_theory</span>(</span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="at">path =</span> project_path,</span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="at">title =</span> <span class="st">"Self-Determination Theory"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="at">keywords =</span> <span class="fu">c</span>(<span class="st">"motivation"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="version-controlling-the-project-folder" class="level2" data-number="8.9"><h2 data-number="8.9" class="anchored" data-anchor-id="version-controlling-the-project-folder">
+<span class="header-section-number">8.9</span> Version Controlling The Project Folder</h2>
+<p>We will use ‘Git’ to version control the project folder. This means that changes to the files are explicitly tracked, and the entire history of the theory-project is logged. One student in your group should install ‘Git’ on their computer, <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">as explained here</a>. You can verify that ‘Git’ is installed and working by running:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>worcs<span class="sc">::</span><span class="fu">check_git</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>If this function shows a green checkmark, you can initialize version control in your project repository by running:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>gert<span class="sc">::</span><span class="fu">git_init</span>(<span class="at">path =</span> project_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="connecting-to-a-remote-github-repository" class="level2" data-number="8.10"><h2 data-number="8.10" class="anchored" data-anchor-id="connecting-to-a-remote-github-repository">
+<span class="header-section-number">8.10</span> Connecting to a Remote (‘GitHub’) Repository</h2>
+<p>To make your FAIR theory accessible to collaborators and discoverable by the wider community, you must connect your local ‘Git’ repository to a remote repository on a platform like ‘GitHub’.</p>
+<p>Before proceeding, ensure that one of your group members <a href="https://github.com/">has a ‘GitHub’ account</a>. To authorize ‘R’ to interact with your ‘GitHub’ account, run <code><a href="https://usethis.r-lib.org/reference/github-token.html">usethis::create_github_token()</a></code>, which takes you to a website to create a personal access token (PAT). Copy it, then run <code><a href="https://gitcreds.r-lib.org/reference/gitcreds_get.html">gitcreds::gitcreds_set()</a></code> and paste the PAT when asked. If you still experience problems try <code><a href="https://usethis.r-lib.org/reference/github-token.html">usethis::gh_token_help()</a></code> for help.</p>
+<p>To check that you are ready to proceed, run:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>worcs<span class="sc">::</span><span class="fu">check_github</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>If you see a green checkmark, you can create a new repository on ‘GitHub’ directly from ‘R’:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>worcs<span class="sc">::</span><span class="fu">git_remote_create</span>(<span class="st">"fair_sdt"</span>, <span class="at">private =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This command will create a new public repository on ‘GitHub’ and link it to your local repository. The <code>private = FALSE</code> argument ensures the repository is public by default.</p>
+<p>Either way, assuming the name of that repository is <code>fair_sdt</code>, you can connect it to your project folder as follows:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>worcs<span class="sc">::</span><span class="fu">git_remote_connect</span>(project_path, <span class="at">remote_repo =</span> <span class="st">"fair_sdt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="pushing-these-changes-to-the-remote-repository" class="level2" data-number="8.11"><h2 data-number="8.11" class="anchored" data-anchor-id="pushing-these-changes-to-the-remote-repository">
+<span class="header-section-number">8.11</span> Pushing These Changes to the Remote Repository</h2>
+<p>Version control requires adding files to be tracked to the repository. The <code>worcs</code> function <code><a href="https://cjvanlissa.github.io/worcs/reference/git_update.html">worcs::git_update()</a></code> does this automatically, acting like a kind of “quick-save” or “save all” function:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>worcs<span class="sc">::</span><span class="fu">git_update</span>(<span class="st">"First commit of my theory"</span>, <span class="at">repo =</span> project_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="check-your-github-repository" class="level2" data-number="8.12"><h2 data-number="8.12" class="anchored" data-anchor-id="check-your-github-repository">
+<span class="header-section-number">8.12</span> Check Your ‘GitHub’ Repository</h2>
+<p>Navigate to your repository on ‘GitHub’ and check that all committed files, including the theory file, license, README, and ‘Zenodo’ metadata, are now visible in the remote repository (green box in the image below).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="https://github.com/cjvanlissa/theorytools/blob/master/docs/images/github.png?raw=true" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Front Page of a ‘GitHub’ Repository</figcaption></figure>
+</div>
+</div>
+</div>
+<p>Furthermore, the repository visibility must be set to “Public” to ensure that ‘Zenodo’ can discover and archive it. If you created the repository programmatically as shown above, it should already be public (see red box in the image above).</p>
+</section><section id="login-to-zenodo" class="level2" data-number="8.13"><h2 data-number="8.13" class="anchored" data-anchor-id="login-to-zenodo">
+<span class="header-section-number">8.13</span> Login to ‘Zenodo’</h2>
+<p>Head over to <a href="https://zenodo.org">zenodo.org</a>. ‘Zenodo’ is a platform where you can permanently archive your code and other project elements. ‘Zenodo’ does this by assigning projects a <strong>Digital Object Identifier</strong> (DOI), which also helps to make the work more citable. This is different to ‘GitHub’, which acts as a place where the actual work on a project takes place, rather than long-term archiving of it. At ‘GitHub’, content can be modified, deleted, rewritten, and irreversibly changed, which makes it a bit concerning to be used for longer lasting referencing purposes. ‘Zenodo’ offers more security and permanence for research outputs.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="https://github.com/OpenScienceMOOC/Module-5-Open-Research-Software-and-Open-Source/blob/master/content_development/images/zenodo.png?raw=true" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Sign up for ‘Zenodo’</figcaption></figure>
+</div>
+</div>
+</div>
+<p>One student should create a ‘Zenodo’ account. You can <strong>login using your ‘GitHub’ account</strong> to make the registration process easy.</p>
+</section><section id="authorize-github-to-connect-with-zenodo" class="level2" data-number="8.14"><h2 data-number="8.14" class="anchored" data-anchor-id="authorize-github-to-connect-with-zenodo">
+<span class="header-section-number">8.14</span> Authorize ‘GitHub’ to connect with ‘Zenodo’</h2>
+<p>On the ‘Zenodo’ website authorize it to connect to your ‘GitHub’ account in the ‘<a href="https://zenodo.org/account/settings/github/">Using ’GitHub’</a>’ section. Here, ‘Zenodo’ will redirect you to ‘GitHub’ to ask for permissions to use ‘<a href="https://developer.github.com/webhooks/">webhooks</a>’ on your repositories. You want to authorize ‘Zenodo’ here with the permissions it needs to form those links.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="https://github.com/OpenScienceMOOC/Module-5-Open-Research-Software-and-Open-Source/blob/master/content_development/images/zenodo_github.png?raw=true" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Authorize to connect with ‘GitHub’</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="select-the-repository-to-archive" class="level2" data-number="8.15"><h2 data-number="8.15" class="anchored" data-anchor-id="select-the-repository-to-archive">
+<span class="header-section-number">8.15</span> Select the Repository to Archive</h2>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Use the Zenodo Sandbox
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You will now archive your project. This costs Zenodo some money and storage space. To be considerate, we will not <strong>really</strong> archive our project, but instead just practice archiving it in a “sandbox” environment.</p>
+<p>You can access the sandbox environment by navigating to <a href="http://sandbox.zenodo.org/" class="uri">http://sandbox.zenodo.org/</a>.</p>
+<p>The links below already use the sandbox environment. If you ever need to properly archive something in the future, simply remove <code>sandbox.</code> from the link addresses.</p>
+</div>
+</div>
+<p>If you have got this far, this means that ‘Zenodo’ is now authorized to configure the repository webhooks that it needs to archive the repository and issue it a DOI. To do this, on the ‘Zenodo’ website navigate to the <a href="https://sandbox.zenodo.org/account/settings/github/">‘GitHub’ repository listing page</a> and simply “flip the switch” next to your repository. If your repository <strong>does not show up</strong> in the list, you may need to press the ‘Synchronize now’ button. At the time of writing, we noticed that it can take quite a while (hours?) for ‘Zenodo’ to detect new ‘GitHub’ repositories. If so, take a break or come back to this last step tomorrow!</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="https://github.com/OpenScienceMOOC/Module-5-Open-Research-Software-and-Open-Source/blob/master/content_development/images/enabled_repos.png?raw=true" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Enable individual ‘GitHub’ repositories to be archived in ‘Zenodo’</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="create-a-new-release" class="level2" data-number="8.16"><h2 data-number="8.16" class="anchored" data-anchor-id="create-a-new-release">
+<span class="header-section-number">8.16</span> Create a New Release</h2>
+<p>To archive a repository on ‘Zenodo’, you must create a new release. You can do this using the following code:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>worcs<span class="sc">::</span><span class="fu">git_release_publish</span>(<span class="at">repo =</span> project_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>If you have not previously published any releases, this function will assume that you want to use semantic versioning for both the release tag and the release title. This means that the first release will be labeled with version number “0.1.0”. Each subsequent release will automatically increment the trailing digit, i.e.: “0.1.1”, “0.1.2”. If you make a major change to the theory, you may want to manually increment the middle digit like so:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>worcs<span class="sc">::</span><span class="fu">git_release_publish</span>(<span class="at">repo =</span> project_path,</span>
+<span id="cb15-2"><a href="#cb15-2"></a>                           <span class="at">tag_name =</span> <span class="st">"0.2.0"</span>,</span>
+<span id="cb15-3"><a href="#cb15-3"></a>                           <span class="at">release_name =</span> <span class="st">"0.2.0"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="verify-on-zenodo" class="level2" data-number="8.17"><h2 data-number="8.17" class="anchored" data-anchor-id="verify-on-zenodo">
+<span class="header-section-number">8.17</span> Verify on ‘Zenodo’</h2>
+<p>To verify that your release was archived on ‘Zenodo’ and assigned a DOI, you need to visit the <a href="https://sandbox.zenodo.org/deposit">Uploads</a> tab.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="https://github.com/OpenScienceMOOC/Module-5-Open-Research-Software-and-Open-Source/blob/master/content_development/images/upload_release.png?raw=true" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Check the new release has been uploaded.</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="updating-meta-data" class="level2" data-number="8.18"><h2 data-number="8.18" class="anchored" data-anchor-id="updating-meta-data">
+<span class="header-section-number">8.18</span> Updating Meta-Data</h2>
+<p>We can further document our ‘Zenodo’ archive as a FAIR theory by adding some extra information on ‘Zenodo’. Note that, if you created a <code>.zenodo.json</code> file in a previous step, some of these metadata will be populated automatically. On ‘Zenodo’ click the <a href="https://sandbox.zenodo.org/deposit">Upload</a> tab in the main menu, where you should find your newly uploaded repository.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="https://github.com/cjvanlissa/theorytools/blob/master/docs/images/zenodo_edit.png?raw=true" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Click the orange Edit button.</figcaption></figure>
+</div>
+</div>
+</div>
+<p>Click the orange <code>Edit</code> button, and verify/supply the following information:</p>
+<ul class="task-list">
+<li><p><label><input type="checkbox">Resource type: Should be set to <code>Model</code></label></p></li>
+<li><p><label><input type="checkbox">Title: Should be prefaced with <code>FAIR theory:</code></label></p></li>
+<li><p><label><input type="checkbox">Keywords and subjects: The first keyword should be <code>fairtheory</code></label></p></li>
+<li>
+<p><label><input type="checkbox">Related works: Add the DOIs/identifiers of related (print) works. Use the <code>Relation</code> field as appropriate. For example:</label></p>
+<ul>
+<li>
+<code>Is documented by</code> a theory paper you wrote, in which you introduce this FAIR theory</li>
+<li>
+<code>Is derived from</code> an existing theory, which was published in print (paper, book chapter) but not made FAIR</li>
+</ul>
+</li>
+<li>
+<p><label><input type="checkbox">References: Optionally, cite related works in plain text. For example, here we can provide the citation for the SDT theory book:</label></p>
 <blockquote class="blockquote">
-<p>“Deci’s early studies (e.g., 1971, 1972) were provocative in showing that contingent extrinsic rewards could have negative effects on subsequent interest and persistence (see Ryan, Ryan, &amp; Di Domenico, 2019).”<br>
-“These “undermining” effects of rewards on intrinsic motivation did not occur invariantly but were conditional. As summarized in Deci and Ryan (1980a), rewards have negative effects on intrinsic motivation when used in controlling ways, that is, when applied in order to externally pressure or induce people to perform certain behaviors or meet certain standards. Such controlling reward contingencies can undermine the experience of autonomy essential to intrinsic motivation. In contrast, rewards can have more positive, or at least no negative, effects on intrinsic motivation when experienced as informational”</p>
+<p>Ryan, R. M. (Ed.). (2023). The Oxford Handbook of Self-Determination Theory (1st ed.). Oxford University Press. https://doi.org/10.1093/oxfordhb/9780197600047.001.0001</p>
 </blockquote>
-<p>Discuss with your group, and describe concisely in your own words, what “phenomena” this excerpt describes.</p>
-</section><section id="generate-an-initial-verbal-theory" class="level4" data-number="5.2.1.2"><h4 data-number="5.2.1.2" class="anchored" data-anchor-id="generate-an-initial-verbal-theory">
-<span class="header-section-number">5.2.1.2</span> Generate an Initial Verbal Theory</h4>
-<p>You have previously worked with a DAG representing SDT. The vignette <a href="https://cjvanlissa.github.io/theorytools/articles/formalizing_sdt.html">Formalizing Self-Determination Theory</a> describes how this FAIR theory was created based on the original Self-Determination Theory <span class="citation" data-cites="deciSelfDeterminationTheory2012">(<a href="references.html#ref-deciSelfDeterminationTheory2012" role="doc-biblioref">Deci &amp; Ryan, 2012</a>)</span>. It was specified as a Directed Acyclic Graph, or DAG: a diagram that specifies the causal relations proposed by a theory. Such diagrams can be used to derive hypotheses, select control variables for causal inference, and conduct simulation studies (as we will do in this tutorial).</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(theorytools)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(dagitty)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>sdt <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">"</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="st">dag {</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="st">external_event</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="st">healthy_development</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="st">integration</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="st">intrinsic_motivation</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="st">locus_of_causality</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="st">needs</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="st">wellbeing</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="st">external_event -&gt; intrinsic_motivation</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="st">external_event -&gt; locus_of_causality</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="st">external_event -&gt; needs</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="st">integration -&gt; healthy_development</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="st">integration -&gt; wellbeing</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="st">intrinsic_motivation -&gt; healthy_development</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="st">intrinsic_motivation -&gt; wellbeing</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="st">locus_of_causality -&gt; intrinsic_motivation</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="st">needs -&gt; integration</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="st">needs -&gt; intrinsic_motivation</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a><span class="st">needs -&gt; wellbeing</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="st">}"</span>)</span>
-<span id="cb1-24"><a href="#cb1-24"></a>sdt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>dag {
-external_event
-healthy_development
-integration
-intrinsic_motivation
-locus_of_causality
-needs
-wellbeing
-external_event -&gt; intrinsic_motivation
-external_event -&gt; locus_of_causality
-external_event -&gt; needs
-integration -&gt; healthy_development
-integration -&gt; wellbeing
-intrinsic_motivation -&gt; healthy_development
-intrinsic_motivation -&gt; wellbeing
-locus_of_causality -&gt; intrinsic_motivation
-needs -&gt; integration
-needs -&gt; intrinsic_motivation
-needs -&gt; wellbeing
-}</code></pre>
-</div>
-</div>
-<p>We can also plot this DAG:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">plot</span>(sdt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="formal_theory_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Discuss with your group:</p>
-<ul>
-<li>Which portions of the DAG are relevant to the phenomenon you’ve identified?
-<ul>
-<li>Make a simplified version of the DAG that leaves out all irrelevant components.</li>
-</ul>
 </li>
-<li>Is the simplified DAG sufficient to explain your identified phenomenon? If it helps, think of the arrows as IF/THEN links. If the causes are present, does the outcome always follow?
-<ul>
-<li>If not: What additions would you need to make to the DAG to properly describe the phenomenon?</li>
 </ul>
-</li>
-</ul></section><section id="formalize-the-initial-theory" class="level4" data-number="5.2.1.3"><h4 data-number="5.2.1.3" class="anchored" data-anchor-id="formalize-the-initial-theory">
-<span class="header-section-number">5.2.1.3</span> Formalize the Initial Theory</h4>
-<p>We will construct a very basic formalization for the section of SDT that you have selected.</p>
-<p>First, we will simplify the DAG. You can do this by hand; suppose we are interested in studying the effect of intrinsic motivation on well-being. We do not need the entire theory to hypothesize about this specific relationship. We can simplify the DAG to derive a restricted version of the theory that includes all variables that might confound the relationship of interest between intrinsic motivation and well-being:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>sdt_pruned <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">"</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="st">dag {</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="st">intrinsic_motivation -&gt; wellbeing</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="st">external_event -&gt; intrinsic_motivation</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="st">needs -&gt; intrinsic_motivation</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="st">needs -&gt; wellbeing</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="st">}"</span>)</span>
-<span id="cb4-8"><a href="#cb4-8"></a>sdt_pruned</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>dag {
-external_event
-intrinsic_motivation
-needs
-wellbeing
-external_event -&gt; intrinsic_motivation
-intrinsic_motivation -&gt; wellbeing
-needs -&gt; intrinsic_motivation
-needs -&gt; wellbeing
-}</code></pre>
-</div>
-</div>
-<p>Do the same for the phenomenon you identified. When you have done so, we can now create some code to generate a synthetic dataset based on this simplified DAG, using the <code>simulate_data()</code> function. This function samples random values for exogenous variables and computes endogenous variables as functions of their predictors (linear functions, by default). By default, regression coefficients are randomly sampled in the range <code>[-0.6, +0.6]</code> unless specific values are provided by the user. You might improve the model by choosing more realistic parameter values, for example, using the conventional values for null (0), small (.2), or medium (.4) effect sizes. By default, normal distributions are assumed for exogenous variables and residual error, unless other distributions are specified.</p>
-<p>Here, we first generate the code, then examine it in the console, then write it to a file, and finally, run that file to create the simulated data.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>sim_code <span class="ot">&lt;-</span> <span class="fu">simulate_data</span>(sdt_pruned, <span class="at">n =</span> <span class="dv">100</span>, <span class="at">run =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>sim_code</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "# Set random seed"                                                         
- [2] "set.seed(411953262)"                                                       
- [3] "# Set simulation parameters"                                               
- [4] "n &lt;- 100"                                                                  
- [5] "# Simulate exogenous nodes"                                                
- [6] "external_event &lt;- rnorm(n = n)"                                            
- [7] "needs &lt;- rnorm(n = n)"                                                     
- [8] "# Simulate endogenous nodes"                                               
- [9] "intrinsic_motivation &lt;- 0.47 * external_event - 0.5 * needs + rnorm(n = n)"
-[10] "wellbeing &lt;- 0.25 * intrinsic_motivation - 0.48 * needs + rnorm(n = n)"    
-[11] "df &lt;- data.frame("                                                         
-[12] "external_event = external_event,"                                          
-[13] "intrinsic_motivation = intrinsic_motivation,"                              
-[14] "needs = needs,"                                                            
-[15] "wellbeing = wellbeing"                                                     
-[16] ")"                                                                         </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">writeLines</span>(sim_code, <span class="st">"formal_model.R"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">source</span>(<span class="st">"formal_model.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Put this code into a separate R-file. When you run it all, it will create an object called <code>df</code>, which is a table with 100 observations for all variables. Each exogenous variable (causes) is generated by drawing random samples from a normal distribution. Each endogenous variable (effects) is generated by multiplying those exogenous variables with a regression coefficient; larger values mean that the exogenous variable has a larger effect. Then, random noise is added, which represents variability due to other causes not part of your model. If you want this random variability to be smaller, change the <code>sd</code> argument of the <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> function.</p>
-</section><section id="evaluating-the-initial-theory" class="level4" data-number="5.2.1.4"><h4 data-number="5.2.1.4" class="anchored" data-anchor-id="evaluating-the-initial-theory">
-<span class="header-section-number">5.2.1.4</span> Evaluating the Initial Theory</h4>
-<p>Examine the properties of the dataset using any of the following methods, or some of your own choosing:</p>
-<section id="examining-descriptive-statistics" class="level5" data-number="5.2.1.4.1"><h5 data-number="5.2.1.4.1" class="anchored" data-anchor-id="examining-descriptive-statistics">
-<span class="header-section-number">5.2.1.4.1</span> Examining descriptive statistics</h5>
-<p>You can examine the distributions of individual variables using descriptive statistics.</p>
-<p>Do not try all of these, instead, discuss which one should capture the pattern you’re looking for in the data:</p>
-<ul>
-<li>Univariate distribution, or patterns related to the center and spread of the distribution of one variable: Descriptive statistics and density plots</li>
-<li>Relationships between two variables: Scatter plots and bivariate regression</li>
-<li>Interaction effects (the effect of one variable depends on the value of another variable): Regression with an interaction term (difficult to plot, because that would be a 3-dimensional plot)</li>
-</ul></section><section id="univariate-distribution" class="level5" data-number="5.2.1.4.2"><h5 data-number="5.2.1.4.2" class="anchored" data-anchor-id="univariate-distribution">
-<span class="header-section-number">5.2.1.4.2</span> Univariate Distribution</h5>
-<p>For example, to obtain a summary of all variables in the dataset:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>desc <span class="ot">&lt;-</span> worcs<span class="sc">::</span><span class="fu">descriptives</span>(df)</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">print</span>(desc, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                  name    type   n missing unique   mean median   mode
-1       external_event numeric 100       0    100 -0.035 -0.012 -0.012
-2 intrinsic_motivation numeric 100       0    100  0.086  0.152  0.152
-3                needs numeric 100       0    100 -0.055  0.070  0.070
-4            wellbeing numeric 100       0    100  0.034  0.037  0.037
-  mode_value  sd  v  min max range    skew skew_2se  kurt kurt_2se
-1         NA 1.0 NA -2.4 2.8   5.2  0.2108   0.4367  0.11     0.12
-2         NA 1.2 NA -2.9 3.1   6.0  0.0309   0.0641 -0.20    -0.21
-3         NA 1.1 NA -2.9 2.6   5.5 -0.2390  -0.4950  0.15     0.16
-4         NA 1.2 NA -3.2 3.1   6.3  0.0015   0.0031  0.12     0.13</code></pre>
-</div>
-</div>
-<p>This gives you information such as the <strong>minimum, maximum, median, mean</strong>.</p>
-<p>Use these statistics to look for interesting properties of the data. For example: Does a variable have a particularly high or low mean? Is there a lot of variation between observations? Are some categories much more common than others?</p>
-<p>You can also use <strong>base R plots</strong> to visually examine the univariate distribution of an individual variable. For a continuous variable, you can examine its distribution with a density plot:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(df<span class="sc">$</span>intrinsic_motivation))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="formal_theory_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Use the plots to look for interesting patterns. For example: Is a distribution symmetric or skewed? Are there possible outliers?</p>
-</section><section id="relationship-between-two-variables" class="level5" data-number="5.2.1.4.3"><h5 data-number="5.2.1.4.3" class="anchored" data-anchor-id="relationship-between-two-variables">
-<span class="header-section-number">5.2.1.4.3</span> Relationship between Two Variables</h5>
-<p>You can test the effect of one variable on another by running a bivariate regression, e.g.:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(intrinsic_motivation<span class="sc">~</span>external_event, df))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = intrinsic_motivation ~ external_event, data = df)
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--2.56643 -0.76001  0.09799  0.63865  3.01348 
-
-Coefficients:
-               Estimate Std. Error t value Pr(&gt;|t|)   
-(Intercept)     0.09818    0.11492   0.854  0.39500   
-external_event  0.33312    0.11124   2.995  0.00348 **
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 1.149 on 98 degrees of freedom
-Multiple R-squared:  0.08383,   Adjusted R-squared:  0.07448 
-F-statistic: 8.967 on 1 and 98 DF,  p-value: 0.00348</code></pre>
-</div>
-</div>
-<p>If the value of <code>Pr(&gt;|t|)</code> for <code>external_event</code> is smaller than .05, the effect is significant. If the value of <code>Estimate</code> is positive, then the effect is positive - if it is negative, then the effect is negative.</p>
-<p>To plot the relationship between two continuous variables, you can use a scatterplot:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>needs, df<span class="sc">$</span>intrinsic_motivation)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="formal_theory_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>You can add the regression line into this plot to make the direction of the relationship easier to see:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>needs, df<span class="sc">$</span>intrinsic_motivation)</span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">abline</span>(<span class="fu">lm</span>(intrinsic_motivation <span class="sc">~</span> needs, df))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="formal_theory_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section><section id="interaction-effects" class="level5" data-number="5.2.1.4.4"><h5 data-number="5.2.1.4.4" class="anchored" data-anchor-id="interaction-effects">
-<span class="header-section-number">5.2.1.4.4</span> Interaction Effects</h5>
-<p>You can test whether the effect of one variable on another is contingent on the value of a third variable by running multiple regression regression with an interaction effect, e.g.:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(intrinsic_motivation<span class="sc">~</span>external_event<span class="sc">*</span>needs, df))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = intrinsic_motivation ~ external_event * needs, data = df)
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--2.74375 -0.78841  0.01169  0.62628  2.47078 
-
-Coefficients:
-                     Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)           0.09356    0.10682   0.876 0.383289    
-external_event        0.37020    0.10461   3.539 0.000621 ***
-needs                -0.44392    0.10067  -4.410  2.7e-05 ***
-external_event:needs -0.12684    0.10498  -1.208 0.229938    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 1.058 on 96 degrees of freedom
-Multiple R-squared:  0.2391,    Adjusted R-squared:  0.2153 
-F-statistic: 10.05 on 3 and 96 DF,  p-value: 8.016e-06</code></pre>
-</div>
-</div>
-<p>If the value of <code>Pr(&gt;|t|)</code> for <code>external_event:needs</code> is smaller than .05, the interaction effect is significant. That means that the effect of <code>external_event</code> on <code>intrinsic_motivation</code> depends on the value of <code>needs</code>.</p>
-</section></section></section><section id="stage-2-developing-theory" class="level3" data-number="5.2.2"><h3 data-number="5.2.2" class="anchored" data-anchor-id="stage-2-developing-theory">
-<span class="header-section-number">5.2.2</span> Stage 2: Developing Theory</h3>
-<p>The final step is to make changes to your formal theory, to make it better produce the kind of data patterns that your phenomenon implies.</p>
-<p>You will probably not have time to do so, but it is possible to make changes to the file <code>"formal_model.R"</code>.</p>
-<p>For example, you can:</p>
-<section id="generating-a-binary-variable" class="level4" data-number="5.2.2.1"><h4 data-number="5.2.2.1" class="anchored" data-anchor-id="generating-a-binary-variable">
-<span class="header-section-number">5.2.2.1</span> Generating a binary variable</h4>
-<p>You can generate a binary variable using <code><a href="https://rdrr.io/r/stats/Binomial.html">rbinom()</a></code>. For example, if you want to conceptualize <code>external_event</code> as the presence or absence of a reward, you could simulate a variable where approximately 50% of observations have a value of 0 and 50% have a value of 1:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>external_event <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> n, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section><section id="generating-an-interaction-effect" class="level4" data-number="5.2.2.2"><h4 data-number="5.2.2.2" class="anchored" data-anchor-id="generating-an-interaction-effect">
-<span class="header-section-number">5.2.2.2</span> Generating an interaction effect</h4>
-<p>To make the effect of <code>external_event</code> on <code>intrinsic_motivation</code> depend on <code>needs</code> (e.g., does this external event satisfy needs?), add an interaction term to the equation that predicts <code>intrinsic_motivation</code>:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>intrinsic_motivation <span class="ot">&lt;-</span> </span>
-<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fl">0.56</span> <span class="sc">*</span> external_event <span class="sc">+</span> </span>
-<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fl">0.59</span> <span class="sc">*</span> needs <span class="sc">+</span></span>
-<span id="cb19-4"><a href="#cb19-4"></a>  <span class="fl">0.80</span> <span class="sc">*</span> external_event <span class="sc">*</span> needs <span class="sc">+</span></span>
-<span id="cb19-5"><a href="#cb19-5"></a>  <span class="fu">rnorm</span>(<span class="at">n =</span> n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>The 0.80 specifies the strength of the interaction.</p>
-<p>In this example, the effect of external_event on intrinsic_motivation becomes stronger as needs increases.</p>
-</section><section id="generating-a-quadratic-effect" class="level4" data-number="5.2.2.3"><h4 data-number="5.2.2.3" class="anchored" data-anchor-id="generating-a-quadratic-effect">
-<span class="header-section-number">5.2.2.3</span> Generating a quadratic effect</h4>
-<p>To create a nonlinear relationship, include a squared version of a variable:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>intrinsic_motivation <span class="ot">&lt;-</span> </span>
-<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fl">0.56</span> <span class="sc">*</span> external_event <span class="sc">+</span></span>
-<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fl">0.59</span> <span class="sc">*</span> needs <span class="sc">-</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fl">0.70</span> <span class="sc">*</span> needs<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span></span>
-<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">rnorm</span>(<span class="at">n =</span> n)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>The negative coefficient on needs^2 creates an inverted n-shaped relationship: intrinsic motivation initially increases with needs, but at sufficiently high levels of needs it begins to decrease.</p>
-<p>A positive quadratic coefficient instead produces a u-shaped relationship.</p>
-</section></section></section><section id="homework" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="homework">
-<span class="header-section-number">5.3</span> Homework</h2>
-<p>Apply the steps from the tutorial to the DAG you created for your own theory in <a href="strategic_ambiguity.html#sec-makedag" class="quarto-xref"><span>Section 3.3</span></a>.</p>
-<p>Note that you do not have to apply <em>all</em> steps. Think of this week’s tutorial as a palette from which you can pick the techniques you need for your specific theory. See how far you can get, and critically reflect on the process.</p>
+<p>To save these changes, click ‘Publish’.</p>
+</section><section id="verifying-that-zenodo-mints-a-doi-for-your-theory" class="level2" data-number="8.19"><h2 data-number="8.19" class="anchored" data-anchor-id="verifying-that-zenodo-mints-a-doi-for-your-theory">
+<span class="header-section-number">8.19</span> Verifying That ‘Zenodo’ Mints a DOI for Your Theory</h2>
+<p>After publishing a release, ‘Zenodo’ will archive the repository and mint a DOI. Verify this by checking the ‘Zenodo’ entry for your repository, where the DOI will be displayed. Include this DOI in any citations or references to your theory to enhance its discoverability and reusability.</p>
+<p>The ‘GitHub’/‘Zenodo’ integration will assign one “mother-DOI” to the project, which will always resolve to the latest version, as well as a unique DOI to each version/release of the FAIR theory. This enables users to refer to and cite either the theory in general or specific versions of the theory. The list of authors for the citation is automatically determined by the ‘GitHub’ user account names used by the repository - this can be edited on ‘Zenodo’, as explained above. DOIs used in ‘Zenodo’ are registered through the <a href="https://www.datacite.org/">DataCite</a> service.</p>
+<blockquote class="blockquote">
+<p><strong>Pro-tip</strong>: Check the <code>Citation</code> field on the ‘Zenodo’ page, and copy-paste it into the README file of your ‘GitHub’ repo to make cross-linking even easier (or refer users to the ‘Zenodo’ page to find the citation, which obviates the need to manually update this information). Click the DOI badge in the <code>Details</code> field to get instructions on how to add a clear highlighted DOI badge to your ‘GitHub’ repository, for users to see and make use of your DOI:</p>
+</blockquote>
+</section><section id="congratulations" class="level2" data-number="8.20"><h2 data-number="8.20" class="anchored" data-anchor-id="congratulations">
+<span class="header-section-number">8.20</span> CONGRATULATIONS!</h2>
+<p>Your FAIR theory is now archived in ‘Zenodo’, and with a DOI that can be versioned to reflect updates to the repository version through time. You should be able to see details of this on the ‘GitHub’ ‘Zenodo’ page for your repository. This also means that your archived projects can get picked up by other indexing services and search engines that use DOIs too.</p>
+<p>Providing a long-term archive and a DOI for your work is required for others to be able to properly cite it, as this provides basic citation metadata. For Open Science, it is important to be able to comprehensively cite the resources that you use in your research, including theory, and this workflow enables that to happen, in line with best practices. Making theory FAIR also helps elevate the standard of theory to that of the standard of other research outputs, like papers and software.</p>
+</section><section id="checklist-for-citing-your-project" class="level2" data-number="8.21"><h2 data-number="8.21" class="anchored" data-anchor-id="checklist-for-citing-your-project">
+<span class="header-section-number">8.21</span> Checklist for citing your project</h2>
+<p>So now you have a sustainably archived ‘GitHub’ repository in ‘Zenodo’ that is ready to be re-used and cited! Before continuing, make sure that you have:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Linked your ‘GitHub’ project to ‘Zenodo’. If you see a complete copy of your ‘GitHub’ repository in ‘Zenodo’ then things are working.</label></li>
+<li><label><input type="checkbox">‘Zenodo’ and ‘GitHub’ integrated setup works nicely. For example have all the author names, and correct project title come across to ‘Zenodo’. If not, or if authors just have nicknames you can edit these details in ‘Zenodo’.</label></li>
+<li><label><input type="checkbox">Project has a first release, with a DOI. You should have a DOI displayed on your projects ‘Zenodo’ page. This first DOI is called the ‘concept DOI’ and is the master DOI linking to all subsequent release DOIs. Copy this DOI link and embed it in your ‘GitHub’ projects README page. You’re done!</label></li>
+</ul></section><section id="homework" class="level2" data-number="8.22"><h2 data-number="8.22" class="anchored" data-anchor-id="homework">
+<span class="header-section-number">8.22</span> Homework</h2>
+<p>Complete this tutorial if you did not manage to do so during the lab, and work on your final theory and report.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
-<div id="ref-deciSelfDeterminationTheory2012" class="csl-entry" role="listitem">
-Deci, E. L., &amp; Ryan, R. M. (2012). Self-<span>Determination Theory</span>. In P. A. M. V. Lange, A. W.Kruglanski, &amp; E. ToryHiggins (Eds.), <em>Handbook of <span>Theories</span> of <span>Social Psychology</span>: <span>Volume</span> 1</em> (pp. 416–437). SAGE Publications Ltd. <a href="https://doi.org/10.4135/9781446249215">https://doi.org/10.4135/9781446249215</a>
-</div>
-<div id="ref-ryanOxfordHandbookSelfDetermination2023" class="csl-entry" role="listitem">
-Ryan, R. M. (Ed.). (2023). <em>The <span>Oxford Handbook</span> of <span>Self-Determination Theory</span></em> (1st ed.). Oxford University Press. <a href="https://doi.org/10.1093/oxfordhb/9780197600047.001.0001">https://doi.org/10.1093/oxfordhb/9780197600047.001.0001</a>
-</div>
-</div>
 </section></main><!-- /main --><script>
 // open rdrr links externally ----
 
@@ -1400,13 +1353,13 @@ window.onload = function() {
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./latent_theory.html" class="pagination-link" aria-label="Latent Theory in Published Papers">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Latent Theory in Published Papers</span></span>
+      <a href="./causal_discovery.html" class="pagination-link" aria-label="Causal Discovery">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causal Discovery</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ml_informed.html" class="pagination-link" aria-label="Machine Learning-Informed Theory Construction">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Machine Learning-Informed Theory Construction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

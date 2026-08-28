@@ -1,0 +1,12 @@
+Variable,Construct / Description,Type,Coding / Range
+ID,Participant identifier; first unnamed column in the spreadsheet,Identifier,1–290
+Grade,Grade level,Ordinal categorical,1 = Grade 7 / first-year; 2 = Grade 8 / second-year; 3 = Grade 9 / third-year
+Age,Age in years,Numeric,12–15 years
+Gender,Gender,Binary categorical,1 = Male; 2 = Female
+TS,"Teacher pressure, mean score",Ordinal / Likert,Observed 1–7
+SOS,"Social pressure (social stress), mean score",Ordinal / Likert,Observed 1–7
+PS,"Parental pressure (stress), mean score",Ordinal / Likert,Observed 1–7
+AM,"Autonomous motivation, mean score",Ordinal / Likert,Observed 1–7
+CM,"Controlled motivation, mean score",Ordinal / Likert,Observed 1–7
+BI,"Exercise intention (behavioral intention), mean score",Ordinal / Likert,Observed 1–7
+BH,"Exercise behavior, mean score",Numeric / ordinal,Observed values require interpretation from original instrument

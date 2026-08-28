@@ -3,8 +3,8 @@
 ## Weekly Readings
 
 ```{r, results = "asis"}
-schedule <- readODS::read_ods("schedule2.ods")
-cat(paste0("* ", strsplit(schedule$Reading[4], split = "\n")[[1]]), sep = "\n")
+schedule <- readODS::read_ods("schedule.ods")
+cat(paste0("* ", strsplit(schedule$Reading[which(schedule$file == "latent_theory.qmd")], split = "\n")[[1]]), sep = "\n")
 ```
 
 ## Tutorial
@@ -13,7 +13,7 @@ cat(paste0("* ", strsplit(schedule$Reading[4], split = "\n")[[1]]), sep = "\n")
 
 ## Homework
 
-Take the graph you produced during the tutorial, and compare it to the DAG you made in @sec-homeworkdag.
+Take the graph you produced during the tutorial, and compare it to the DAG you made in @sec-makedag.
 
 Are there any concepts or connections in this new graph that your DAG is missing?
 Do you want to add these? If so, why (not)?

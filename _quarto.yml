@@ -3,10 +3,11 @@ project:
   output-dir: docs
   resources: resources
 execute:
+  cache: false
   freeze: false
-  warnings: false
+  warning: false
   echo: false
-  messages: false
+  message: false
 book:
   title: Patterns to Principles
   subtitle: Theory Construction in the Social Sciences
@@ -16,9 +17,9 @@ book:
   downloads: pdf
   repo-url: https://github.com/cjvanlissa/patterns_principles
   description: Book Description
-  cover-image: images/logos/logo.jpg
-  image: images/logos/logo.jpg
-  favicon: images/logos/favicon.png
+  cover-image: logo.png
+  image: logo.png
+  favicon: favicon.png
   cookie-consent: false
   google-analytics: ''
   page-navigation: true
@@ -47,6 +48,8 @@ book:
   - latent_theory.qmd
   - formal_theory.qmd
   - ml_informed.qmd
+  - causal_discovery.qmd
+  - fair_theory.qmd
   - references.qmd
   appendices:
   - setup.qmd

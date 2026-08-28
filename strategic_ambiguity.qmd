@@ -5,8 +5,8 @@
 ```{r, results = "asis"}
 source("R/helpers.R")
 library(dagitty)
-schedule <- readODS::read_ods("schedule2.ods")
-cat(paste0("* ", strsplit(schedule$Reading[3], split = "\n")[[1]]), sep = "\n")
+schedule <- readODS::read_ods("schedule.ods")
+cat(paste0("* ", strsplit(schedule$Reading[which(schedule$file == "strategic_ambiguity.qmd")], split = "\n")[[1]]), sep = "\n")
 ```
 
 ## Tutorial
@@ -95,7 +95,7 @@ Discuss:
 - How would you go about writing about causality in your work, after having seen these examples?
 - What do you think is the difference between ambiguity and nuance?
 
-## Homework
+## Homework {#sec-makedag}
 
 This week, you are going to translate your IF-THEN specifications from previous weeks into a graph - the technical name is a **Directed Acyclic Graph (DAG)**.
 In this graph, you connect concepts (propositions, in the language of PBTS) with one-sided arrows to indicate the direction of causality.

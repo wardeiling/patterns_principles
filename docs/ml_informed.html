@@ -29,9 +29,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./causal_discovery.html" rel="next">
 <link href="./formal_theory.html" rel="prev">
-<link href="./images/logos/favicon.png" rel="icon" type="image/png">
+<link href="./favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -342,6 +342,18 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./causal_discovery.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causal Discovery</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fair_theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">FAIR Theory</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -358,7 +370,7 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Setup your Computer</span></a>
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Setup your Computer</span></span></a>
   </div>
 </li>
       </ul>
@@ -405,8 +417,8 @@ window.Quarto = {
 </header><section id="weekly-readings" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="weekly-readings">
 <span class="header-section-number">6.1</span> Weekly Readings</h2>
 <ul>
-<li>Van Lissa, C. J. (2022). Developmental data science: How machine learning can advance theory formation in Developmental Psychology. Infant and Child Development, 32(6), 1–12. https://doi.org/10.1002/icd.2370</li>
-<li>Rudin, C. (2019). Stop explaining black box machine learning models for high stakes decisions and use interpretable models instead. Nature Machine Intelligence, 1(5), Article 5. https://doi.org/10.1038/s42256-019-0048-x</li>
+<li><a href="https://doi.org/10.1002/icd.2370">Van Lissa, C. J. (2022). Developmental data science: How machine learning can advance theory formation in Developmental Psychology. Infant and Child Development, 32(6), 1–12. https://doi.org/10.1002/icd.2370</a></li>
+<li><a href="https://arxiv.org/pdf/1811.10154">Rudin, C. (2019). Stop explaining black box machine learning models for high stakes decisions and use interpretable models instead. Nature Machine Intelligence, 1(5), Article 5. https://doi.org/10.1038/s42256-019-0048-x</a></li>
 </ul></section><section id="tutorial" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="tutorial">
 <span class="header-section-number">6.2</span> Tutorial</h2>
 <p>The topic of this week is to use machine learning to detect patterns in a dataset pertaining to your theory of interest. I have prepared a reproducible example for you based on Self-Determination Theory in the <code>patterns_principles_exercises</code> project. The purpose of this tutorial is <strong>not</strong> to give you a foundation in machine learning; that is too complex a topic. However, you should be able to run the code, you are allowed to play around with it and try making some changes, and you might be able to adapt and reuse it for future research projects.</p>
@@ -417,88 +429,88 @@ window.Quarto = {
 <p>Search through <a href="https://datasetsearch.research.google.com/">Google Database Search</a> for a dataset that covers some variables that can be considered operationalizations of the concepts in your theory. One approach is to search the database for the name of your theory. Another approach is to choose one, two, or three construct names from your theory, and search for those.</p>
 <section id="sdt-example-codebook" class="level4" data-number="6.2.1.1"><h4 data-number="6.2.1.1" class="anchored" data-anchor-id="sdt-example-codebook">
 <span class="header-section-number">6.2.1.1</span> SDT Example: Codebook</h4>
-<p>I used the search term <code>"self determination theory"</code>, and read the descriptions of the datasets until I found the one by Nguyen and Xiem (2026) on “mental health, academic motivation, and perceived academic performance among Vietnamese students in online learning”. It contains operationalizations of a few SDT constructs in the specific context of online learning (thus, we can debate how well this generalizes to SDT in general settings). That’s about as good an example as you can expect to find on short notice. My dataset contains the following variables:</p>
+<p>I used the search term <code>"self determination theory"</code>, and read the descriptions of the datasets until I found the one by Zhao and Xu (2025) on “mental health, academic motivation, and perceived academic performance among Vietnamese students in online learning”. It contains operationalizations of a few SDT constructs in the specific context of middle school students’ academic stress and physical exercise behavior (we can debate how well this generalizes to SDT in general settings). That’s about as good an example as you can expect to find on short notice. My dataset contains the following variables:</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 5%">
-<col style="width: 21%">
-<col style="width: 7%">
-<col style="width: 66%">
+<col style="width: 37%">
+<col style="width: 11%">
+<col style="width: 45%">
 </colgroup>
 <thead><tr class="header">
 <th style="text-align: left;">Variable</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Construct…Description</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Coding…Range</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Online</td>
-<td style="text-align: left;">Questionnaire completed online</td>
-<td style="text-align: left;">Categorical</td>
-<td style="text-align: left;">0 = No; 1 = Yes</td>
+<td style="text-align: left;">ID</td>
+<td style="text-align: left;">Participant identifier; first unnamed column in the spreadsheet</td>
+<td style="text-align: left;">Identifier</td>
+<td style="text-align: left;">1–290</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">gender</td>
-<td style="text-align: left;">Respondent gender</td>
-<td style="text-align: left;">Categorical</td>
-<td style="text-align: left;">1 = Male; 2 = Female; 3 = Other</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">year</td>
-<td style="text-align: left;">Current academic year</td>
+<td style="text-align: left;">Grade</td>
+<td style="text-align: left;">Grade level</td>
 <td style="text-align: left;">Ordinal categorical</td>
-<td style="text-align: left;">1 = Year 1; 2 = Year 2; 3 = Year 3; 4 = Year 4; 5 = Other</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">field</td>
-<td style="text-align: left;">Respondent’s field of study</td>
-<td style="text-align: left;">Nominal categorical</td>
-<td style="text-align: left;">1 = Economics and Business; 2 = Engineering and Technology; 3 = Languages and Linguistics; 4 = Health Sciences; 5 = Education; 6 = Culture and Arts; 7 = Information Technology; 8 = Other</td>
+<td style="text-align: left;">1 = Grade 7 / first-year; 2 = Grade 8 / second-year; 3 = Grade 9 / third-year</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">class_per_week</td>
-<td style="text-align: left;">Average number of online learning class periods per week</td>
-<td style="text-align: left;">Ordinal categorical</td>
-<td style="text-align: left;">1 = 1–3 periods; 2 = 4–6 periods; 3 = 7–9 periods; 4 = 10 or more periods</td>
+<td style="text-align: left;">Age</td>
+<td style="text-align: left;">Age in years</td>
+<td style="text-align: left;">Numeric</td>
+<td style="text-align: left;">12–15 years</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">COM</td>
-<td style="text-align: left;">Personal competence in using the Internet; mean of COM1–COM6</td>
-<td style="text-align: left;">Continuous</td>
-<td style="text-align: left;">1–5; higher = greater Internet competence</td>
+<td style="text-align: left;">Gender</td>
+<td style="text-align: left;">Gender</td>
+<td style="text-align: left;">Binary categorical</td>
+<td style="text-align: left;">1 = Male; 2 = Female</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">REL</td>
-<td style="text-align: left;">Online relatedness; mean of REL1–REL8</td>
-<td style="text-align: left;">Continuous</td>
-<td style="text-align: left;">1–5; higher = greater relatedness</td>
+<td style="text-align: left;">TS</td>
+<td style="text-align: left;">Teacher pressure, mean score</td>
+<td style="text-align: left;">Ordinal / Likert</td>
+<td style="text-align: left;">Observed 1–7</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">AUT</td>
-<td style="text-align: left;">Autonomy in Internet use; mean of AUT1–AUT7</td>
-<td style="text-align: left;">Continuous</td>
-<td style="text-align: left;">1–5; higher = greater autonomy</td>
+<td style="text-align: left;">SOS</td>
+<td style="text-align: left;">Social pressure (social stress), mean score</td>
+<td style="text-align: left;">Ordinal / Likert</td>
+<td style="text-align: left;">Observed 1–7</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">MEH</td>
-<td style="text-align: left;">Mental health/well-being; mean of MEH1–MEH5</td>
-<td style="text-align: left;">Continuous</td>
-<td style="text-align: left;">1–5; higher = better mental health</td>
+<td style="text-align: left;">PS</td>
+<td style="text-align: left;">Parental pressure (stress), mean score</td>
+<td style="text-align: left;">Ordinal / Likert</td>
+<td style="text-align: left;">Observed 1–7</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">ACM</td>
-<td style="text-align: left;">Academic motivation for online learning; mean of ACM1–ACM7</td>
-<td style="text-align: left;">Continuous</td>
-<td style="text-align: left;">1–5; higher = greater academic motivation</td>
+<td style="text-align: left;">AM</td>
+<td style="text-align: left;">Autonomous motivation, mean score</td>
+<td style="text-align: left;">Ordinal / Likert</td>
+<td style="text-align: left;">Observed 1–7</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">ACP</td>
-<td style="text-align: left;">Perceived academic performance; mean of ACP1–ACP5</td>
-<td style="text-align: left;">Continuous</td>
-<td style="text-align: left;">1–5; higher = better perceived academic performance</td>
+<td style="text-align: left;">CM</td>
+<td style="text-align: left;">Controlled motivation, mean score</td>
+<td style="text-align: left;">Ordinal / Likert</td>
+<td style="text-align: left;">Observed 1–7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BI</td>
+<td style="text-align: left;">Exercise intention (behavioral intention), mean score</td>
+<td style="text-align: left;">Ordinal / Likert</td>
+<td style="text-align: left;">Observed 1–7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BH</td>
+<td style="text-align: left;">Exercise behavior, mean score</td>
+<td style="text-align: left;">Numeric / ordinal</td>
+<td style="text-align: left;">Observed values require interpretation from original instrument</td>
 </tr>
 </tbody>
 </table>
@@ -506,10 +518,10 @@ window.Quarto = {
 </div>
 </section></section><section id="step-2-preprocess-the-data-30-minutes" class="level3" data-number="6.2.2"><h3 data-number="6.2.2" class="anchored" data-anchor-id="step-2-preprocess-the-data-30-minutes">
 <span class="header-section-number">6.2.2</span> Step 2: Preprocess the Data (30 minutes)</h3>
-<p>You will find a file called <code>prepare_nguyen_2026.R</code> in the <code>patterns_principles_exercises</code> project. Open that file. Each section of code performs a specific data preprocessing step, as explained in the comments. Work through the file one step at a time to prepare your own dataset for analysis. Note that, for real research projects, you would probably do a lot more data cleaning than this - including solving problems specific to your dataset. For the present tutorial, forget about any non-standard problems. Just remove any variables that are not well-behaved.</p>
+<p>You will find a file called <code>prepare_zhao_2025.R</code> in the <code>patterns_principles_exercises</code> project. Open that file. Each section of code performs a specific data preprocessing step, as explained in the comments. Work through the file one step at a time to prepare your own dataset for analysis. Note that, for real research projects, you would probably do a lot more data cleaning than this - including solving problems specific to your dataset. For the present tutorial, forget about any non-standard problems. Just remove any variables that are not well-behaved.</p>
 </section><section id="step-3-run-the-analysis-20-minutes" class="level3" data-number="6.2.3"><h3 data-number="6.2.3" class="anchored" data-anchor-id="step-3-run-the-analysis-20-minutes">
 <span class="header-section-number">6.2.3</span> Step 3: Run the Analysis (20 minutes)</h3>
-<p>You will find a file called <code>analysis_nguyen_2026.R</code> in the <code>patterns_principles_exercises</code> project. Open that file, and skim the comments to get a sense of the analysis steps. If you have performed the data cleaning correctly, you should be able to run that file in its entirety without errors, and get machine learning results for your own theory.</p>
+<p>You will find a file called <code>analysis_zhao_2025.R</code> in the <code>patterns_principles_exercises</code> project. Open that file, and skim the comments to get a sense of the analysis steps. If you have performed the data cleaning correctly, you should be able to run that file in its entirety without errors, and get machine learning results for your own theory.</p>
 </section><section id="step-4-interpreting-the-results-10-minutes" class="level3" data-number="6.2.4"><h3 data-number="6.2.4" class="anchored" data-anchor-id="step-4-interpreting-the-results-10-minutes">
 <span class="header-section-number">6.2.4</span> Step 4: Interpreting the Results (10 minutes)</h3>
 <p>We used four machine learning models that capture patterns in the data in different ways. Many other machine learning techniques exist, but most of these are common (except symbolic regression, but it’s very interesting nonetheless). In this case, we used:</p>
@@ -530,36 +542,58 @@ window.Quarto = {
 <table class="caption-top table table-sm table-striped small">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Model</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">$R^2_{train}$</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">$R^2_{test}$</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">R<sup>2</sup><sub>train</sub>
+</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">R<sup>2</sup><sub>test</sub>
+</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">LASSO</td>
-<td style="text-align: right;">0.65</td>
-<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.27</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Random Forest</td>
-<td style="text-align: right;">0.76</td>
-<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">0.28</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Regression Tree</td>
-<td style="text-align: right;">0.63</td>
-<td style="text-align: right;">0.66</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">0.05</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Symbolic regression</td>
-<td style="text-align: right;">0.49</td>
-<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">0.34</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>To pick the best model, it’s most useful to look at <span class="math inline">\(R^2_{test}\)</span>, because <span class="math inline">\(R^2_{train}\)</span> can be overly optimistic - a sufficiently complex model can literally memorize the correct value for all the training data, achieving an <span class="math inline">\(R^2_{train} = 1.00\)</span> but an abysmal <span class="math inline">\(R^2_{test}\)</span>. The <span class="math inline">\(R^2_{test}\)</span> does not suffer from this bias, and it gives you an impression of how well your model generalizes to new data.</p>
-<p>Note that according to this metric, the random forest model is best. However, a random forest model is not interpretable - although you can analyze its predictions using measures like variable importance and partial dependence plots. Note that the LASSO model is almost equally good - and it is very straightforwardly interpretable. From a theory construction perspective, you might thus choose the LASSO model because it combines near-peak performance with high interpretability. Also note that the differences between models are not that big. Even a symbolic regression model - which is just a linear function of one predictor (see below) - performs quite well.</p>
+<p>To pick the best model, it’s most useful to look at <span class="math inline">\(R^2_{test}\)</span>, because <span class="math inline">\(R^2_{train}\)</span> can be overly optimistic - a sufficiently complex model can literally memorize the correct value for all the training data, achieving a very high <span class="math inline">\(R^2_{train} = 1.00\)</span> but an abysmal <span class="math inline">\(R^2_{test}\)</span>. This phenomenon is called “overfitting”.</p>
+<div class="webex-check webex-box">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>Quiz</b></p>
+<p style="margin-left:1em;">
+Which model seems to be most overfit? <select class="webex-select"><option value="blank"></option>
+<option value="answer">Regression tree</option>
+<option value="">Random forest</option>
+<option value="">LASSO</option>
+<option value="">Symbolic regression</option></select><br>Which model is least overfit? <select class="webex-select"><option value="blank"></option>
+<option value="">Regression tree</option>
+<option value="">Random forest</option>
+<option value="">Symbolic regression</option>
+<option value="answer">LASSO</option></select><br>The $R^2_{train}$ is positively biased <select class="webex-select"><option value="blank"></option>
+<option value="answer">TRUE</option>
+<option value="NA">FALSE</option></select><br>The $R^2_{test}$ tells you how well your model generalizes to new data. <select class="webex-select"><option value="blank"></option>
+<option value="answer">TRUE</option>
+<option value="NA">FALSE</option></select></p>
+</span>
+</div>
+<p>Note that according to this metric, the random forest model is best. However, a random forest model is not interpretable - although you can analyze its predictions using measures like variable importance and partial dependence plots. Note that the LASSO model is almost equally good - and it is very straightforwardly interpretable. From a theory construction perspective, you might thus choose the LASSO model because it combines near-peak performance with high interpretability. The regression tree performs unacceptably (making much worse predictors than just taking the mean of the training data as prediction). The symbolic regression model performs worse, but not completely unacceptably.</p>
 </section><section id="interpret-lasso" class="level4" data-number="6.2.4.2"><h4 data-number="6.2.4.2" class="anchored" data-anchor-id="interpret-lasso">
 <span class="header-section-number">6.2.4.2</span> Interpret LASSO</h4>
 <p>To interpret the LASSO model, we look at its regression coefficients. These are interpreted the same as other regression coefficients, except that these are all biased towards zero:</p>
@@ -568,111 +602,130 @@ window.Quarto = {
 <table class="caption-top table table-sm table-striped small">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Predictor</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">$b_{\lambda 1se}$</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">b_lambda_1se</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">3.60</td>
+<td style="text-align: right;">4.61</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">ACP</td>
-<td style="text-align: right;">0.43</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">MEH</td>
-<td style="text-align: right;">0.12</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">AUT</td>
-<td style="text-align: right;">0.08</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">REL</td>
-<td style="text-align: right;">0.05</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">COM</td>
+<td style="text-align: left;">Grade</td>
 <td style="text-align: right;">0.00</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Online</td>
+<td style="text-align: left;">Age</td>
 <td style="text-align: right;">0.00</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">genderM</td>
+<td style="text-align: left;">GenderF</td>
 <td style="text-align: right;">0.00</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">genderF</td>
+<td style="text-align: left;">TS</td>
 <td style="text-align: right;">0.00</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">genderO</td>
+<td style="text-align: left;">SOS</td>
 <td style="text-align: right;">0.00</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">year</td>
+<td style="text-align: left;">PS</td>
 <td style="text-align: right;">0.00</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">fieldEngineering.and.Technology</td>
-<td style="text-align: right;">0.00</td>
+<td style="text-align: left;">CM</td>
+<td style="text-align: right;">-0.16</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">fieldLanguages.and.Linguistics</td>
-<td style="text-align: right;">0.00</td>
+<td style="text-align: left;">BI</td>
+<td style="text-align: right;">0.27</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">fieldHealth.Sciences</td>
-<td style="text-align: right;">0.00</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">fieldEducation</td>
-<td style="text-align: right;">0.00</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">fieldCulture.and.Arts</td>
-<td style="text-align: right;">0.00</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">fieldInformation.Technology</td>
-<td style="text-align: right;">0.00</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">fieldOther</td>
-<td style="text-align: right;">0.00</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">class.per.week</td>
+<td style="text-align: left;">BH</td>
 <td style="text-align: right;">0.00</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>We see that ACP, MEH, AUT, and REL are retained as relevant predictors, of which ACP is by far the most important one.</p>
+<div class="webex-check webex-box">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>Quiz</b></p>
+<p style="margin-left:1em;">
+BI is one of the most influential predictors <select class="webex-select"><option value="blank"></option>
+<option value="answer">TRUE</option>
+<option value="NA">FALSE</option></select><br>CM is the least influential predictor <select class="webex-select"><option value="blank"></option>
+<option value="NA">TRUE</option>
+<option value="answer">FALSE</option></select><br>PS was dropped from the model <select class="webex-select"><option value="blank"></option>
+<option value="answer">TRUE</option>
+<option value="NA">FALSE</option></select></p>
+</span>
+</div>
 </section><section id="interpret-a-tree" class="level4" data-number="6.2.4.3"><h4 data-number="6.2.4.3" class="anchored" data-anchor-id="interpret-a-tree">
 <span class="header-section-number">6.2.4.3</span> Interpret a Tree</h4>
 <p>You can interpret a regression tree by plotting it:</p>
 <p><img src="prp_tree.png" class="img-fluid"></p>
 <p>The plot tells us:</p>
 <ul>
-<li>which variables are selected at all; these are relevant predictors (ACP, AUT, REL, and MEH)</li>
-<li>how the model comes to a prediction; for example, if you have a score of 0.50 on ACP, and a score of 1.00 on MEH, then you end up in the right-most leaf of the tree, with a predicted value of 4.8 on ACM.</li>
-<li>Note that the previous example also illustrates a potential interaction between ACP and MEH because you first split on the one, and then on the other.</li>
-</ul></section><section id="explain-a-random-forest" class="level4" data-number="6.2.4.4"><h4 data-number="6.2.4.4" class="anchored" data-anchor-id="explain-a-random-forest">
+<li>which variables are selected at all; these are the relevant predictors</li>
+<li>how the model comes to a prediction: you navigate the decision tree based on your values on the predictor variables, until you reach the bottom of the tree. The predicted value is the label of the terminal node. <!-- - Note that the previous example also illustrates a potential interaction between BI and CM because you first split on the one, and then on the other. -->
+</li>
+</ul>
+<div class="webex-check webex-box">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>Quiz</b></p>
+<p style="margin-left:1em;">
+In this model, all variables are used. <select class="webex-select"><option value="blank"></option>
+<option value="answer">TRUE</option>
+<option value="NA">FALSE</option></select><br>To get a prediction, you start from the top: if your BI score is not lower than -.58, then go down the right branch <select class="webex-select"><option value="blank"></option>
+<option value="answer">TRUE</option>
+<option value="NA">FALSE</option></select><br>The fact that the model first splits on BI and then on CM suggests a potential interaction between these two variables. <select class="webex-select"><option value="blank"></option>
+<option value="answer">TRUE</option>
+<option value="NA">FALSE</option></select><br>If the tree had been simpler (= less complex branching), it would be less overfit. <select class="webex-select"><option value="blank"></option>
+<option value="answer">TRUE</option>
+<option value="NA">FALSE</option></select></p>
+</span>
+</div>
+</section><section id="explain-a-random-forest" class="level4" data-number="6.2.4.4"><h4 data-number="6.2.4.4" class="anchored" data-anchor-id="explain-a-random-forest">
 <span class="header-section-number">6.2.4.4</span> Explain a Random Forest</h4>
 <p>Unlike a single tree, a random forest is not interpretable, but you can analyze/explain its predictions to some extent.</p>
-<p>First, you can randomly shuffle each predictor, and see how much <em>worse</em> the model predicts when that happens. If shuffling one predictor really diminishes predictive performance, it must have been an important predictor. Looking at the plot below, we see that the order of predictor importances is about the same as for the LASSO coefficients, with ACP being the most important:</p>
+<p>First, you can randomly shuffle each predictor, and see how much <em>worse</em> the model predicts when that happens. If shuffling one predictor really diminishes predictive performance, it must have been an important predictor.</p>
 <p><img src="plot_vi.png" class="img-fluid"></p>
-<p>The above plot tells us which predictors matter; to get a sense of the shape of the relationship between each predictor and the outcome (averaging over all other predictors), we can use “partial dependence plots”:</p>
+<p>To get a sense of the shape of the relationship between each predictor and the outcome (averaging over all other predictors), we can use “partial dependence plots”:</p>
 <p><img src="plot_pdp.png" class="img-fluid"></p>
-<p>We see a near-perfect linear relationship of ACP, and (approximately linear) monotonous positive relationships for all other predictors as well.</p>
+<div class="webex-check webex-box">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>Quiz</b></p>
+<p style="margin-left:1em;">
+Random forests gives a very different picture of what the most important predictors are than LASSO. <select class="webex-select"><option value="blank"></option>
+<option value="NA">TRUE</option>
+<option value="answer">FALSE</option></select><br>Whether you have low or medium levels of BI does not make a difference for your AM (the outcome). <select class="webex-select"><option value="blank"></option>
+<option value="answer">TRUE</option>
+<option value="NA">FALSE</option></select><br>For increasing CM, we see an approximately linear decrease of AM <select class="webex-select"><option value="blank"></option>
+<option value="answer">TRUE</option>
+<option value="NA">FALSE</option></select><br>The effect of GenderF could have any other shape than the step function we see here. <select class="webex-select"><option value="blank"></option>
+<option value="NA">TRUE</option>
+<option value="answer">FALSE</option></select></p>
+</span>
+</div>
 </section><section id="interpret-symbolic-regression" class="level4" data-number="6.2.4.5"><h4 data-number="6.2.4.5" class="anchored" data-anchor-id="interpret-symbolic-regression">
 <span class="header-section-number">6.2.4.5</span> Interpret Symbolic Regression</h4>
 <p>Finally, interpreting the symbolic regression model is very straightforward; just examine the equation constructed by the algorithm:</p>
-<p><span class="math inline">\(3.6 + ACP\)</span></p>
+<p><span class="math inline">\(BI - -4.61\)</span></p>
+<div class="webex-check webex-box">
+<span>
+<p style="margin-top:1em; text-align:center">
+<b>Quiz</b></p>
+<p style="margin-left:1em;">
+In this case, symbolic regression gives us a linear function <select class="webex-select"><option value="blank"></option>
+<option value="answer">TRUE</option>
+<option value="NA">FALSE</option></select><br>The intercept of this function is: <input class="webex-solveme nospaces" data-tol="0.01" size="4" data-answer="[&quot;4.61&quot;]"><br>The slope of BI is <input class="webex-solveme nospaces" data-tol="0.01" size="1" data-answer="[&quot;1&quot;]"></p>
+</span>
+</div>
 </section></section></section><section id="homework" class="level2" data-number="6.3"><h2 data-number="6.3" class="anchored" data-anchor-id="homework">
 <span class="header-section-number">6.3</span> Homework</h2>
 <p>If you managed to run the analysis, then you should now have machine learning results that tell you something about the predictors of one variable that (loosely) corresponds to a specific concept in your DAG.</p>
@@ -1329,8 +1382,8 @@ window.onload = function() {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./causal_discovery.html" class="pagination-link" aria-label="Causal Discovery">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Causal Discovery</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
