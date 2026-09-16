@@ -1,5 +1,5 @@
 Component,Type,Percentage,Description
-Multiple choice exam,individual,30.00%,"During 11 lecture sessions, a 4-question multiple choice quiz is administered. Missed quizzes count for 0 points, the best 10 quizzes are used to calculate the total grade."
-Assignment,individual,10.00%,Write a one-paragraph (max 500 word) summary and reflection of a talk you attended at the Theory Methods Conference
+Multiple choice exam,individual,30.00%,"During 8 lecture sessions, a 4-question multiple choice quiz is administered. Missed quizzes count for 0 points, the best 6 quizzes are used to calculate the total grade."
+Writing assignment,individual,10.00%,"Short writing assignment (max 500 words), to be made during scheduled session without access to anything except course papers"
 Presentation of theory specification,group,20.00%,Present your group project to class
 Final theory report,group,40.00%,"Write a report about your final theory, and archive it as a FAIR theory"
